@@ -1,0 +1,34 @@
+{
+  "name": "agi-manager",
+  "version": "0.1.0",
+  "description": "AI 스타트업 경영 시뮬레이션 (Paradox 스타일)",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "node scripts/electron/run-builder.cjs",
+    "build:mac": "node scripts/electron/run-builder.cjs --mac",
+    "build:mac:dir": "node scripts/electron/run-builder.cjs --mac --dir",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "build:all": "node scripts/electron/run-builder.cjs -mwl"
+  },
+  "build": {
+    "extends": "./scripts/electron/electron-builder.config.js",
+    "appId": "com.mimir.agimanager",
+    "productName": "AGI Manager",
+    "afterPack": "scripts/electron/clear-xattrs.cjs"
+  },
+  "author": "Mimir (미미르)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "@dicebear/collection": "^9.4.2",
+    "@dicebear/core": "^9.4.2",
+    "steamworks.js": "^0.3.1",
+    "three": "^0.183.2"
+  }
+}

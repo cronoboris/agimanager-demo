@@ -1,0 +1,689 @@
+{
+  "TECH_TREE": {
+    "deep_learning_basics": {
+      "id": "deep_learning_basics",
+      "name": "딥러닝 기초",
+      "category": "foundation",
+      "route": "common",
+      "tier": 1,
+      "cost": 80,
+      "requires": [],
+      "description": "심층 신경망의 기본 원리와 학습 방법.",
+      "historicalContext": "AlexNet and modern deep learning were already well established by 2015.",
+      "effects": {
+        "researchSpeed": 1.05
+      }
+    },
+    "transformer": {
+      "id": "transformer",
+      "name": "Transformer",
+      "category": "foundation",
+      "route": "common",
+      "tier": 2,
+      "cost": 300,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "\"Attention Is All You Need\" - 혁명적 아키텍처.",
+      "historicalContext": "Attention Is All You Need (Vaswani et al., 2017).",
+      "effects": {
+        "modelQuality": 1.2
+      }
+    },
+    "reinforcement_learning": {
+      "id": "reinforcement_learning",
+      "name": "강화학습",
+      "category": "foundation",
+      "route": "common",
+      "tier": 2,
+      "cost": 300,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "보상 기반 학습. AlphaGo의 핵심 기술.",
+      "historicalContext": "AlphaGo and AlphaGo Zero made RL mainstream in 2016-2017.",
+      "effects": {
+        "researchSpeed": 1.05
+      }
+    },
+    "gpt_architecture": {
+      "id": "gpt_architecture",
+      "name": "GPT 아키텍처",
+      "category": "model_arch",
+      "route": "llm",
+      "tier": 2,
+      "cost": 550,
+      "requires": [
+        "transformer"
+      ],
+      "description": "자기회귀 언어 모델. 텍스트 생성의 기반.",
+      "historicalContext": "GPT-1 introduced the modern autoregressive language-model path in 2018.",
+      "effects": {
+        "unlockModality": "text"
+      }
+    },
+    "cnn": {
+      "id": "cnn",
+      "name": "CNN",
+      "category": "model_arch",
+      "route": "world",
+      "tier": 1,
+      "cost": 180,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "합성곱 신경망. 이미지 인식의 기초.",
+      "effects": {
+        "unlockModality": "image"
+      },
+      "historicalContext": "CNNs were a mature foundation by the ResNet era."
+    },
+    "scaling_laws": {
+      "id": "scaling_laws",
+      "name": "스케일링 법칙",
+      "category": "model_arch",
+      "route": "llm",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "gpt_architecture"
+      ],
+      "description": "모델 크기와 성능의 관계를 규명.",
+      "historicalContext": "Scaling laws became a serious planning tool around 2019-2020.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "vision_transformer": {
+      "id": "vision_transformer",
+      "name": "Vision Transformer",
+      "category": "model_arch",
+      "route": "world",
+      "tier": 2,
+      "cost": 900,
+      "requires": [
+        "cnn",
+        "transformer"
+      ],
+      "description": "Transformer를 비전에 적용. 이미지 이해의 혁신.",
+      "effects": {
+        "modelQuality": 1.2
+      },
+      "historicalContext": "Vision Transformer (ViT) showed transformer scaling in vision circa 2020."
+    },
+    "rlhf": {
+      "id": "rlhf",
+      "name": "RLHF",
+      "category": "advanced_ai",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1400,
+      "requires": [
+        "reinforcement_learning"
+      ],
+      "description": "인간 피드백으로 모델을 정렬. ChatGPT의 핵심.",
+      "historicalContext": "RLHF moved into production relevance with InstructGPT and ChatGPT in 2022.",
+      "effects": {
+        "safetyBonus": 1.2,
+        "modelQuality": 1.2
+      }
+    },
+    "chain_of_thought": {
+      "id": "chain_of_thought",
+      "name": "사고의 사슬(CoT)",
+      "category": "advanced_ai",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1500,
+      "requires": [
+        "rlhf"
+      ],
+      "description": "단계적 추론 능력. 복잡한 문제 해결 가능.",
+      "historicalContext": "Chain-of-thought prompting emerged as a practical reasoning unlock in 2022.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "video_prediction": {
+      "id": "video_prediction",
+      "name": "영상 예측",
+      "category": "advanced_ai",
+      "route": "world",
+      "tier": 2,
+      "cost": 1000,
+      "requires": [
+        "vision_transformer"
+      ],
+      "description": "다음 프레임을 예측. 세계의 역학을 학습하는 첫 걸음.",
+      "historicalContext": "초기 비디오 예측 연구와 self-supervised video learning 흐름을 반영한다.",
+      "effects": {
+        "modelQuality": 1.2
+      }
+    },
+    "physics_simulation": {
+      "id": "physics_simulation",
+      "name": "물리 시뮬레이션 AI",
+      "category": "advanced_ai",
+      "route": "world",
+      "tier": 2,
+      "cost": 950,
+      "requires": [
+        "vision_transformer",
+        "reinforcement_learning"
+      ],
+      "description": "물리 법칙을 학습하는 AI. 현실 세계 모델링.",
+      "historicalContext": "딥마인드의 세계모델과 physics-informed learning 연구를 반영한다.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "cross_modal_learning": {
+      "id": "cross_modal_learning",
+      "name": "교차 모달 학습",
+      "category": "advanced_ai",
+      "route": "synergy",
+      "tier": 2,
+      "cost": 1100,
+      "requires": [
+        "gpt_architecture",
+        "cnn"
+      ],
+      "description": "텍스트와 이미지를 연결하는 학습. 두 루트의 첫 교차점.",
+      "historicalContext": "CLIP(2021) 계열의 교차 모달 표현학습을 반영한다.",
+      "effects": {
+        "modelQuality": 1.2,
+        "synergyBonus": {
+          "llm": 1.1,
+          "world": 1.1
+        }
+      }
+    },
+    "gan": {
+      "id": "gan",
+      "name": "GAN",
+      "category": "generative",
+      "route": "common",
+      "tier": 1,
+      "cost": 200,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "생성적 적대 신경망. 이미지 생성의 시작.",
+      "historicalContext": "GAN(2014)과 그 후속 이미지 생성 연구를 반영한다.",
+      "effects": {}
+    },
+    "diffusion": {
+      "id": "diffusion",
+      "name": "Diffusion 모델",
+      "category": "generative",
+      "route": "common",
+      "tier": 2,
+      "cost": 800,
+      "requires": [
+        "gan"
+      ],
+      "description": "확산 모델. Stable Diffusion, DALL-E의 기반.",
+      "historicalContext": "DDPM and later Stable Diffusion defined the modern diffusion wave.",
+      "effects": {
+        "unlockProduct": "image_gen"
+      }
+    },
+    "data_collection": {
+      "id": "data_collection",
+      "name": "데이터 수집",
+      "category": "data",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "웹 크롤링, 데이터셋 구축 기초.",
+      "historicalContext": "대규모 웹 크롤링과 공개 코퍼스 구축의 출발점.",
+      "effects": {
+        "dataGain": 1.2
+      }
+    },
+    "data_refinement": {
+      "id": "data_refinement",
+      "name": "데이터 정제",
+      "category": "data",
+      "route": "common",
+      "tier": 2,
+      "cost": 450,
+      "requires": [
+        "data_collection"
+      ],
+      "description": "데이터 품질 향상. 노이즈 제거, 라벨링.",
+      "historicalContext": "정제된 학습 데이터가 성능을 좌우한다는 경험적 교훈을 반영한다.",
+      "effects": {
+        "dataQuality": 1.2
+      }
+    },
+    "distributed_learning": {
+      "id": "distributed_learning",
+      "name": "분산 학습",
+      "category": "data",
+      "route": "common",
+      "tier": 2,
+      "cost": 550,
+      "requires": [
+        "data_collection"
+      ],
+      "description": "여러 노드에서 병렬 학습.",
+      "historicalContext": "Horovod류 분산 학습과 대규모 클러스터 훈련을 반영한다.",
+      "effects": {
+        "trainingSpeed": 1.3
+      }
+    },
+    "gpu_utilization": {
+      "id": "gpu_utilization",
+      "name": "GPU 활용",
+      "category": "chip",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "GPU를 AI 학습에 활용하는 기초 기술.",
+      "historicalContext": "2017년 이후 GPU가 AI 연구의 표준 가속기로 자리잡은 흐름을 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.1
+      }
+    },
+    "gpu_cluster": {
+      "id": "gpu_cluster",
+      "name": "GPU 클러스터",
+      "category": "chip",
+      "route": "common",
+      "tier": 2,
+      "cost": 1200,
+      "requires": [
+        "gpu_utilization"
+      ],
+      "description": "다수의 GPU를 묶어 대규모 학습.",
+      "historicalContext": "NVLink, NCCL, 대규모 클러스터 훈련이 본격화된 흐름을 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.2,
+        "maxCompute": 1.5
+      }
+    },
+    "fpga": {
+      "id": "fpga",
+      "name": "FPGA 활용",
+      "category": "chip",
+      "route": "common",
+      "tier": 2,
+      "cost": 600,
+      "requires": [
+        "gpu_utilization"
+      ],
+      "description": "프로그래머블 하드웨어로 유연한 AI 가속.",
+      "historicalContext": "AI 추론/인프라에서 FPGA가 틈새 최적화 장비로 쓰이던 시기를 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.15
+      }
+    },
+    "cloud_server": {
+      "id": "cloud_server",
+      "name": "클라우드 서버",
+      "category": "infra",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "클라우드 기반 서버 활용.",
+      "historicalContext": "하이퍼스케일 클라우드가 AI 인프라의 기본 전제가 된 흐름을 반영한다.",
+      "effects": {
+        "maxCompute": 1.2
+      }
+    },
+    "standard_cooling": {
+      "id": "standard_cooling",
+      "name": "표준 냉각",
+      "category": "infra",
+      "route": "common",
+      "tier": 1,
+      "cost": 150,
+      "requires": [],
+      "description": "기본 공랭 냉각 시스템.",
+      "historicalContext": "초기 AI 랙은 표준 공랭으로 버틸 수 있었지만, 대형 GPU부터는 병목이 되기 시작한다.",
+      "effects": {
+        "powerCost": 0.95
+      }
+    },
+    "water_cooling": {
+      "id": "water_cooling",
+      "name": "수냉 시스템",
+      "category": "infra",
+      "route": "common",
+      "tier": 2,
+      "cost": 1500,
+      "requires": [
+        "standard_cooling"
+      ],
+      "description": "수냉식 냉각. 효율 향상.",
+      "historicalContext": "고밀도 GPU 랙에서 수냉이 현실적인 선택지가 된 흐름을 반영한다.",
+      "effects": {
+        "powerCost": 0.8
+      }
+    },
+    "foundry_external": {
+      "id": "foundry_external",
+      "name": "반도체 공정(외부)",
+      "category": "infra",
+      "route": "common",
+      "tier": 2,
+      "cost": 800,
+      "requires": [],
+      "description": "외부 파운드리에 칩 생산 위탁.",
+      "historicalContext": "파운드리 외주가 AI 하드웨어 공급망의 기본이 된 흐름을 반영한다.",
+      "effects": {}
+    },
+    "power_grid": {
+      "id": "power_grid",
+      "name": "기존 전력망",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 500,
+      "requires": [],
+      "description": "기존 전력망에서 전력 공급.",
+      "effects": {}
+    },
+    "power_optimization": {
+      "id": "power_optimization",
+      "name": "전력 계약 최적화",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 350,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "전력 계약 최적화로 비용 절감.",
+      "effects": {
+        "powerCost": 0.85
+      }
+    },
+    "energy_efficiency": {
+      "id": "energy_efficiency",
+      "name": "에너지 효율 연구",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 400,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "전력 소비를 줄이는 연구.",
+      "effects": {
+        "powerCost": 0.8
+      }
+    },
+    "renewable_energy": {
+      "id": "renewable_energy",
+      "name": "재생 에너지",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "태양광/풍력 에너지 도입.",
+      "effects": {
+        "powerCost": 0.7,
+        "reputationBonus": 5
+      }
+    },
+    "image_gen_product": {
+      "id": "image_gen_product",
+      "name": "이미지 생성",
+      "category": "product",
+      "route": "common",
+      "tier": 2,
+      "cost": 1450,
+      "requires": [
+        "diffusion"
+      ],
+      "description": "AI 이미지 생성 서비스.",
+      "effects": {
+        "monthlyRevenue": 80000,
+        "unemploymentImpact": {
+          "design": 3
+        }
+      }
+    },
+    "military_ai": {
+      "id": "military_ai",
+      "name": "군사 AI",
+      "category": "product",
+      "route": "common",
+      "tier": 2,
+      "cost": 1400,
+      "requires": [
+        "cnn",
+        "data_refinement"
+      ],
+      "description": "군사 정보 분석 AI. 정부 계약.",
+      "effects": {
+        "monthlyRevenue": 300000,
+        "favorabilityPenalty": -10
+      }
+    },
+    "api_platform": {
+      "id": "api_platform",
+      "name": "API 플랫폼",
+      "category": "product",
+      "route": "llm",
+      "tier": 1,
+      "cost": 60,
+      "requires": [],
+      "description": "외부 개발자를 위한 API 서비스 채널을 연다.",
+      "historicalContext": "API-first AI monetization became the dominant business model as frontier models were commercialized.",
+      "effects": {
+        "unlockServiceChannel": "api",
+        "serviceRevenueMult": {
+          "api": 1.2
+        }
+      }
+    },
+    "enterprise_integration": {
+      "id": "enterprise_integration",
+      "name": "엔터프라이즈 통합",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 850,
+      "requires": [
+        "api_platform"
+      ],
+      "description": "기업용 시스템과 모델을 깊게 연결한다.",
+      "historicalContext": "Enterprise AI adoption accelerated once model APIs could plug into internal workflows.",
+      "effects": {
+        "unlockServiceChannel": "enterprise",
+        "serviceRevenueMult": {
+          "enterprise": 1.3,
+          "b2b_license": 1.3
+        }
+      }
+    },
+    "model_optimization": {
+      "id": "model_optimization",
+      "name": "모델 최적화",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "api_platform"
+      ],
+      "description": "같은 품질을 더 적은 연산으로 제공한다.",
+      "historicalContext": "Inference optimization became critical once serving costs started to dominate margins.",
+      "effects": {
+        "inferenceCostMult": 0.8
+      }
+    },
+    "model_distillation": {
+      "id": "model_distillation",
+      "name": "모델 증류",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1900,
+      "requires": [
+        "scaling_laws"
+      ],
+      "description": "큰 모델의 지식을 더 작은 모델로 옮긴다.",
+      "historicalContext": "Distillation became a key tool for shipping smaller, cheaper service models from frontier teachers.",
+      "effects": {
+        "inferenceCostMult": 0.85,
+        "serviceEfficiencyMult": 1.15
+      }
+    },
+    "serving_infrastructure": {
+      "id": "serving_infrastructure",
+      "name": "서빙 인프라",
+      "category": "product",
+      "route": "common",
+      "tier": 1,
+      "cost": 250,
+      "requires": [
+        "cloud_server"
+      ],
+      "description": "모델 서비스 전체를 지탱하는 운영 인프라.",
+      "historicalContext": "Serving infrastructure emerged as a first-class bottleneck once AI traffic turned into a real business.",
+      "effects": {
+        "serviceEfficiencyMult": 1.1
+      }
+    },
+    "bias_audit": {
+      "id": "bias_audit",
+      "name": "편향성 감사",
+      "category": "safety",
+      "route": "common",
+      "tier": 1,
+      "cost": 180,
+      "requires": [],
+      "description": "AI 모델의 편향성을 감지하고 교정.",
+      "historicalContext": "공정성/편향성 평가가 출시 전 필수 절차가 된 흐름을 반영한다.",
+      "effects": {
+        "safetyBonus": 1.1,
+        "reputationBonus": 3
+      }
+    },
+    "security_basics": {
+      "id": "security_basics",
+      "name": "보안 기초",
+      "category": "safety",
+      "route": "common",
+      "tier": 1,
+      "cost": 140,
+      "requires": [],
+      "description": "AI 시스템 보안의 기초.",
+      "historicalContext": "2017년 이후 AI 안전과 보안이 기본 전제가 된 흐름을 반영한다.",
+      "effects": {
+        "securityLevel": 1.1
+      }
+    },
+    "adversarial_defense": {
+      "id": "adversarial_defense",
+      "name": "적대적 방어",
+      "category": "safety",
+      "route": "common",
+      "tier": 2,
+      "cost": 750,
+      "requires": [
+        "security_basics"
+      ],
+      "description": "적대적 공격에 대한 방어 기술.",
+      "historicalContext": "적대적 예제와 모델 취약성 연구가 확장된 흐름을 반영한다.",
+      "effects": {
+        "securityLevel": 1.3
+      }
+    }
+  },
+  "TECH_CATEGORIES": {
+    "foundation": {
+      "name": "기초 연구",
+      "color": "#94a3b8",
+      "icon": "📐"
+    },
+    "model_arch": {
+      "name": "모델 아키텍처",
+      "color": "#3b82f6",
+      "icon": "🧬"
+    },
+    "advanced_ai": {
+      "name": "고급 AI",
+      "color": "#8b5cf6",
+      "icon": "🧠"
+    },
+    "frontier_ai": {
+      "name": "프론티어 AI",
+      "color": "#f97316",
+      "icon": "🚀"
+    },
+    "generative": {
+      "name": "생성 AI",
+      "color": "#a855f7",
+      "icon": "🎨"
+    },
+    "data": {
+      "name": "데이터",
+      "color": "#10b981",
+      "icon": "📊"
+    },
+    "chip": {
+      "name": "칩/프로세서",
+      "color": "#eab308",
+      "icon": "⚡"
+    },
+    "infra": {
+      "name": "인프라",
+      "color": "#6366f1",
+      "icon": "🏗️"
+    },
+    "energy": {
+      "name": "전력/에너지",
+      "color": "#ef4444",
+      "icon": "🔋"
+    },
+    "product": {
+      "name": "AI 제품",
+      "color": "#22c55e",
+      "icon": "📦"
+    },
+    "safety": {
+      "name": "안전/정렬",
+      "color": "#14b8a6",
+      "icon": "🛡️"
+    },
+    "quantum": {
+      "name": "양자컴퓨팅",
+      "color": "#ec4899",
+      "icon": "⚛️"
+    },
+    "integration": {
+      "name": "AGI/ASI",
+      "color": "#f97316",
+      "icon": "🌟"
+    }
+  },
+  "ROUTE_INFO": {
+    "llm": {
+      "name": "LLM",
+      "color": "#3b82f6"
+    },
+    "world": {
+      "name": "월드모델",
+      "color": "#f59e0b"
+    },
+    "common": {
+      "name": "공통",
+      "color": "#94a3b8"
+    },
+    "synergy": {
+      "name": "시너지",
+      "color": "#a855f7"
+    }
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "COMPETITORS": [
+    {
+      "id": "openmind",
+      "name": "OpenMind",
+      "country": "us",
+      "description": "공격적 AI 개발을 추구하는 미국 스타트업",
+      "color": "#10a37f",
+      "stats": {
+        "researchPower": 8,
+        "funding": 9,
+        "aggression": 9,
+        "safetyFocus": 3,
+        "specialty": "algorithm"
+      },
+      "marketShare": 25,
+      "aiLevel": 10,
+      "reputation": 30,
+      "favorability": 0,
+      "currentModel": {
+        "name": "MindGPT-1",
+        "performance": 15
+      },
+      "initialFunds": 28000000,
+      "simulation": {
+        "talent": {
+          "headcount": 120,
+          "quality": 68,
+          "hiringPlan": 18,
+          "morale": 62
+        },
+        "gpu": {
+          "owned": 150,
+          "cloud": 42,
+          "utilization": 74
+        },
+        "data": {
+          "tb": 42,
+          "quality": 66,
+          "acquisitionPlan": 6
+        },
+        "pipeline": {
+          "researchQueue": [
+            "next-gen foundation model",
+            "safety tuning"
+          ],
+          "deployedServices": [
+            "api",
+            "consumer"
+          ],
+          "modelPipeline": [
+            {
+              "name": "MindGPT-1",
+              "performance": 15,
+              "stage": "deployed"
+            }
+          ]
+        },
+        "relations": {
+          "player": 0,
+          "competitors": {
+            "titanbrain": 2,
+            "cloudpillar": -4
+          },
+          "countries": {
+            "us": 8
+          }
+        },
+        "risk": {
+          "safetyDebt": 12,
+          "prPressure": 10,
+          "legalPressure": 6,
+          "supplyRisk": 8
+        },
+        "marketShareByRegion": {
+          "na": 13,
+          "eu": 5,
+          "apac": 7
+        }
+      },
+      "doctrine": {
+        "type": "aggressive",
+        "source": "companies.json",
+        "label": {
+          "ko": "공격적 선제",
+          "en": "Aggressive First-Mover"
+        },
+        "description": {
+          "ko": "빠른 출시와 시장 선점을 중시합니다.",
+          "en": "Prioritizes rapid releases and market capture."
+        },
+        "behavior": {
+          "releaseThreshold": 0.58,
+          "safetyInvestment": 0.12,
+          "expansionRate": 1.25,
+          "diplomacyStyle": "competitive",
+          "hiringAggression": 0.85,
+          "prSensitivity": 0.3
+        }
+      }
+    },
+    {
+      "id": "titanbrain",
+      "name": "TitanBrain",
+      "country": "us",
+      "description": "막대한 자원과 학술적 연구력을 겸비한 거대 기업",
+      "color": "#4285f4",
+      "stats": {
+        "researchPower": 9,
+        "funding": 10,
+        "aggression": 6,
+        "safetyFocus": 6,
+        "specialty": "data"
+      },
+      "marketShare": 30,
+      "aiLevel": 12,
+      "reputation": 40,
+      "favorability": 0,
+      "currentModel": {
+        "name": "TitanNet-1",
+        "performance": 18
+      },
+      "initialFunds": 42000000,
+      "simulation": {
+        "talent": {
+          "headcount": 165,
+          "quality": 74,
+          "hiringPlan": 12,
+          "morale": 70
+        },
+        "gpu": {
+          "owned": 190,
+          "cloud": 60,
+          "utilization": 78
+        },
+        "data": {
+          "tb": 60,
+          "quality": 72,
+          "acquisitionPlan": 4
+        },
+        "pipeline": {
+          "researchQueue": [
+            "enterprise platform",
+            "compute moat"
+          ],
+          "deployedServices": [
+            "platform",
+            "api"
+          ],
+          "modelPipeline": [
+            {
+              "name": "TitanNet-1",
+              "performance": 18,
+              "stage": "deployed"
+            }
+          ]
+        },
+        "relations": {
+          "player": 0,
+          "competitors": {
+            "openmind": -2,
+            "cloudpillar": 4
+          },
+          "countries": {
+            "us": 10
+          }
+        },
+        "risk": {
+          "safetyDebt": 8,
+          "prPressure": 8,
+          "legalPressure": 5,
+          "supplyRisk": 5
+        },
+        "marketShareByRegion": {
+          "na": 16,
+          "eu": 8,
+          "apac": 6
+        }
+      },
+      "doctrine": {
+        "type": "platform",
+        "source": "companies.json",
+        "label": {
+          "ko": "플랫폼 생태계",
+          "en": "Platform Ecosystem"
+        },
+        "description": {
+          "ko": "인프라와 생태계 잠금을 중시합니다.",
+          "en": "Pushes infrastructure and ecosystem lock-in."
+        },
+        "behavior": {
+          "releaseThreshold": 0.72,
+          "safetyInvestment": 0.28,
+          "expansionRate": 1.08,
+          "diplomacyStyle": "dominant",
+          "hiringAggression": 0.55,
+          "prSensitivity": 0.55
+        }
+      }
+    },
+    {
+      "id": "nexaai",
+      "name": "NexaAI",
+      "country": "us",
+      "description": "오픈소스 전략으로 AI 생태계를 주도하는 소셜 기업",
+      "color": "#1877f2",
+      "stats": {
+        "researchPower": 7,
+        "funding": 9,
+        "aggression": 7,
+        "safetyFocus": 4,
+        "specialty": "algorithm"
+      },
+      "marketShare": 15,
+      "aiLevel": 9,
+      "reputation": 15,
+      "favorability": 0,
+      "currentModel": {
+        "name": "NexaLM-1",
+        "performance": 10
+      },
+      "initialFunds": 26000000,
+      "simulation": {
+        "talent": {
+          "headcount": 110,
+          "quality": 69,
+          "hiringPlan": 14,
+          "morale": 66
+        },
+        "gpu": {
+          "owned": 130,
+          "cloud": 35,
+          "utilization": 72
+        },
+        "data": {
+          "tb": 40,
+          "quality": 68,
+          "acquisitionPlan": 5
+        },
+        "pipeline": {
+          "researchQueue": [
+            "community release",
+            "benchmark push"
+          ],
+          "deployedServices": [
+            "api",
+            "open-source"
+          ],
+          "modelPipeline": [
+            {
+              "name": "NexaLM-1",
+              "performance": 10,
+              "stage": "deployed"
+            }
+          ]
+        },
+        "relations": {
+          "player": 0,
+          "competitors": {
+            "openmind": 1
+          },
+          "countries": {
+            "us": 6
+          }
+        },
+        "risk": {
+          "safetyDebt": 10,
+          "prPressure": 7,
+          "legalPressure": 4,
+          "supplyRisk": 7
+        },
+        "marketShareByRegion": {
+          "na": 7,
+          "eu": 4,
+          "apac": 4
+        }
+      },
+      "doctrine": {
+        "type": "research",
+        "source": "companies.json",
+        "label": {
+          "ko": "연구 선도",
+          "en": "Research-Led"
+        },
+        "description": {
+          "ko": "성능 우위를 위해 연구에 집중합니다.",
+          "en": "Optimizes for research leadership and performance."
+        },
+        "behavior": {
+          "releaseThreshold": 0.84,
+          "safetyInvestment": 0.2,
+          "expansionRate": 0.95,
+          "diplomacyStyle": "neutral",
+          "hiringAggression": 0.7,
+          "prSensitivity": 0.45
+        }
+      }
+    }
+  ]
+}

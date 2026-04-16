@@ -1,0 +1,375 @@
+{
+  "TALENT_NAMES": {
+    "first": {
+      "us": [
+        "James",
+        "Sarah",
+        "Michael",
+        "Emily",
+        "David",
+        "Jessica",
+        "Daniel",
+        "Ashley",
+        "Chris",
+        "Amanda",
+        "Alex",
+        "Rachel",
+        "Ryan",
+        "Sophia",
+        "Tyler"
+      ],
+      "cn": [
+        "Wei",
+        "Jing",
+        "Ming",
+        "Xiao",
+        "Lei",
+        "Yan",
+        "Jun",
+        "Hua",
+        "Lin",
+        "Fang",
+        "Chen",
+        "Yue",
+        "Hao",
+        "Mei",
+        "Tao"
+      ],
+      "kr": [
+        "민수",
+        "지현",
+        "성호",
+        "유진",
+        "준혁",
+        "수빈",
+        "태우",
+        "하은",
+        "도현",
+        "서연",
+        "재원",
+        "은지",
+        "시우",
+        "다은",
+        "현우"
+      ],
+      "eu": [
+        "Hans",
+        "Marie",
+        "Pierre",
+        "Sophie",
+        "Marco",
+        "Elena",
+        "Lars",
+        "Anna",
+        "Klaus",
+        "Isabella",
+        "Luca",
+        "Chloe",
+        "Erik",
+        "Marta",
+        "Felix"
+      ],
+      "uk": [
+        "Oliver",
+        "Emma",
+        "George",
+        "Charlotte",
+        "William",
+        "Alice",
+        "Thomas",
+        "Grace",
+        "Henry",
+        "Lily",
+        "Jack",
+        "Amelia",
+        "Edward",
+        "Freya",
+        "Arthur"
+      ],
+      "jp": [
+        "Yuki",
+        "Haruto",
+        "Sakura",
+        "Ren",
+        "Aoi",
+        "Sota",
+        "Hina",
+        "Kaito",
+        "Yui",
+        "Riku",
+        "Mio",
+        "Takumi",
+        "Ema",
+        "Hayato",
+        "Sora"
+      ]
+    },
+    "last": {
+      "us": [
+        "Smith",
+        "Johnson",
+        "Williams",
+        "Brown",
+        "Jones",
+        "Miller",
+        "Davis",
+        "Wilson",
+        "Taylor",
+        "Clark",
+        "Lee",
+        "Wang",
+        "Patel",
+        "Kim",
+        "Garcia"
+      ],
+      "cn": [
+        "Wang",
+        "Li",
+        "Zhang",
+        "Liu",
+        "Chen",
+        "Yang",
+        "Huang",
+        "Wu",
+        "Zhou",
+        "Xu",
+        "Sun",
+        "Ma",
+        "Zhu",
+        "Hu",
+        "Guo"
+      ],
+      "kr": [
+        "김",
+        "이",
+        "박",
+        "최",
+        "정",
+        "강",
+        "조",
+        "윤",
+        "장",
+        "임",
+        "한",
+        "오",
+        "서",
+        "신",
+        "권"
+      ],
+      "eu": [
+        "Müller",
+        "Schmidt",
+        "Dubois",
+        "Martin",
+        "Rossi",
+        "García",
+        "Johansson",
+        "Andersen",
+        "Kowalski",
+        "De Vries",
+        "Laurent",
+        "Fischer",
+        "Weber",
+        "Bernard",
+        "Moreau"
+      ],
+      "uk": [
+        "Thompson",
+        "Robinson",
+        "Walker",
+        "Wright",
+        "Hall",
+        "Evans",
+        "Baker",
+        "Green",
+        "Mitchell",
+        "Campbell",
+        "Phillips",
+        "Turner",
+        "Parker",
+        "Hughes",
+        "Bennett"
+      ],
+      "jp": [
+        "Tanaka",
+        "Yamamoto",
+        "Sato",
+        "Suzuki",
+        "Watanabe",
+        "Takahashi",
+        "Ito",
+        "Nakamura",
+        "Kobayashi",
+        "Kato",
+        "Yoshida",
+        "Yamada",
+        "Sasaki",
+        "Matsumoto",
+        "Inoue"
+      ]
+    }
+  },
+  "SPECIALTIES": [
+    {
+      "id": "ml",
+      "name": "머신러닝",
+      "color": "#3b82f6"
+    },
+    {
+      "id": "nlp",
+      "name": "NLP",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "vision",
+      "name": "컴퓨터비전",
+      "color": "#10b981"
+    },
+    {
+      "id": "rl",
+      "name": "강화학습",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "safety",
+      "name": "AI 안전",
+      "color": "#14b8a6"
+    },
+    {
+      "id": "infra",
+      "name": "인프라",
+      "color": "#6366f1"
+    },
+    {
+      "id": "hw",
+      "name": "하드웨어",
+      "color": "#ef4444"
+    },
+    {
+      "id": "data",
+      "name": "데이터",
+      "color": "#ec4899"
+    }
+  ],
+  "PERSONALITY_TRAITS": [
+    {
+      "id": "perfectionist",
+      "name": "완벽주의자",
+      "effect": "연구 품질↑ 속도↓",
+      "qualityMod": 1.2,
+      "speedMod": 0.8
+    },
+    {
+      "id": "speedrunner",
+      "name": "스피드러너",
+      "effect": "속도↑ 품질↓",
+      "qualityMod": 0.85,
+      "speedMod": 1.3
+    },
+    {
+      "id": "team_player",
+      "name": "팀플레이어",
+      "effect": "협업 시너지↑",
+      "qualityMod": 1,
+      "speedMod": 1,
+      "synergyMod": 1.3
+    },
+    {
+      "id": "lone_wolf",
+      "name": "독불장군",
+      "effect": "단독 연구↑ 협업↓",
+      "qualityMod": 1.15,
+      "speedMod": 1.1,
+      "synergyMod": 0.7
+    },
+    {
+      "id": "innovator",
+      "name": "혁신가",
+      "effect": "돌파구 확률↑",
+      "qualityMod": 1,
+      "speedMod": 1,
+      "breakthroughMod": 2
+    },
+    {
+      "id": "mentor",
+      "name": "멘토",
+      "effect": "주변 인재 성장↑",
+      "qualityMod": 1,
+      "speedMod": 0.95,
+      "mentorMod": 1.5
+    },
+    {
+      "id": "workaholic",
+      "name": "워커홀릭",
+      "effect": "생산성↑ 번아웃 위험↑",
+      "qualityMod": 1,
+      "speedMod": 1.4,
+      "burnoutRisk": 1.5
+    },
+    {
+      "id": "balanced",
+      "name": "균형잡힌",
+      "effect": "안정적 성과",
+      "qualityMod": 1.05,
+      "speedMod": 1.05
+    }
+  ],
+  "PERSONALITIES": [
+    {
+      "id": "ambitious",
+      "label": { "ko": "야심가", "en": "Ambitious" },
+      "effects": { "researchBonus": 0.1, "loyaltyDecay": 0.02, "conflictChance": 0.15 }
+    },
+    {
+      "id": "methodical",
+      "label": { "ko": "체계적", "en": "Methodical" },
+      "effects": { "researchBonus": 0.05, "loyaltyDecay": -0.01, "conflictChance": 0.05 }
+    },
+    {
+      "id": "visionary",
+      "label": { "ko": "비전가", "en": "Visionary" },
+      "effects": { "researchBonus": 0.15, "loyaltyDecay": 0.03, "conflictChance": 0.2 }
+    },
+    {
+      "id": "loyal",
+      "label": { "ko": "충성파", "en": "Loyal" },
+      "effects": { "researchBonus": 0.0, "loyaltyDecay": -0.03, "conflictChance": 0.02 }
+    },
+    {
+      "id": "maverick",
+      "label": { "ko": "독불장군", "en": "Maverick" },
+      "effects": { "researchBonus": 0.2, "loyaltyDecay": 0.05, "conflictChance": 0.3 }
+    },
+    {
+      "id": "team_player",
+      "label": { "ko": "팀플레이어", "en": "Team Player" },
+      "effects": { "researchBonus": 0.03, "loyaltyDecay": -0.02, "conflictChance": 0.03, "synergyBonus": 0.1 }
+    }
+  ],
+  "IDEOLOGIES": [
+    {
+      "id": "open_source",
+      "label": { "ko": "오픈소스 지지", "en": "Open Source Advocate" }
+    },
+    {
+      "id": "safety",
+      "label": { "ko": "안전 우선주의", "en": "Safety-First" }
+    },
+    {
+      "id": "accel",
+      "label": { "ko": "빠른 성장주의", "en": "Move Fast" }
+    },
+    {
+      "id": "profit_driven",
+      "label": { "ko": "수익 중심", "en": "Profit-Driven" }
+    },
+    {
+      "id": "academic",
+      "label": { "ko": "학술 연구주의", "en": "Academic Purist" }
+    },
+    {
+      "id": "neutral",
+      "label": { "ko": "실용주의", "en": "Pragmatic" }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "REGIONS": {
+    "north_america": {
+      "name": { "ko": "북미", "en": "North America" },
+      "color": "#3b82f6",
+      "marketSize": 35,
+      "entryBarrier": 3,
+      "regulationBase": 4,
+      "countries": ["us", "ca"]
+    },
+    "europe": {
+      "name": { "ko": "유럽", "en": "Europe" },
+      "color": "#10b981",
+      "marketSize": 25,
+      "entryBarrier": 6,
+      "regulationBase": 7,
+      "countries": ["gb", "de", "fr"]
+    },
+    "east_asia": {
+      "name": { "ko": "동아시아", "en": "East Asia" },
+      "color": "#f59e0b",
+      "marketSize": 25,
+      "entryBarrier": 5,
+      "regulationBase": 5,
+      "countries": ["kr", "jp", "cn", "tw"]
+    },
+    "middle_east_africa": {
+      "name": { "ko": "중동·아프리카", "en": "Middle East & Africa" },
+      "color": "#ef4444",
+      "marketSize": 8,
+      "entryBarrier": 4,
+      "regulationBase": 3,
+      "countries": ["il", "ae", "sa"]
+    },
+    "south_global": {
+      "name": { "ko": "남아시아·동남아", "en": "South Asia & SEA" },
+      "color": "#8b5cf6",
+      "marketSize": 7,
+      "entryBarrier": 2,
+      "regulationBase": 3,
+      "countries": ["in", "sg", "br"]
+    }
+  }
+}

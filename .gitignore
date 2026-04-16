@@ -1,0 +1,6 @@
+node_modules/
+dist-electron/
+output/
+.netlify/
+*.log
+.DS_Store

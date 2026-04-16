@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    width: 460px; height: 215px;
+    background: linear-gradient(135deg, #020408 0%, #0a1628 50%, #020408 100%);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+.glow {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, transparent 70%);
+    right: -50px; top: -80px;
+}
+.title {
+    position: absolute;
+    left: 24px; top: 40px;
+    font-size: 36px; font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #ffffff, #a5b4fc, #00e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+.subtitle {
+    position: absolute;
+    left: 24px; top: 120px;
+    font-size: 11px;
+    color: rgba(148,163,184,0.8);
+    letter-spacing: 1.5px;
+}
+.badge {
+    position: absolute;
+    left: 24px; bottom: 16px;
+    font-size: 9px;
+    color: #00e5ff;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border: 1px solid rgba(0,229,255,0.3);
+    border-radius: 3px;
+}
+.globe-hint {
+    position: absolute;
+    right: 30px; bottom: 20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,229,255,0.3);
+    background: radial-gradient(circle at 40% 40%, rgba(0,229,255,0.1), transparent);
+}
+.globe-hint::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,229,255,0.1);
+}
+</style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="title">AGI<br>Manager</div>
+    <div class="subtitle">AI STARTUP MANAGEMENT SIMULATION</div>
+    <div class="badge">EARLY ACCESS</div>
+    <div class="globe-hint"></div>
+</body>
+</html>

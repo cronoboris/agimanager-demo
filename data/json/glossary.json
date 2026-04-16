@@ -1,0 +1,2856 @@
+{
+  "TERMS": {
+    "funds": {
+      "name": {
+        "ko": "자금",
+        "en": "Funds"
+      },
+      "description": {
+        "ko": "회사가 보유한 현금입니다. 월 수입에서 월 지출을 뺀 값만큼 변동하며, 바닥나면 파산 위기로 이어집니다.",
+        "en": "Cash held by the company. It changes by monthly income minus monthly expenses, and hitting zero puts the company at bankruptcy risk."
+      },
+      "formula": {
+        "ko": "자금 = 이전 자금 + 월 수입 - 월 지출.",
+        "en": "Funds = Previous funds + Monthly income - Monthly expenses."
+      }
+    },
+    "runway": {
+      "name": {
+        "ko": "런웨이",
+        "en": "Runway"
+      },
+      "description": {
+        "ko": "현재 자금으로 버틸 수 있는 개월 수입니다. 적자가 없으면 사실상 무한대이며, 6개월 이하부터 경고 구간입니다.",
+        "en": "Months the company can survive with current cash. It is effectively infinite if you are not losing money, and drops into warning territory below six months."
+      },
+      "formula": {
+        "ko": "런웨이 = 자금 ÷ 월 적자.",
+        "en": "Runway = Funds ÷ Monthly deficit."
+      }
+    },
+    "valuation": {
+      "name": {
+        "ko": "기업가치",
+        "en": "Valuation"
+      },
+      "description": {
+        "ko": "투자자와 시장이 평가한 회사의 총 가치입니다. 다음 투자 라운드, IPO 가능성, 지분 희석에 직접 영향을 줍니다.",
+        "en": "The total value investors and the market assign to your company. It directly affects future funding rounds, IPO access, and dilution."
+      },
+      "formula": {
+        "ko": "기업가치 = 기술력 × 수익 × 팀 역량 × 시장 기대 × 신뢰도.",
+        "en": "Valuation = Technology × Revenue × Team strength × Market expectations × Trust."
+      }
+    },
+    "tflops": {
+      "name": {
+        "ko": "TFLOPS",
+        "en": "TFLOPS"
+      },
+      "description": {
+        "ko": "초당 1조 회의 부동소수점 연산 능력입니다. GPU와 데이터센터의 순수 연산력을 표현하는 핵심 단위입니다.",
+        "en": "Trillions of floating-point operations per second. This is the core unit used to represent raw GPU and datacenter compute power."
+      },
+      "formula": {
+        "ko": "총 TFLOPS = 각 GPU TFLOPS × 수량의 합.",
+        "en": "Total TFLOPS = Sum of each GPU TFLOPS × count."
+      }
+    },
+    "vram": {
+      "name": {
+        "ko": "VRAM",
+        "en": "VRAM"
+      },
+      "description": {
+        "ko": "GPU 메모리 용량입니다. 큰 모델을 훈련하거나 서빙하려면 높은 VRAM이 필요합니다.",
+        "en": "The GPU memory capacity. Larger models need higher VRAM for training and serving."
+      }
+    },
+    "aiLevel": {
+      "name": {
+        "ko": "AI 수준",
+        "en": "AI Level"
+      },
+      "description": {
+        "ko": "회사의 종합적인 AI 기술 수준입니다. 연구 진척, 모델 성능, 배포 결과를 함께 반영합니다.",
+        "en": "The company overall AI capability level. It reflects research progress, model quality, and deployment results together."
+      }
+    },
+    "marketShare": {
+      "name": {
+        "ko": "시장 점유율",
+        "en": "Market Share"
+      },
+      "description": {
+        "ko": "글로벌 AI 시장에서 차지하는 비중입니다. 배포 서비스의 사용자 수와 수익, 브랜드 존재감이 함께 반영됩니다.",
+        "en": "The portion of the global AI market you control. It reflects users, revenue, and brand presence across deployed services."
+      }
+    },
+    "reputation": {
+      "name": {
+        "ko": "평판",
+        "en": "Reputation"
+      },
+      "description": {
+        "ko": "업계와 대중이 회사를 바라보는 신뢰와 이미지입니다. 채용, 파트너십, 투자 유치, 규제 대응에 영향을 줍니다.",
+        "en": "The trust and image the industry and public assign to your company. It affects hiring, partnerships, fundraising, and regulatory responses."
+      }
+    },
+    "safetyScore": {
+      "name": {
+        "ko": "안전 점수",
+        "en": "Safety Score"
+      },
+      "description": {
+        "ko": "정렬, 평가, 안전 공학 수준을 나타냅니다. 높을수록 사고 위험이 줄고 정부와 규제기관의 신뢰를 얻기 쉽습니다.",
+        "en": "Represents your alignment, evaluation, and safety engineering maturity. Higher values reduce accident risk and improve trust with governments and regulators."
+      }
+    },
+    "aiFavorability": {
+      "name": {
+        "ko": "AI 호감도",
+        "en": "AI Favorability"
+      },
+      "description": {
+        "ko": "대중이 AI 기술을 얼마나 긍정적으로 보는지 나타냅니다. 낮아지면 규제 강화와 반AI 이벤트가 늘어납니다.",
+        "en": "Measures how positively the public views AI technology. Lower values increase regulatory pressure and anti-AI events."
+      }
+    },
+    "investorTrust": {
+      "name": {
+        "ko": "투자자 신뢰",
+        "en": "Investor Trust"
+      },
+      "description": {
+        "ko": "투자자들이 현재 경영진과 성장 전략을 얼마나 신뢰하는지 나타냅니다. 투자 라운드의 성사 여부와 조건에 영향을 줍니다.",
+        "en": "Shows how much investors trust the leadership team and growth strategy. It affects whether funding rounds succeed and on what terms."
+      }
+    },
+    "monthlyIncome": {
+      "name": {
+        "ko": "월 수입",
+        "en": "Monthly Income"
+      },
+      "description": {
+        "ko": "현재 달에 들어오는 총 현금 유입입니다. API, 라이선싱, 소비자 서비스, 정부 계약 등의 매출이 합산됩니다.",
+        "en": "The total cash flowing in this month. It adds together API, licensing, consumer, and government service revenue."
+      },
+      "formula": {
+        "ko": "월 수입 = 모든 서비스 채널 수익의 합.",
+        "en": "Monthly income = Sum of revenue across all service channels."
+      }
+    },
+    "monthlyExpense": {
+      "name": {
+        "ko": "월 지출",
+        "en": "Monthly Expenses"
+      },
+      "description": {
+        "ko": "현재 달에 나가는 총 비용입니다. 인건비, 컴퓨트, 전력, 오버헤드, 내부 AI 비용이 포함됩니다.",
+        "en": "The total cost going out this month. It includes salaries, compute, power, overhead, and internal AI costs."
+      },
+      "formula": {
+        "ko": "월 지출 = 인건비 + 컴퓨트 + 전력 + 오버헤드 + 기타 유지비.",
+        "en": "Monthly expenses = Salaries + Compute + Power + Overhead + upkeep."
+      }
+    },
+    "monthlyBalance": {
+      "name": {
+        "ko": "월 수지",
+        "en": "Monthly Balance"
+      },
+      "description": {
+        "ko": "월 수입과 월 지출의 차이입니다. 음수이면 런웨이가 줄어들고, 양수이면 현금이 쌓입니다.",
+        "en": "The difference between monthly income and monthly expenses. Negative values burn runway, while positive values build cash."
+      },
+      "formula": {
+        "ko": "월 수지 = 월 수입 - 월 지출.",
+        "en": "Monthly balance = Monthly income - Monthly expenses."
+      }
+    },
+    "morale": {
+      "name": {
+        "ko": "사기",
+        "en": "Morale"
+      },
+      "description": {
+        "ko": "팀이 현재 일과 방향성에 얼마나 의욕을 느끼는지 나타냅니다. 낮아지면 생산성과 유지력이 떨어집니다.",
+        "en": "Shows how motivated the team feels about its current work and direction. Lower morale hurts productivity and retention."
+      }
+    },
+    "loyalty": {
+      "name": {
+        "ko": "충성도",
+        "en": "Loyalty"
+      },
+      "description": {
+        "ko": "핵심 인재가 회사를 떠나지 않고 함께할 가능성입니다. 낮아질수록 갈등, 이탈, 스카우트 위험이 커집니다.",
+        "en": "The likelihood that key talent stays with the company. Lower loyalty increases conflict, attrition, and poaching risk."
+      }
+    },
+    "researchSpeed": {
+      "name": {
+        "ko": "연구 속도",
+        "en": "Research Speed"
+      },
+      "description": {
+        "ko": "현재 팀과 보너스가 만들어내는 실효 연구 진행 속도입니다. 인재 배치, 특성, 내부 AI, 국가 보너스가 모두 영향을 줍니다.",
+        "en": "The effective speed at which your team advances research. Talent assignments, traits, internal AI, and country modifiers all feed into it."
+      },
+      "formula": {
+        "ko": "연구 속도 = 기본 연구력 × 인재/문화/도우미 보너스.",
+        "en": "Research speed = Base research power × talent, culture, and helper modifiers."
+      }
+    },
+    "researchCost": {
+      "name": {
+        "ko": "연구 비용",
+        "en": "Research Cost"
+      },
+      "description": {
+        "ko": "기술 노드를 완료하는 데 필요한 연구 포인트 양입니다. 후반 기술일수록 비용이 크게 증가합니다.",
+        "en": "The amount of research points required to finish a technology node. Later technologies become dramatically more expensive."
+      }
+    },
+    "researchPower": {
+      "name": {
+        "ko": "팀 연구력",
+        "en": "Research Power"
+      },
+      "description": {
+        "ko": "배치된 인재가 실제로 만들어내는 연구 포인트 생산량입니다. 투자 라운드 조건과 기술 해금 속도에 중요합니다.",
+        "en": "The raw research point output created by your assigned team. It is important for both funding requirements and technology unlock speed."
+      }
+    },
+    "trainingQuality": {
+      "name": {
+        "ko": "훈련 품질",
+        "en": "Training Quality"
+      },
+      "description": {
+        "ko": "훈련 과정에서 확보한 데이터 적합도, 컴퓨트 초과 투입, 인재 배치가 최종 모델 품질에 미치는 결과입니다.",
+        "en": "The resulting model quality contributed by data fit, compute overprovisioning, and talent during training."
+      }
+    },
+    "serviceUsers": {
+      "name": {
+        "ko": "서비스 사용자",
+        "en": "Service Users"
+      },
+      "description": {
+        "ko": "현재 운영 중인 모든 서비스 채널에서 활동하는 사용자 규모입니다. 시장 점유율과 월 매출의 핵심 입력값입니다.",
+        "en": "The active user base across all live service channels. It is a core input to both market share and monthly revenue."
+      }
+    },
+    "salary": {
+      "name": {
+        "ko": "연봉/급여",
+        "en": "Salary"
+      },
+      "description": {
+        "ko": "인재 한 명을 유지하기 위해 매월 지불하는 보상입니다. 수준이 높은 인재일수록 급격히 증가합니다.",
+        "en": "The monthly compensation paid to retain one talent member. Higher-level talent becomes much more expensive."
+      }
+    },
+    "dataQuality": {
+      "name": {
+        "ko": "데이터 품질",
+        "en": "Data Quality"
+      },
+      "description": {
+        "ko": "수집한 데이터가 학습에 얼마나 잘 맞는지 나타냅니다. 높을수록 모델 품질과 벤치마크 결과가 좋아집니다.",
+        "en": "Measures how suitable your acquired data is for training. Higher quality improves model results and benchmark performance."
+      }
+    },
+    "dataFreshness": {
+      "name": {
+        "ko": "데이터 신선도",
+        "en": "Data Freshness"
+      },
+      "description": {
+        "ko": "데이터가 얼마나 최신 상태인지 나타냅니다. 신선도가 낮으면 현재 시장과 사용자 행동을 제대로 반영하지 못합니다.",
+        "en": "Shows how current your data is. Lower freshness means your models stop reflecting the present market and user behavior."
+      }
+    },
+    "legalRisk": {
+      "name": {
+        "ko": "법적 리스크",
+        "en": "Legal Risk"
+      },
+      "description": {
+        "ko": "데이터와 서비스 운영이 규제, 개인정보, 저작권 문제를 일으킬 가능성입니다. 높을수록 사건과 제재 확률이 올라갑니다.",
+        "en": "The chance that your data and service operations trigger regulatory, privacy, or copyright issues. Higher values increase the risk of incidents and penalties."
+      }
+    },
+    "boardConfidence": {
+      "name": {
+        "ko": "이사회 신뢰",
+        "en": "Board Confidence"
+      },
+      "description": {
+        "ko": "이사회가 CEO와 전략을 얼마나 신뢰하는지 나타냅니다. 너무 낮아지면 경영 압박과 쿠데타 위험이 커집니다.",
+        "en": "Represents how much the board trusts the CEO and strategy. If it falls too low, management pressure and coup risk rise."
+      }
+    },
+    "boardPressure": {
+      "name": {
+        "ko": "이사회 압박",
+        "en": "Board Pressure"
+      },
+      "description": {
+        "ko": "이사회가 더 빠른 성장, 더 큰 수익, 혹은 더 안전한 전략을 요구하는 정도입니다.",
+        "en": "The intensity with which the board demands faster growth, higher revenue, or safer strategy."
+      }
+    },
+    "chipProgram": {
+      "name": {
+        "ko": "칩 프로그램",
+        "en": "Chip Program"
+      },
+      "description": {
+        "ko": "자체 반도체와 가속기 로드맵입니다. 단기적으로는 비용이 크지만, 완성되면 TFLOPS 효율과 공급망 안정성이 크게 좋아집니다.",
+        "en": "Your internal semiconductor and accelerator roadmap. It is expensive in the short term, but improves TFLOPS efficiency and supply-chain resilience once completed."
+      }
+    },
+    "internalAI": {
+      "name": {
+        "ko": "내부 AI",
+        "en": "Internal AI"
+      },
+      "description": {
+        "ko": "사내 운영에 배치하는 보조 모델 슬롯입니다. 연구, 코딩, 데이터, 경영, 안전 업무에 각각 보너스를 줍니다.",
+        "en": "Slots for assistant models deployed inside the company. They provide bonuses to research, coding, data, business, and safety work."
+      }
+    },
+    "karma": {
+      "name": {
+        "ko": "카르마",
+        "en": "Karma"
+      },
+      "description": {
+        "ko": "이전 선택에서 쌓인 장기적 윤리적 흔적입니다. 특정 카르마 누적은 이벤트 체인과 엔딩 방향을 바꿉니다.",
+        "en": "The long-tail ethical residue of earlier choices. Certain accumulations redirect event chains and endings."
+      }
+    },
+    "fundingRound": {
+      "name": {
+        "ko": "투자 라운드",
+        "en": "Funding Round"
+      },
+      "description": {
+        "ko": "회사가 외부 자본을 유치하는 단계입니다. 라운드가 높아질수록 큰 자금을 얻지만 더 많은 조건과 기대가 따라옵니다.",
+        "en": "The stage at which the company raises outside capital. Higher rounds bring more money but also stricter expectations."
+      }
+    },
+    "colocation": {
+      "name": {
+        "ko": "코로케이션",
+        "en": "Colocation"
+      },
+      "description": {
+        "ko": "외부 시설의 랙을 빌려 직접 소유한 GPU를 운영하는 방식입니다. 자체 데이터센터보다 빠르지만 장기 확장성은 제한적입니다.",
+        "en": "A model where you rent rack space in an external facility to operate owned GPUs. It is faster than building a datacenter but less scalable long term."
+      }
+    },
+    "datacenter": {
+      "name": {
+        "ko": "데이터센터",
+        "en": "Datacenter"
+      },
+      "description": {
+        "ko": "대규모 연산 인프라를 직접 운영하는 시설입니다. 장기적인 컴퓨트 우위를 제공하지만 자본 집약적입니다.",
+        "en": "A facility used to run large-scale compute infrastructure directly. It offers long-term compute leverage but is highly capital intensive."
+      }
+    },
+    "gpuAccess": {
+      "name": {
+        "ko": "GPU 접근성",
+        "en": "GPU Access"
+      },
+      "description": {
+        "ko": "해당 국가나 지역에서 최신 가속기를 확보하기 쉬운 정도입니다. 지정학과 수출 통제의 영향을 크게 받습니다.",
+        "en": "How easy it is to secure modern accelerators in a country or region. It is strongly shaped by geopolitics and export controls."
+      }
+    },
+    "aiTalentPool": {
+      "name": {
+        "ko": "AI 인재 풀",
+        "en": "AI Talent Pool"
+      },
+      "description": {
+        "ko": "해당 지역에서 채용 가능한 연구자와 엔지니어의 밀도입니다. 높을수록 채용 시장이 풍부합니다.",
+        "en": "The density of hireable researchers and engineers in a region. Higher values mean a richer recruiting market."
+      }
+    },
+    "regulation": {
+      "name": {
+        "ko": "규제",
+        "en": "Regulation"
+      },
+      "description": {
+        "ko": "정부와 기관이 AI 기업에 적용하는 규칙과 제약입니다. 높은 규제는 비용을 늘리지만 안정성과 신뢰를 줄 수도 있습니다.",
+        "en": "The rules and constraints governments place on AI firms. Heavier regulation raises costs but can also improve stability and trust."
+      }
+    },
+    "exportControl": {
+      "name": {
+        "ko": "수출 통제",
+        "en": "Export Control"
+      },
+      "description": {
+        "ko": "국가가 첨단 칩, 모델, 장비의 이전을 제한하는 수준입니다. 높을수록 공급망과 글로벌 확장이 어려워집니다.",
+        "en": "The degree to which a state restricts transfers of advanced chips, models, and equipment. Higher levels make supply chains and global expansion harder."
+      }
+    },
+    "relation": {
+      "name": {
+        "ko": "관계도",
+        "en": "Relation"
+      },
+      "description": {
+        "ko": "경쟁사나 국가와의 외교적 관계 수준입니다. 높을수록 제휴와 라이선싱이 쉬워지고, 낮을수록 갈등이 커집니다.",
+        "en": "The diplomatic relationship level with a rival or state actor. Higher values make partnerships and licensing easier, while lower values increase conflict."
+      }
+    },
+    "passiveCollection": {
+      "name": {
+        "ko": "자동 수집",
+        "en": "Passive Collection"
+      },
+      "description": {
+        "ko": "서비스 운영 과정에서 사용자 로그와 상호작용 데이터를 지속적으로 쌓는 방식입니다. 비용은 낮지만 프라이버시 민감도가 존재합니다.",
+        "en": "A way of continuously accumulating user logs and interaction data while services run. It is cheap, but comes with privacy sensitivity."
+      }
+    },
+    "computeAllocation": {
+      "name": {
+        "ko": "연산 배분",
+        "en": "Compute Allocation"
+      },
+      "description": {
+        "ko": "한정된 TFLOPS를 훈련, 서빙, 내부 AI, 칩 개발 사이에 나누는 의사결정입니다.",
+        "en": "The decision of how to split finite TFLOPS between training, serving, internal AI, and chip development."
+      }
+    },
+    "modelPerformance": {
+      "name": {
+        "ko": "모델 성능",
+        "en": "Model Performance"
+      },
+      "description": {
+        "ko": "모델이 실제 벤치마크와 시장 기대 대비 어느 수준에 도달했는지 나타내는 종합 성과입니다.",
+        "en": "The overall result showing how a model performs against benchmarks and market expectations."
+      }
+    },
+    "benchmarkScore": {
+      "name": {
+        "ko": "벤치마크 점수",
+        "en": "Benchmark Score"
+      },
+      "description": {
+        "ko": "특정 평가셋에서 모델이 기록한 점수입니다. 모델의 강점과 약점을 비교하는 가장 직접적인 지표입니다.",
+        "en": "The score a model records on a given evaluation set. It is the most direct way to compare strengths and weaknesses."
+      }
+    },
+    "geopoliticalTension": {
+      "name": {
+        "ko": "지정학 긴장도",
+        "en": "Geopolitical Tension"
+      },
+      "description": {
+        "ko": "글로벌 AI 경쟁으로 인한 국가 간 긴장 수준입니다. 높아질수록 수출 통제, 블록화, 외교 압박이 강해집니다.",
+        "en": "The level of interstate tension produced by global AI competition. Higher values intensify export controls, bloc politics, and diplomatic pressure."
+      }
+    },
+    "eventChain": {
+      "name": {
+        "ko": "이벤트 체인",
+        "en": "Event Chain"
+      },
+      "description": {
+        "ko": "하나의 선택이 다음 사건을 연쇄적으로 부르는 장기 서사 구조입니다. 누적된 카르마와 조건에 따라 분기합니다.",
+        "en": "A long-form narrative structure where one choice triggers later events in sequence. It branches based on accumulated karma and state conditions."
+      }
+    },
+    "campaignAct": {
+      "name": {
+        "ko": "캠페인 막",
+        "en": "Campaign Act"
+      },
+      "description": {
+        "ko": "캠페인의 시대 구간입니다. 막이 올라갈수록 더 높은 수준의 정치, 공급망, 안전, 세계 질서 이슈가 열립니다.",
+        "en": "A historical phase of the campaign. Later acts unlock higher-order politics, supply-chain, safety, and world-order issues."
+      }
+    },
+    "speedCulture": {
+      "name": {
+        "ko": "속도 문화",
+        "en": "Speed Culture"
+      },
+      "description": {
+        "ko": "조직이 빠른 실험과 출시를 얼마나 중시하는지 나타냅니다. 속도는 올리지만 실수 가능성도 키웁니다.",
+        "en": "Measures how strongly the organization prioritizes rapid experimentation and launch speed. It improves pace, but also raises mistake risk."
+      }
+    },
+    "academicCulture": {
+      "name": {
+        "ko": "학술 문화",
+        "en": "Academic Culture"
+      },
+      "description": {
+        "ko": "엄밀한 연구, 재현성, 논문 중심 접근을 얼마나 중시하는지 나타냅니다.",
+        "en": "Represents how much the organization values rigorous research, reproducibility, and paper-driven work."
+      }
+    },
+    "missionCulture": {
+      "name": {
+        "ko": "미션 문화",
+        "en": "Mission Culture"
+      },
+      "description": {
+        "ko": "팀이 장기 비전과 사회적 목적에 얼마나 강하게 결속되어 있는지 나타냅니다.",
+        "en": "Represents how strongly the team is bound together by long-term vision and social purpose."
+      }
+    },
+    "securityCulture": {
+      "name": {
+        "ko": "보안 문화",
+        "en": "Security Culture"
+      },
+      "description": {
+        "ko": "모델, 칩, 데이터, 인재 보호를 얼마나 체계적으로 수행하는지 나타냅니다.",
+        "en": "Measures how systematically the company protects models, chips, data, and personnel."
+      }
+    },
+    "transparencyCulture": {
+      "name": {
+        "ko": "투명성 문화",
+        "en": "Transparency Culture"
+      },
+      "description": {
+        "ko": "실패와 의사결정을 얼마나 공개적으로 기록하고 공유하는지 나타냅니다. 신뢰를 높이지만 단기 마찰도 생깁니다.",
+        "en": "Measures how openly the company records and shares failures and decisions. It raises trust but can create short-term friction."
+      }
+    },
+    "personality_ambitious": {
+      "name": {
+        "ko": "야심가",
+        "en": "Ambitious"
+      },
+      "description": {
+        "ko": "야심가 성향입니다. 연구 보너스 10%, 충성도 변화 2%, 갈등 확률 15% 영향을 가집니다.",
+        "en": "Ambitious personality. It influences research bonus 10%, loyalty drift 2%, and conflict chance 15%."
+      }
+    },
+    "personality_methodical": {
+      "name": {
+        "ko": "체계적",
+        "en": "Methodical"
+      },
+      "description": {
+        "ko": "체계적 성향입니다. 연구 보너스 5%, 충성도 변화 -1%, 갈등 확률 5% 영향을 가집니다.",
+        "en": "Methodical personality. It influences research bonus 5%, loyalty drift -1%, and conflict chance 5%."
+      }
+    },
+    "personality_visionary": {
+      "name": {
+        "ko": "비전가",
+        "en": "Visionary"
+      },
+      "description": {
+        "ko": "비전가 성향입니다. 연구 보너스 15%, 충성도 변화 3%, 갈등 확률 20% 영향을 가집니다.",
+        "en": "Visionary personality. It influences research bonus 15%, loyalty drift 3%, and conflict chance 20%."
+      }
+    },
+    "personality_loyal": {
+      "name": {
+        "ko": "충성파",
+        "en": "Loyal"
+      },
+      "description": {
+        "ko": "충성파 성향입니다. 연구 보너스 0%, 충성도 변화 -3%, 갈등 확률 2% 영향을 가집니다.",
+        "en": "Loyal personality. It influences research bonus 0%, loyalty drift -3%, and conflict chance 2%."
+      }
+    },
+    "personality_maverick": {
+      "name": {
+        "ko": "독불장군",
+        "en": "Maverick"
+      },
+      "description": {
+        "ko": "독불장군 성향입니다. 연구 보너스 20%, 충성도 변화 5%, 갈등 확률 30% 영향을 가집니다.",
+        "en": "Maverick personality. It influences research bonus 20%, loyalty drift 5%, and conflict chance 30%."
+      }
+    },
+    "personality_team_player": {
+      "name": {
+        "ko": "팀플레이어",
+        "en": "Team Player"
+      },
+      "description": {
+        "ko": "팀플레이어 성향입니다. 연구 보너스 3%, 충성도 변화 -2%, 갈등 확률 3% 영향을 가집니다.",
+        "en": "Team Player personality. It influences research bonus 3%, loyalty drift -2%, and conflict chance 3%."
+      }
+    },
+    "ideology_open_source": {
+      "name": {
+        "ko": "오픈소스 지지",
+        "en": "Open Source Advocate"
+      },
+      "description": {
+        "ko": "오픈소스 배포와 개방형 생태계를 선호합니다. 공개 전략과 커뮤니티 확장에 더 잘 맞습니다.",
+        "en": "Prefers open-source deployment and open ecosystems. Best aligned with public release and community expansion strategies."
+      }
+    },
+    "ideology_safety": {
+      "name": {
+        "ko": "안전 우선주의",
+        "en": "Safety-First"
+      },
+      "description": {
+        "ko": "정렬과 안전성을 가장 우선시합니다. 위험한 배포에는 반대하지만 장기 신뢰를 끌어올립니다.",
+        "en": "Prioritizes alignment and safety above all else. Resists risky deployment, but increases long-term trust."
+      }
+    },
+    "ideology_accel": {
+      "name": {
+        "ko": "빠른 성장주의",
+        "en": "Move Fast"
+      },
+      "description": {
+        "ko": "빠른 연구와 공격적 확장을 선호합니다. 혁신 속도를 높이지만 충돌 가능성도 키웁니다.",
+        "en": "Prefers rapid research and aggressive expansion. Increases innovation speed, but also raises conflict potential."
+      }
+    },
+    "ideology_profit_driven": {
+      "name": {
+        "ko": "수익 중심",
+        "en": "Profit-Driven"
+      },
+      "description": {
+        "ko": "수익성과 시장 지배를 우선합니다. 제품화와 매출 최적화에 강점을 보입니다.",
+        "en": "Prioritizes profitability and market control. Strongly aligned with commercialization and revenue optimization."
+      }
+    },
+    "ideology_academic": {
+      "name": {
+        "ko": "학술 연구주의",
+        "en": "Academic Purist"
+      },
+      "description": {
+        "ko": "장기적인 학술 기여와 엄밀한 연구를 우선합니다. 논문 중심 연구 조직과 잘 맞습니다.",
+        "en": "Prioritizes long-term scientific contribution and rigorous research. Fits paper-driven research organizations."
+      }
+    },
+    "ideology_neutral": {
+      "name": {
+        "ko": "실용주의",
+        "en": "Pragmatic"
+      },
+      "description": {
+        "ko": "상황에 맞게 실용적으로 판단합니다. 극단적 보너스는 적지만 충돌도 적습니다.",
+        "en": "Makes pragmatic, situational decisions. It has fewer extreme bonuses, but also fewer ideological clashes."
+      }
+    },
+    "spec_ml": {
+      "name": {
+        "ko": "머신러닝",
+        "en": "Ml"
+      },
+      "description": {
+        "ko": "머신러닝 알고리즘과 학습 파이프라인 최적화에 강점을 가집니다.",
+        "en": "Strong in machine learning algorithms and training pipeline optimization."
+      }
+    },
+    "spec_nlp": {
+      "name": {
+        "ko": "NLP",
+        "en": "Natural Language Processing"
+      },
+      "description": {
+        "ko": "언어 모델, 텍스트 데이터, 대화형 시스템에 특화되어 있습니다.",
+        "en": "Specialized in language models, text data, and conversational systems."
+      }
+    },
+    "spec_vision": {
+      "name": {
+        "ko": "컴퓨터비전",
+        "en": "Vision"
+      },
+      "description": {
+        "ko": "이미지와 영상 이해, 멀티모달 지각 문제에 강합니다.",
+        "en": "Strong in image understanding, video systems, and multimodal perception."
+      }
+    },
+    "spec_rl": {
+      "name": {
+        "ko": "강화학습",
+        "en": "Rl"
+      },
+      "description": {
+        "ko": "강화학습, 에이전트 학습, 장기 보상 구조 설계에 강합니다.",
+        "en": "Strong in reinforcement learning, agent training, and long-horizon reward design."
+      }
+    },
+    "spec_safety": {
+      "name": {
+        "ko": "AI 안전",
+        "en": "Safety"
+      },
+      "description": {
+        "ko": "정렬, 평가, 레드팀, 통제 문제 해결에 전문성을 가집니다.",
+        "en": "Specialized in alignment, evaluation, red teaming, and control problems."
+      }
+    },
+    "spec_infra": {
+      "name": {
+        "ko": "인프라",
+        "en": "Infra"
+      },
+      "description": {
+        "ko": "분산 시스템, 추론 서빙, 데이터센터 운영에 강합니다.",
+        "en": "Strong in distributed systems, inference serving, and datacenter operations."
+      }
+    },
+    "spec_hw": {
+      "name": {
+        "ko": "하드웨어",
+        "en": "Hw"
+      },
+      "description": {
+        "ko": "가속기, 메모리 병목, 칩 설계와 패키징 이해에 강합니다.",
+        "en": "Strong in accelerators, memory bottlenecks, and chip design tradeoffs."
+      }
+    },
+    "spec_data": {
+      "name": {
+        "ko": "데이터",
+        "en": "Data"
+      },
+      "description": {
+        "ko": "데이터 수집, 정제, 라벨링, 품질 관리 체계에 강점을 가집니다.",
+        "en": "Strong in data acquisition, cleaning, labeling, and quality pipelines."
+      }
+    },
+    "trait_perfectionist": {
+      "name": {
+        "ko": "완벽주의자",
+        "en": "Perfectionist"
+      },
+      "description": {
+        "ko": "연구 품질↑ 속도↓. 품질 계수 1.2, 속도 계수 0.8에 반영됩니다.",
+        "en": "Perfectionist trait. 연구 품질↑ 속도↓. It contributes quality multiplier 1.2 and speed multiplier 0.8."
+      }
+    },
+    "trait_speedrunner": {
+      "name": {
+        "ko": "스피드러너",
+        "en": "Speedrunner"
+      },
+      "description": {
+        "ko": "속도↑ 품질↓. 품질 계수 0.85, 속도 계수 1.3에 반영됩니다.",
+        "en": "Speedrunner trait. 속도↑ 품질↓. It contributes quality multiplier 0.85 and speed multiplier 1.3."
+      }
+    },
+    "trait_team_player": {
+      "name": {
+        "ko": "팀플레이어",
+        "en": "Team Player"
+      },
+      "description": {
+        "ko": "협업 시너지↑. 품질 계수 1, 속도 계수 1에 반영됩니다.",
+        "en": "Team Player trait. 협업 시너지↑. It contributes quality multiplier 1 and speed multiplier 1."
+      }
+    },
+    "trait_lone_wolf": {
+      "name": {
+        "ko": "독불장군",
+        "en": "Lone Wolf"
+      },
+      "description": {
+        "ko": "단독 연구↑ 협업↓. 품질 계수 1.15, 속도 계수 1.1에 반영됩니다.",
+        "en": "Lone Wolf trait. 단독 연구↑ 협업↓. It contributes quality multiplier 1.15 and speed multiplier 1.1."
+      }
+    },
+    "trait_innovator": {
+      "name": {
+        "ko": "혁신가",
+        "en": "Innovator"
+      },
+      "description": {
+        "ko": "돌파구 확률↑. 품질 계수 1, 속도 계수 1에 반영됩니다.",
+        "en": "Innovator trait. 돌파구 확률↑. It contributes quality multiplier 1 and speed multiplier 1."
+      }
+    },
+    "trait_mentor": {
+      "name": {
+        "ko": "멘토",
+        "en": "Mentor"
+      },
+      "description": {
+        "ko": "주변 인재 성장↑. 품질 계수 1, 속도 계수 0.95에 반영됩니다.",
+        "en": "Mentor trait. 주변 인재 성장↑. It contributes quality multiplier 1 and speed multiplier 0.95."
+      }
+    },
+    "trait_workaholic": {
+      "name": {
+        "ko": "워커홀릭",
+        "en": "Workaholic"
+      },
+      "description": {
+        "ko": "생산성↑ 번아웃 위험↑. 품질 계수 1, 속도 계수 1.4에 반영됩니다.",
+        "en": "Workaholic trait. 생산성↑ 번아웃 위험↑. It contributes quality multiplier 1 and speed multiplier 1.4."
+      }
+    },
+    "trait_balanced": {
+      "name": {
+        "ko": "균형잡힌",
+        "en": "Balanced"
+      },
+      "description": {
+        "ko": "안정적 성과. 품질 계수 1.05, 속도 계수 1.05에 반영됩니다.",
+        "en": "Balanced trait. 안정적 성과. It contributes quality multiplier 1.05 and speed multiplier 1.05."
+      }
+    },
+    "researchCategory_foundation": {
+      "name": {
+        "ko": "기초 연구",
+        "en": "Foundations"
+      },
+      "description": {
+        "ko": "AI 연구의 기초 원리와 학습 메커니즘을 다루는 계열입니다.",
+        "en": "This branch covers the core principles and learning mechanics that underpin AI research."
+      }
+    },
+    "researchCategory_model_arch": {
+      "name": {
+        "ko": "모델 아키텍처",
+        "en": "Architectures"
+      },
+      "description": {
+        "ko": "모델 구조와 표현 방식을 바꾸는 아키텍처 기술군입니다.",
+        "en": "This branch focuses on architectures that change model structure and representation."
+      }
+    },
+    "researchCategory_advanced_ai": {
+      "name": {
+        "ko": "고급 AI",
+        "en": "Advanced AI"
+      },
+      "description": {
+        "ko": "추론, 계획, 도구 사용 같은 고급 능력을 높이는 기술군입니다.",
+        "en": "This branch improves advanced capabilities such as reasoning, planning, and tool use."
+      }
+    },
+    "researchCategory_frontier_ai": {
+      "name": {
+        "ko": "프론티어 AI",
+        "en": "Frontier AI"
+      },
+      "description": {
+        "ko": "최전선 성능과 AGI 경쟁에 직접 연결되는 기술군입니다.",
+        "en": "This branch is tied directly to frontier performance and the race toward AGI."
+      }
+    },
+    "researchCategory_generative": {
+      "name": {
+        "ko": "생성 AI",
+        "en": "Generative AI"
+      },
+      "description": {
+        "ko": "생성형 모델과 멀티모달 창작 능력을 강화하는 기술군입니다.",
+        "en": "This branch strengthens generative models and multimodal creative capabilities."
+      }
+    },
+    "researchCategory_data": {
+      "name": {
+        "ko": "데이터",
+        "en": "Data"
+      },
+      "description": {
+        "ko": "데이터 확보, 정제, 거버넌스와 관련된 기술군입니다.",
+        "en": "This branch covers data acquisition, refinement, and governance."
+      }
+    },
+    "researchCategory_chip": {
+      "name": {
+        "ko": "칩/프로세서",
+        "en": "Chips / Processors"
+      },
+      "description": {
+        "ko": "가속기, 반도체, 컴퓨트 효율을 높이는 하드웨어 기술군입니다.",
+        "en": "This branch covers accelerator, semiconductor, and compute-efficiency technology."
+      }
+    },
+    "researchCategory_infra": {
+      "name": {
+        "ko": "인프라",
+        "en": "Infrastructure"
+      },
+      "description": {
+        "ko": "서빙, 오케스트레이션, 플랫폼 운영을 담당하는 인프라 기술군입니다.",
+        "en": "This branch covers serving, orchestration, and platform operations."
+      }
+    },
+    "researchCategory_energy": {
+      "name": {
+        "ko": "전력/에너지",
+        "en": "Power / Energy"
+      },
+      "description": {
+        "ko": "전력과 냉각, 효율 최적화에 관련된 인프라 기술군입니다.",
+        "en": "This branch focuses on power, cooling, and efficiency optimization."
+      }
+    },
+    "researchCategory_product": {
+      "name": {
+        "ko": "AI 제품",
+        "en": "AI Products"
+      },
+      "description": {
+        "ko": "시장에 직접 닿는 AI 제품과 상용 기능을 여는 기술군입니다.",
+        "en": "This branch unlocks user-facing AI products and commercial capabilities."
+      }
+    },
+    "researchCategory_safety": {
+      "name": {
+        "ko": "안전/정렬",
+        "en": "Safety / Alignment"
+      },
+      "description": {
+        "ko": "정렬, 평가, 통제, 사고 예방을 담당하는 안전 기술군입니다.",
+        "en": "This branch is focused on alignment, evaluation, control, and accident prevention."
+      }
+    },
+    "researchCategory_quantum": {
+      "name": {
+        "ko": "양자컴퓨팅",
+        "en": "Quantum Computing"
+      },
+      "description": {
+        "ko": "양자 컴퓨팅과 차세대 연산 패러다임을 탐색하는 기술군입니다.",
+        "en": "This branch explores quantum computing and next-generation compute paradigms."
+      }
+    },
+    "researchCategory_integration": {
+      "name": {
+        "ko": "AGI/ASI",
+        "en": "AGI / ASI"
+      },
+      "description": {
+        "ko": "여러 능력을 통합해 AGI 수준 시스템을 만드는 기술군입니다.",
+        "en": "This branch integrates multiple capabilities into AGI-scale systems."
+      }
+    },
+    "researchGroup_research": {
+      "name": {
+        "ko": "연구",
+        "en": "Research"
+      },
+      "description": {
+        "ko": "기초 연구부터 프런티어 모델까지 직접 성능을 끌어올리는 계열입니다.",
+        "en": "This group drives core capability growth from fundamentals to frontier models."
+      }
+    },
+    "researchGroup_service": {
+      "name": {
+        "ko": "서비스",
+        "en": "Services"
+      },
+      "description": {
+        "ko": "사용자에게 닿는 제품과 생성형 기능을 확장하는 계열입니다.",
+        "en": "This group expands user-facing products and generative features."
+      }
+    },
+    "researchGroup_infra": {
+      "name": {
+        "ko": "인프라",
+        "en": "Infrastructure"
+      },
+      "description": {
+        "ko": "칩, 데이터센터, 연산 운영 기반을 강화하는 계열입니다.",
+        "en": "This group strengthens chips, datacenters, and compute operations."
+      }
+    },
+    "researchGroup_governance": {
+      "name": {
+        "ko": "거버넌스",
+        "en": "Governance"
+      },
+      "description": {
+        "ko": "데이터, 안전, 정책 대응을 담당하는 거버넌스 계열입니다.",
+        "en": "This group handles data governance, safety, and policy response."
+      }
+    },
+    "tech_deep_learning_basics": {
+      "name": {
+        "ko": "딥러닝 기초",
+        "en": "Deep Learning Basics"
+      },
+      "description": {
+        "ko": "AlexNet and modern deep learning were already well established by 2015.",
+        "en": "Core principles and training methods of deep neural networks."
+      }
+    },
+    "tech_transformer": {
+      "name": {
+        "ko": "Transformer",
+        "en": "Transformer"
+      },
+      "description": {
+        "ko": "Attention Is All You Need (Vaswani et al., 2017).",
+        "en": "\"Attention Is All You Need\" - a revolutionary architecture."
+      }
+    },
+    "tech_reinforcement_learning": {
+      "name": {
+        "ko": "강화학습",
+        "en": "Reinforcement Learning"
+      },
+      "description": {
+        "ko": "AlphaGo and AlphaGo Zero made RL mainstream in 2016-2017.",
+        "en": "Reward-based learning. The core technique behind AlphaGo."
+      }
+    },
+    "tech_gpt_architecture": {
+      "name": {
+        "ko": "GPT 아키텍처",
+        "en": "GPT Architecture"
+      },
+      "description": {
+        "ko": "GPT-1 introduced the modern autoregressive language-model path in 2018.",
+        "en": "Autoregressive language model. The foundation of text generation."
+      }
+    },
+    "tech_cnn": {
+      "name": {
+        "ko": "CNN",
+        "en": "CNN"
+      },
+      "description": {
+        "ko": "CNNs were a mature foundation by the ResNet era.",
+        "en": "Convolutional neural network. Foundation of image recognition."
+      }
+    },
+    "tech_scaling_laws": {
+      "name": {
+        "ko": "스케일링 법칙",
+        "en": "Scaling Laws"
+      },
+      "description": {
+        "ko": "Scaling laws became a serious planning tool around 2019-2020.",
+        "en": "Explains the relationship between model size and performance."
+      }
+    },
+    "tech_vision_transformer": {
+      "name": {
+        "ko": "Vision Transformer",
+        "en": "Vision Transformer"
+      },
+      "description": {
+        "ko": "Vision Transformer (ViT) showed transformer scaling in vision circa 2020.",
+        "en": "Applies Transformers to vision. A breakthrough in image understanding."
+      }
+    },
+    "tech_llm": {
+      "name": {
+        "ko": "대규모 언어모델",
+        "en": "Large Language Models"
+      },
+      "description": {
+        "ko": "GPT-3 defined the modern large-language-model era in 2020.",
+        "en": "LLMs with tens to hundreds of billions of parameters. General-purpose text AI."
+      }
+    },
+    "tech_rlhf": {
+      "name": {
+        "ko": "RLHF",
+        "en": "RLHF"
+      },
+      "description": {
+        "ko": "RLHF moved into production relevance with InstructGPT and ChatGPT in 2022.",
+        "en": "Aligns models with human feedback. Core to ChatGPT."
+      }
+    },
+    "tech_chain_of_thought": {
+      "name": {
+        "ko": "사고의 사슬(CoT)",
+        "en": "Chain of Thought (CoT)"
+      },
+      "description": {
+        "ko": "Chain-of-thought prompting emerged as a practical reasoning unlock in 2022.",
+        "en": "Step-by-step reasoning for solving complex problems."
+      }
+    },
+    "tech_tool_use": {
+      "name": {
+        "ko": "도구 사용 AI",
+        "en": "Tool-Using AI"
+      },
+      "description": {
+        "ko": "Toolformer, plugins, and agents pushed tool use into the mainstream in 2023.",
+        "en": "AI that can use external tools such as search, code, and APIs."
+      }
+    },
+    "tech_video_prediction": {
+      "name": {
+        "ko": "영상 예측",
+        "en": "Video Prediction"
+      },
+      "description": {
+        "ko": "초기 비디오 예측 연구와 self-supervised video learning 흐름을 반영한다.",
+        "en": "Predicts the next frame. A first step toward learning world dynamics."
+      }
+    },
+    "tech_physics_simulation": {
+      "name": {
+        "ko": "물리 시뮬레이션 AI",
+        "en": "Physics Simulation AI"
+      },
+      "description": {
+        "ko": "딥마인드의 세계모델과 physics-informed learning 연구를 반영한다.",
+        "en": "AI that learns physical laws. A model of the real world."
+      }
+    },
+    "tech_cross_modal_learning": {
+      "name": {
+        "ko": "교차 모달 학습",
+        "en": "Cross-Modal Learning"
+      },
+      "description": {
+        "ko": "CLIP(2021) 계열의 교차 모달 표현학습을 반영한다.",
+        "en": "Learning that connects text and images. The first bridge between the two routes."
+      }
+    },
+    "tech_autonomous_agent": {
+      "name": {
+        "ko": "자율 에이전트",
+        "en": "Autonomous Agent"
+      },
+      "description": {
+        "ko": "AutoGPT-style autonomous agents kicked off the agent wave in 2023.",
+        "en": "An AI that plans and acts on its own."
+      }
+    },
+    "tech_multimodal_llm": {
+      "name": {
+        "ko": "멀티모달 LLM",
+        "en": "Multimodal LLM"
+      },
+      "description": {
+        "ko": "Frontier multimodal LLMs arrived with GPT-4V-class systems in 2023.",
+        "en": "An LLM that understands text, images, and video together."
+      }
+    },
+    "tech_world_model_core": {
+      "name": {
+        "ko": "월드모델 코어",
+        "en": "World Model Core"
+      },
+      "description": {
+        "ko": "World-model work accelerated with Sora-class generative simulators in 2024.",
+        "en": "AI that simulates causality and physics in the world."
+      }
+    },
+    "tech_spatial_reasoning": {
+      "name": {
+        "ko": "공간 추론",
+        "en": "Spatial Reasoning"
+      },
+      "description": {
+        "ko": "Embodied reasoning과 3D representation learning 연구를 반영한다.",
+        "en": "Understanding and manipulating 3D space."
+      }
+    },
+    "tech_llm_reasoning": {
+      "name": {
+        "ko": "LLM 범용 추론",
+        "en": "General Reasoning LLM"
+      },
+      "description": {
+        "ko": "Reasoning-specialized frontier models became the new bar around 2024.",
+        "en": "General reasoning through language. The peak of the LLM route."
+      }
+    },
+    "tech_embodied_ai": {
+      "name": {
+        "ko": "체화 지능",
+        "en": "Embodied AI"
+      },
+      "description": {
+        "ko": "General-purpose embodied AI remains a near-future frontier challenge.",
+        "en": "AI with a body that learns by interacting with the physical world."
+      }
+    },
+    "tech_cognitive_architecture": {
+      "name": {
+        "ko": "인지 아키텍처",
+        "en": "Cognitive Architecture"
+      },
+      "description": {
+        "ko": "Unified cognitive architectures represent late-stage AGI research.",
+        "en": "A cognitive structure that unifies language reasoning and spatial understanding."
+      }
+    },
+    "tech_world_understanding": {
+      "name": {
+        "ko": "세계 이해 AI",
+        "en": "World-Understanding AI"
+      },
+      "description": {
+        "ko": "세계를 근본적으로 이해하는 AI. 월드모델 루트의 정점.",
+        "en": "AI that fundamentally understands the world. The peak of the world-model route."
+      }
+    },
+    "tech_unified_intelligence": {
+      "name": {
+        "ko": "통합 지능",
+        "en": "Unified Intelligence"
+      },
+      "description": {
+        "ko": "언어·시각·세계 모델을 하나로. 양쪽 루트의 완전한 융합.",
+        "en": "Brings language, vision, and world models together. Complete fusion of both routes."
+      }
+    },
+    "tech_gan": {
+      "name": {
+        "ko": "GAN",
+        "en": "GAN"
+      },
+      "description": {
+        "ko": "GAN(2014)과 그 후속 이미지 생성 연구를 반영한다.",
+        "en": "Generative adversarial network. The start of AI image generation."
+      }
+    },
+    "tech_diffusion": {
+      "name": {
+        "ko": "Diffusion 모델",
+        "en": "Diffusion Models"
+      },
+      "description": {
+        "ko": "DDPM and later Stable Diffusion defined the modern diffusion wave.",
+        "en": "Diffusion models. The foundation behind Stable Diffusion and DALL-E."
+      }
+    },
+    "tech_video_generation": {
+      "name": {
+        "ko": "영상 생성",
+        "en": "Video Generation"
+      },
+      "description": {
+        "ko": "Runway Gen-2, Pika, Sora로 이어지는 영상 생성 경쟁을 반영한다.",
+        "en": "AI video generation. The core technology behind systems like Sora."
+      }
+    },
+    "tech_generative_world_model": {
+      "name": {
+        "ko": "생성형 월드모델",
+        "en": "Generative World Model"
+      },
+      "description": {
+        "ko": "Sora 이후의 생성형 world model 연구를 반영한다.",
+        "en": "Generates and simulates worlds. A meeting point between the two routes."
+      }
+    },
+    "tech_data_collection": {
+      "name": {
+        "ko": "데이터 수집",
+        "en": "Data Collection"
+      },
+      "description": {
+        "ko": "대규모 웹 크롤링과 공개 코퍼스 구축의 출발점.",
+        "en": "Foundations of web crawling and dataset building."
+      }
+    },
+    "tech_data_refinement": {
+      "name": {
+        "ko": "데이터 정제",
+        "en": "Data Refinement"
+      },
+      "description": {
+        "ko": "정제된 학습 데이터가 성능을 좌우한다는 경험적 교훈을 반영한다.",
+        "en": "Improves data quality through denoising and labeling."
+      }
+    },
+    "tech_synthetic_data": {
+      "name": {
+        "ko": "합성 데이터",
+        "en": "Synthetic Data"
+      },
+      "description": {
+        "ko": "합성 데이터와 self-training이 본격화된 2021년 이후 흐름을 반영한다.",
+        "en": "Using AI to generate training data."
+      }
+    },
+    "tech_self_learning_data": {
+      "name": {
+        "ko": "자기학습 데이터",
+        "en": "Self-Learning Data"
+      },
+      "description": {
+        "ko": "Constitutional AI와 self-play 기반 데이터 확장 흐름을 반영한다.",
+        "en": "AI that produces and improves its own training data."
+      }
+    },
+    "tech_distributed_learning": {
+      "name": {
+        "ko": "분산 학습",
+        "en": "Distributed Learning"
+      },
+      "description": {
+        "ko": "Horovod류 분산 학습과 대규모 클러스터 훈련을 반영한다.",
+        "en": "Parallel training across multiple nodes."
+      }
+    },
+    "tech_federated_learning": {
+      "name": {
+        "ko": "연합 학습",
+        "en": "Federated Learning"
+      },
+      "description": {
+        "ko": "Google Federated Learning과 프라이버시 보존 학습 흐름을 반영한다.",
+        "en": "Exchange models without sharing raw data."
+      }
+    },
+    "tech_gpu_utilization": {
+      "name": {
+        "ko": "GPU 활용",
+        "en": "GPU Utilization"
+      },
+      "description": {
+        "ko": "2017년 이후 GPU가 AI 연구의 표준 가속기로 자리잡은 흐름을 반영한다.",
+        "en": "Core techniques for using GPUs in AI training."
+      }
+    },
+    "tech_gpu_cluster": {
+      "name": {
+        "ko": "GPU 클러스터",
+        "en": "GPU Cluster"
+      },
+      "description": {
+        "ko": "NVLink, NCCL, 대규모 클러스터 훈련이 본격화된 흐름을 반영한다.",
+        "en": "Large-scale training by linking many GPUs together."
+      }
+    },
+    "tech_custom_ai_chip": {
+      "name": {
+        "ko": "전용 AI칩 설계",
+        "en": "Custom AI Chip Design"
+      },
+      "description": {
+        "ko": "Cloud TPUs and bespoke accelerators made custom AI chips viable by 2020.",
+        "en": "Designing processors specifically for AI workloads."
+      }
+    },
+    "tech_next_gen_processor": {
+      "name": {
+        "ko": "차세대 AI 프로세서",
+        "en": "Next-Gen AI Processor"
+      },
+      "description": {
+        "ko": "Hopper 이후의 차세대 AI 가속기 경쟁을 반영한다.",
+        "en": "State-of-the-art processors built for AI."
+      }
+    },
+    "tech_fpga": {
+      "name": {
+        "ko": "FPGA 활용",
+        "en": "FPGA Utilization"
+      },
+      "description": {
+        "ko": "AI 추론/인프라에서 FPGA가 틈새 최적화 장비로 쓰이던 시기를 반영한다.",
+        "en": "Flexible AI acceleration with programmable hardware."
+      }
+    },
+    "tech_custom_asic": {
+      "name": {
+        "ko": "커스텀 ASIC",
+        "en": "Custom ASIC"
+      },
+      "description": {
+        "ko": "Second-wave AI ASICs followed the first large custom accelerator deployments.",
+        "en": "Specialized circuit design for maximum AI efficiency."
+      }
+    },
+    "tech_neuromorphic_chip": {
+      "name": {
+        "ko": "뉴로모픽 칩",
+        "en": "Neuromorphic Chip"
+      },
+      "description": {
+        "ko": "Loihi 계열과 미래 저전력 컴퓨팅 연구를 반영한다.",
+        "en": "Brain-inspired chips for ultra-low-power AI."
+      }
+    },
+    "tech_cloud_server": {
+      "name": {
+        "ko": "클라우드 서버",
+        "en": "Cloud Servers"
+      },
+      "description": {
+        "ko": "하이퍼스케일 클라우드가 AI 인프라의 기본 전제가 된 흐름을 반영한다.",
+        "en": "Using cloud-based servers for AI workloads."
+      }
+    },
+    "tech_own_datacenter": {
+      "name": {
+        "ko": "자체 데이터센터",
+        "en": "Own Data Center"
+      },
+      "description": {
+        "ko": "Dedicated AI datacenters became strategic rather than optional by 2019.",
+        "en": "Build and operate an in-house data center."
+      }
+    },
+    "tech_ai_farm": {
+      "name": {
+        "ko": "대규모 AI팜",
+        "en": "Large-Scale AI Farm"
+      },
+      "description": {
+        "ko": "Hyperscale AI farms emerged once frontier training runs became capital intensive.",
+        "en": "Hyperscale infrastructure for training frontier AI."
+      }
+    },
+    "tech_standard_cooling": {
+      "name": {
+        "ko": "표준 냉각",
+        "en": "Standard Cooling"
+      },
+      "description": {
+        "ko": "초기 AI 랙은 표준 공랭으로 버틸 수 있었지만, 대형 GPU부터는 병목이 되기 시작한다.",
+        "en": "Basic air-cooling systems."
+      }
+    },
+    "tech_water_cooling": {
+      "name": {
+        "ko": "수냉 시스템",
+        "en": "Water Cooling"
+      },
+      "description": {
+        "ko": "고밀도 GPU 랙에서 수냉이 현실적인 선택지가 된 흐름을 반영한다.",
+        "en": "Liquid cooling for better efficiency."
+      }
+    },
+    "tech_advanced_cooling": {
+      "name": {
+        "ko": "첨단 냉각기술",
+        "en": "Advanced Cooling Technology"
+      },
+      "description": {
+        "ko": "Immersion and advanced liquid cooling became meaningful for dense AI racks in the early 2020s.",
+        "en": "Immersion and cryogenic cooling for extreme density."
+      }
+    },
+    "tech_foundry_external": {
+      "name": {
+        "ko": "반도체 공정(외부)",
+        "en": "External Foundry Process"
+      },
+      "description": {
+        "ko": "파운드리 외주가 AI 하드웨어 공급망의 기본이 된 흐름을 반영한다.",
+        "en": "Outsource chip production to external foundries."
+      }
+    },
+    "tech_foundry_partnership": {
+      "name": {
+        "ko": "파운드리 협력",
+        "en": "Foundry Partnership"
+      },
+      "description": {
+        "ko": "선단 공정 확보를 위한 장기 파운드리 협력이 중요해진 흐름을 반영한다.",
+        "en": "Build a strategic partnership with a foundry."
+      }
+    },
+    "tech_own_fab": {
+      "name": {
+        "ko": "자체 팹",
+        "en": "Own Fab"
+      },
+      "description": {
+        "ko": "자체 팹은 2025년대에야 현실적인 극후반 선택지로 남는다.",
+        "en": "Your own semiconductor fab. Benefits Korean operations in particular."
+      }
+    },
+    "tech_power_grid": {
+      "name": {
+        "ko": "기존 전력망",
+        "en": "Existing Power Grid"
+      },
+      "description": {
+        "ko": "기존 전력망에서 전력 공급.",
+        "en": "Draw power from the existing grid."
+      }
+    },
+    "tech_power_optimization": {
+      "name": {
+        "ko": "전력 계약 최적화",
+        "en": "Power Contract Optimization"
+      },
+      "description": {
+        "ko": "전력 계약 최적화로 비용 절감.",
+        "en": "Cut costs by optimizing power contracts."
+      }
+    },
+    "tech_dedicated_power": {
+      "name": {
+        "ko": "전용 발전시설",
+        "en": "Dedicated Power Generation"
+      },
+      "description": {
+        "ko": "데이터센터 전용 발전소.",
+        "en": "Build power generation dedicated to your data center."
+      }
+    },
+    "tech_energy_efficiency": {
+      "name": {
+        "ko": "에너지 효율 연구",
+        "en": "Energy Efficiency Research"
+      },
+      "description": {
+        "ko": "전력 소비를 줄이는 연구.",
+        "en": "Research that reduces power consumption."
+      }
+    },
+    "tech_low_power_chip": {
+      "name": {
+        "ko": "저전력 AI칩",
+        "en": "Low-Power AI Chip"
+      },
+      "description": {
+        "ko": "초저전력 AI 칩 설계.",
+        "en": "Designing AI chips for ultra-low power use."
+      }
+    },
+    "tech_renewable_energy": {
+      "name": {
+        "ko": "재생 에너지",
+        "en": "Renewable Energy"
+      },
+      "description": {
+        "ko": "태양광/풍력 에너지 도입.",
+        "en": "Adopt solar and wind energy."
+      }
+    },
+    "tech_smr": {
+      "name": {
+        "ko": "소형 원자로(SMR)",
+        "en": "Small Modular Reactor (SMR)"
+      },
+      "description": {
+        "ko": "무한에 가까운 전력 공급.",
+        "en": "Near-limitless power supply for AI infrastructure."
+      }
+    },
+    "tech_chatbot_product": {
+      "name": {
+        "ko": "챗봇",
+        "en": "Chatbot"
+      },
+      "description": {
+        "ko": "대화형 AI 서비스.",
+        "en": "A conversational AI service."
+      }
+    },
+    "tech_ai_assistant": {
+      "name": {
+        "ko": "AI 비서",
+        "en": "AI Assistant"
+      },
+      "description": {
+        "ko": "업무를 자동 처리하는 AI 비서.",
+        "en": "An AI assistant that automates work."
+      }
+    },
+    "tech_code_gen": {
+      "name": {
+        "ko": "코드 생성",
+        "en": "Code Generation"
+      },
+      "description": {
+        "ko": "AI 코드 생성 도구.",
+        "en": "AI tools that generate code."
+      }
+    },
+    "tech_image_gen_product": {
+      "name": {
+        "ko": "이미지 생성",
+        "en": "Image Generation"
+      },
+      "description": {
+        "ko": "AI 이미지 생성 서비스.",
+        "en": "An AI image generation service."
+      }
+    },
+    "tech_video_gen_product": {
+      "name": {
+        "ko": "영상 생성 서비스",
+        "en": "Video Generation Service"
+      },
+      "description": {
+        "ko": "AI 영상 제작 플랫폼.",
+        "en": "A platform for AI video creation."
+      }
+    },
+    "tech_autonomous_driving": {
+      "name": {
+        "ko": "자율주행",
+        "en": "Autonomous Driving"
+      },
+      "description": {
+        "ko": "AI 자율주행 시스템.",
+        "en": "AI systems for self-driving vehicles."
+      }
+    },
+    "tech_robot_ai": {
+      "name": {
+        "ko": "범용 로봇 AI",
+        "en": "General Robotics AI"
+      },
+      "description": {
+        "ko": "AI 기반 범용 로봇 제어.",
+        "en": "AI control systems for general-purpose robots."
+      }
+    },
+    "tech_military_ai": {
+      "name": {
+        "ko": "군사 AI",
+        "en": "Military AI"
+      },
+      "description": {
+        "ko": "군사 정보 분석 AI. 정부 계약.",
+        "en": "AI for military intelligence analysis and government contracts."
+      }
+    },
+    "tech_ai_simulation": {
+      "name": {
+        "ko": "AI 시뮬레이션",
+        "en": "AI Simulation"
+      },
+      "description": {
+        "ko": "현실 세계를 AI로 시뮬레이션.",
+        "en": "Simulate the real world with AI."
+      }
+    },
+    "tech_api_platform": {
+      "name": {
+        "ko": "API 플랫폼",
+        "en": "API Platform"
+      },
+      "description": {
+        "ko": "API-first AI monetization became the dominant business model as frontier models were commercialized.",
+        "en": "Opens an API service channel for external developers."
+      }
+    },
+    "tech_consumer_ux": {
+      "name": {
+        "ko": "소비자 UX",
+        "en": "Consumer UX"
+      },
+      "description": {
+        "ko": "Consumer AI apps took off after chat-first interfaces became mainstream.",
+        "en": "Experience design that makes consumer chat products easier to use."
+      }
+    },
+    "tech_enterprise_integration": {
+      "name": {
+        "ko": "엔터프라이즈 통합",
+        "en": "Enterprise Integration"
+      },
+      "description": {
+        "ko": "Enterprise AI adoption accelerated once model APIs could plug into internal workflows.",
+        "en": "Connect models deeply with enterprise systems."
+      }
+    },
+    "tech_model_optimization": {
+      "name": {
+        "ko": "모델 최적화",
+        "en": "Model Optimization"
+      },
+      "description": {
+        "ko": "Inference optimization became critical once serving costs started to dominate margins.",
+        "en": "Deliver the same quality with less compute."
+      }
+    },
+    "tech_multi_tenant": {
+      "name": {
+        "ko": "멀티테넌트 서빙",
+        "en": "Multi-Tenant Serving"
+      },
+      "description": {
+        "ko": "Multi-tenant serving let AI providers compress overhead while scaling B2B usage.",
+        "en": "Serve many customers efficiently on one infrastructure layer."
+      }
+    },
+    "tech_edge_deployment": {
+      "name": {
+        "ko": "엣지 배포",
+        "en": "Edge Deployment"
+      },
+      "description": {
+        "ko": "Edge deployment expanded once on-device AI became commercially viable.",
+        "en": "Push models down to mobile and on-site devices."
+      }
+    },
+    "tech_model_distillation": {
+      "name": {
+        "ko": "모델 증류",
+        "en": "Model Distillation"
+      },
+      "description": {
+        "ko": "Distillation became a key tool for shipping smaller, cheaper service models from frontier teachers.",
+        "en": "Transfer a large model's knowledge into a smaller one."
+      }
+    },
+    "tech_serving_infrastructure": {
+      "name": {
+        "ko": "서빙 인프라",
+        "en": "Serving Infrastructure"
+      },
+      "description": {
+        "ko": "Serving infrastructure emerged as a first-class bottleneck once AI traffic turned into a real business.",
+        "en": "Operational infrastructure that keeps model services running."
+      }
+    },
+    "tech_bias_audit": {
+      "name": {
+        "ko": "편향성 감사",
+        "en": "Bias Audit"
+      },
+      "description": {
+        "ko": "공정성/편향성 평가가 출시 전 필수 절차가 된 흐름을 반영한다.",
+        "en": "Detect and correct bias in AI models."
+      }
+    },
+    "tech_interpretable_ai": {
+      "name": {
+        "ko": "해석 가능 AI",
+        "en": "Interpretable AI"
+      },
+      "description": {
+        "ko": "설명 가능성과 해석성 연구가 2020년대 초반에 본격화된 흐름을 반영한다.",
+        "en": "Make AI decision processes explainable."
+      }
+    },
+    "tech_value_alignment": {
+      "name": {
+        "ko": "가치 정렬",
+        "en": "Value Alignment"
+      },
+      "description": {
+        "ko": "Alignment research became strategic as frontier models approached deployment scale.",
+        "en": "Align AI systems with human values."
+      }
+    },
+    "tech_controllable_agi": {
+      "name": {
+        "ko": "통제 가능 AGI",
+        "en": "Controllable AGI"
+      },
+      "description": {
+        "ko": "Controlling AGI-class systems is still a frontier safety problem.",
+        "en": "A framework for AGI that can be safely controlled."
+      }
+    },
+    "tech_security_basics": {
+      "name": {
+        "ko": "보안 기초",
+        "en": "Security Basics"
+      },
+      "description": {
+        "ko": "2017년 이후 AI 안전과 보안이 기본 전제가 된 흐름을 반영한다.",
+        "en": "Foundations of AI system security."
+      }
+    },
+    "tech_adversarial_defense": {
+      "name": {
+        "ko": "적대적 방어",
+        "en": "Adversarial Defense"
+      },
+      "description": {
+        "ko": "적대적 예제와 모델 취약성 연구가 확장된 흐름을 반영한다.",
+        "en": "Defense techniques against adversarial attacks."
+      }
+    },
+    "tech_quantum_basics": {
+      "name": {
+        "ko": "양자 기초 연구",
+        "en": "Quantum Basics Research"
+      },
+      "description": {
+        "ko": "양자컴퓨팅 기초 연구.",
+        "en": "Foundational research in quantum computing."
+      }
+    },
+    "tech_qubit_stabilization": {
+      "name": {
+        "ko": "양자비트 안정화",
+        "en": "Qubit Stabilization"
+      },
+      "description": {
+        "ko": "큐비트의 결맞음 시간 연장.",
+        "en": "Extend qubit coherence time."
+      }
+    },
+    "tech_quantum_error_correction": {
+      "name": {
+        "ko": "양자 오류 보정",
+        "en": "Quantum Error Correction"
+      },
+      "description": {
+        "ko": "양자 오류를 보정하여 안정적 연산.",
+        "en": "Correct quantum errors for stable computation."
+      }
+    },
+    "tech_quantum_ai_acceleration": {
+      "name": {
+        "ko": "양자 AI 가속",
+        "en": "Quantum AI Acceleration"
+      },
+      "description": {
+        "ko": "양자컴퓨팅으로 AI 학습 초가속.",
+        "en": "Use quantum computing to massively accelerate AI training."
+      }
+    },
+    "tech_agi_foundation": {
+      "name": {
+        "ko": "AGI 기초",
+        "en": "AGI Foundations"
+      },
+      "description": {
+        "ko": "AGI foundation research is a late-stage convergence of frontier capabilities.",
+        "en": "The theoretical basis of AGI. Integrates LLMs and world models."
+      }
+    },
+    "tech_agi_llm_path": {
+      "name": {
+        "ko": "AGI (LLM 경로)",
+        "en": "AGI (LLM Path)"
+      },
+      "description": {
+        "ko": "An AGI path through LLMs requires many late-stage reasoning and alignment breakthroughs.",
+        "en": "Approach AGI through language-based general reasoning. Fast but incomplete."
+      }
+    },
+    "tech_agi_world_path": {
+      "name": {
+        "ko": "AGI (월드모델 경로)",
+        "en": "AGI (World Model Path)"
+      },
+      "description": {
+        "ko": "A world-model path to AGI depends on multimodal simulation and embodied reasoning.",
+        "en": "Approach AGI through deep world understanding. Stronger grounding, weaker language ability."
+      }
+    },
+    "tech_agi": {
+      "name": {
+        "ko": "AGI",
+        "en": "AGI"
+      },
+      "description": {
+        "ko": "AGI is treated here as a late-2020s frontier milestone.",
+        "en": "Human-level general intelligence. Fully realized AGI."
+      }
+    },
+    "tech_agi_partial": {
+      "name": {
+        "ko": "부분적 AGI",
+        "en": "Partial AGI"
+      },
+      "description": {
+        "ko": "Partial AGI arrives only after multiple frontier systems converge.",
+        "en": "An incomplete AGI reached through only one path. Risky but fast."
+      }
+    },
+    "tech_self_improvement": {
+      "name": {
+        "ko": "자기 개선",
+        "en": "Self-Improvement"
+      },
+      "description": {
+        "ko": "Recursive self-improvement remains a speculative late-stage frontier.",
+        "en": "The ability for AI to improve itself."
+      }
+    },
+    "tech_asi": {
+      "name": {
+        "ko": "ASI",
+        "en": "ASI"
+      },
+      "description": {
+        "ko": "ASI remains beyond AGI and should be an endgame breakthrough.",
+        "en": "Artificial superintelligence that surpasses human intelligence."
+      }
+    },
+    "tech_singularity": {
+      "name": {
+        "ko": "특이점",
+        "en": "Singularity"
+      },
+      "description": {
+        "ko": "The singularity is modeled as a very-late-game speculative endpoint.",
+        "en": "The technological singularity. The world changes forever."
+      }
+    },
+    "architecture_cnn": {
+      "name": {
+        "ko": "합성곱 신경망",
+        "en": "CNN"
+      },
+      "description": {
+        "ko": "이미지 인식 및 분류에 특화된 아키텍처. 데이터 적합: images.",
+        "en": "이미지 인식 및 분류에 특화된 아키텍처. Best fit data: Images."
+      }
+    },
+    "architecture_rnn_lstm": {
+      "name": {
+        "ko": "RNN/LSTM",
+        "en": "RNN/LSTM"
+      },
+      "description": {
+        "ko": "순차 데이터 처리에 적합한 순환 신경망. 데이터 적합: web_text.",
+        "en": "순차 데이터 처리에 적합한 순환 신경망. Best fit data: Web Text."
+      }
+    },
+    "architecture_transformer": {
+      "name": {
+        "ko": "트랜스포머",
+        "en": "Transformer"
+      },
+      "description": {
+        "ko": "Attention 메커니즘 기반의 범용 아키텍처. 2017년 \"Attention Is All You Need\". 데이터 적합: web_text, books.",
+        "en": "Attention 메커니즘 기반의 범용 아키텍처. 2017년 \"Attention Is All You Need\". Best fit data: Web Text, Books."
+      }
+    },
+    "architecture_gpt": {
+      "name": {
+        "ko": "GPT 아키텍처",
+        "en": "GPT"
+      },
+      "description": {
+        "ko": "자기회귀 언어 모델. 텍스트 생성의 혁명. 데이터 적합: web_text, books, code.",
+        "en": "자기회귀 언어 모델. 텍스트 생성의 혁명. Best fit data: Web Text, Books, Code."
+      }
+    },
+    "architecture_diffusion": {
+      "name": {
+        "ko": "디퓨전 모델",
+        "en": "Diffusion"
+      },
+      "description": {
+        "ko": "노이즈 제거 기반 생성 모델. 이미지/영상 생성의 혁명. 데이터 적합: images, web_text.",
+        "en": "노이즈 제거 기반 생성 모델. 이미지/영상 생성의 혁명. Best fit data: Images, Web Text."
+      }
+    },
+    "architecture_moe": {
+      "name": {
+        "ko": "전문가 혼합",
+        "en": "Mixture of Experts"
+      },
+      "description": {
+        "ko": "조건부 연산으로 효율적 스케일링. 추론 비용 대비 높은 성능. 데이터 적합: web_text, books, code, scientific.",
+        "en": "조건부 연산으로 효율적 스케일링. 추론 비용 대비 높은 성능. Best fit data: Web Text, Books, Code, Scientific."
+      }
+    },
+    "architecture_multimodal_arch": {
+      "name": {
+        "ko": "멀티모달",
+        "en": "Multimodal"
+      },
+      "description": {
+        "ko": "텍스트, 이미지, 오디오, 비디오를 모두 처리하는 통합 아키텍처. 데이터 적합: web_text, books, code, images, audio, video.",
+        "en": "텍스트, 이미지, 오디오, 비디오를 모두 처리하는 통합 아키텍처. Best fit data: Web Text, Books, Code, Images, Audio, Video."
+      }
+    },
+    "architecture_agent_arch": {
+      "name": {
+        "ko": "에이전트",
+        "en": "Agent Architecture"
+      },
+      "description": {
+        "ko": "도구 사용, 계획, 자율 실행이 가능한 에이전트 아키텍처. 데이터 적합: web_text, code, scientific.",
+        "en": "도구 사용, 계획, 자율 실행이 가능한 에이전트 아키텍처. Best fit data: Web Text, Code, Scientific."
+      }
+    },
+    "parameterScale_tiny": {
+      "name": {
+        "ko": "초소형",
+        "en": "Tiny"
+      },
+      "description": {
+        "ko": "<100M 규모입니다. 최소 10 TFLOPS, 8GB VRAM, 0.5TB 데이터가 권장됩니다.",
+        "en": "<100M scale. It recommends at least 10 TFLOPS, 8GB VRAM, and 0.5TB of data."
+      }
+    },
+    "parameterScale_small": {
+      "name": {
+        "ko": "소형",
+        "en": "Small"
+      },
+      "description": {
+        "ko": "100M-1B 규모입니다. 최소 50 TFLOPS, 16GB VRAM, 2TB 데이터가 권장됩니다.",
+        "en": "100M-1B scale. It recommends at least 50 TFLOPS, 16GB VRAM, and 2TB of data."
+      }
+    },
+    "parameterScale_medium": {
+      "name": {
+        "ko": "중형",
+        "en": "Medium"
+      },
+      "description": {
+        "ko": "1B-10B 규모입니다. 최소 200 TFLOPS, 32GB VRAM, 10TB 데이터가 권장됩니다.",
+        "en": "1B-10B scale. It recommends at least 200 TFLOPS, 32GB VRAM, and 10TB of data."
+      }
+    },
+    "parameterScale_large": {
+      "name": {
+        "ko": "대형",
+        "en": "Large"
+      },
+      "description": {
+        "ko": "10B-100B 규모입니다. 최소 1000 TFLOPS, 80GB VRAM, 50TB 데이터가 권장됩니다.",
+        "en": "10B-100B scale. It recommends at least 1000 TFLOPS, 80GB VRAM, and 50TB of data."
+      }
+    },
+    "parameterScale_xlarge": {
+      "name": {
+        "ko": "초대형",
+        "en": "Xlarge"
+      },
+      "description": {
+        "ko": "100B-500B 규모입니다. 최소 5000 TFLOPS, 128GB VRAM, 200TB 데이터가 권장됩니다.",
+        "en": "100B-500B scale. It recommends at least 5000 TFLOPS, 128GB VRAM, and 200TB of data."
+      }
+    },
+    "parameterScale_frontier": {
+      "name": {
+        "ko": "프론티어",
+        "en": "Frontier"
+      },
+      "description": {
+        "ko": "500B-2T 규모입니다. 최소 10000 TFLOPS, 192GB VRAM, 500TB 데이터가 권장됩니다.",
+        "en": "500B-2T scale. It recommends at least 10000 TFLOPS, 192GB VRAM, and 500TB of data."
+      }
+    },
+    "parameterScale_massive": {
+      "name": {
+        "ko": "거대",
+        "en": "Massive"
+      },
+      "description": {
+        "ko": "2T+ 규모입니다. 최소 50000 TFLOPS, 192GB VRAM, 1000TB 데이터가 권장됩니다.",
+        "en": "2T+ scale. It recommends at least 50000 TFLOPS, 192GB VRAM, and 1000TB of data."
+      }
+    },
+    "deployment_api": {
+      "name": {
+        "ko": "API 서비스",
+        "en": "Api"
+      },
+      "description": {
+        "ko": "개발자를 위한 API. B2B 중심의 안정적 수익.",
+        "en": "개발자를 위한 API. B2B 중심의 안정적 수익."
+      }
+    },
+    "deployment_consumer_chat": {
+      "name": {
+        "ko": "소비자 챗 앱",
+        "en": "Consumer Chat"
+      },
+      "description": {
+        "ko": "소비자용 대화형 AI. 대규모 사용자 기반.",
+        "en": "소비자용 대화형 AI. 대규모 사용자 기반."
+      }
+    },
+    "deployment_enterprise": {
+      "name": {
+        "ko": "기업 솔루션",
+        "en": "Enterprise"
+      },
+      "description": {
+        "ko": "기업 맞춤형 솔루션. 고객당 높은 수익.",
+        "en": "기업 맞춤형 솔루션. 고객당 높은 수익."
+      }
+    },
+    "deployment_open_source": {
+      "name": {
+        "ko": "오픈소스",
+        "en": "Open Source"
+      },
+      "description": {
+        "ko": "무료 공개. 직접 수익 적지만 평판 대폭 상승.",
+        "en": "무료 공개. 직접 수익 적지만 평판 대폭 상승."
+      }
+    },
+    "deployment_government": {
+      "name": {
+        "ko": "정부 계약",
+        "en": "Government"
+      },
+      "description": {
+        "ko": "정부/군 계약. 매우 높은 수익, 논란 가능성.",
+        "en": "정부/군 계약. 매우 높은 수익, 논란 가능성."
+      }
+    },
+    "service_api": {
+      "name": {
+        "ko": "API 서비스",
+        "en": "API Service"
+      },
+      "description": {
+        "ko": "개발자와 기업이 모델 기능을 API로 호출하는 채널입니다. 안정적 수익과 확장이 장점입니다.",
+        "en": "A channel where developers and firms call model capabilities via APIs. It offers stable revenue and scalable distribution."
+      }
+    },
+    "service_consumer_chat": {
+      "name": {
+        "ko": "소비자 챗봇",
+        "en": "Consumer Chat"
+      },
+      "description": {
+        "ko": "대중 사용자를 직접 상대하는 대화형 서비스 채널입니다. 성장 속도가 빠르지만 운영 변동성도 큽니다.",
+        "en": "A direct conversational channel for mass-market users. It grows quickly, but also carries high operating volatility."
+      }
+    },
+    "service_enterprise": {
+      "name": {
+        "ko": "엔터프라이즈",
+        "en": "Enterprise"
+      },
+      "description": {
+        "ko": "기업 고객 대상 맞춤형 배포 채널입니다. 사용자 수는 적지만 고객당 매출이 큽니다.",
+        "en": "A custom deployment channel for enterprise clients. It has fewer users, but high revenue per customer."
+      }
+    },
+    "service_government": {
+      "name": {
+        "ko": "정부 계약",
+        "en": "Government"
+      },
+      "description": {
+        "ko": "공공기관과 정부 계약을 통해 모델을 배포하는 채널입니다. 안전성과 신뢰가 중요합니다.",
+        "en": "A channel that deploys models through public-sector and government contracts. Safety and trust matter heavily."
+      }
+    },
+    "service_open_source": {
+      "name": {
+        "ko": "오픈소스",
+        "en": "Open Source"
+      },
+      "description": {
+        "ko": "모델을 공개해 커뮤니티와 생태계를 키우는 채널입니다. 직접 수익은 적지만 영향력은 큽니다.",
+        "en": "A channel that releases models publicly to grow community and ecosystem reach. Direct revenue is low, but influence can be large."
+      }
+    },
+    "service_internal": {
+      "name": {
+        "ko": "내부 활용",
+        "en": "Internal"
+      },
+      "description": {
+        "ko": "회사 내부 프로세스에 모델을 배치해 연구, 운영, 안전 효율을 높이는 채널입니다.",
+        "en": "A channel that deploys models into internal workflows to raise research, operations, and safety efficiency."
+      }
+    },
+    "service_b2b_license": {
+      "name": {
+        "ko": "타사 제공",
+        "en": "B2B Licensing"
+      },
+      "description": {
+        "ko": "외부 기업에 기술을 라이선싱하거나 화이트라벨 형태로 공급하는 채널입니다.",
+        "en": "A channel that licenses technology to outside firms or supplies it in a white-label form."
+      }
+    },
+    "gpu_p100": {
+      "name": {
+        "ko": "NVIDIA P100",
+        "en": "NVIDIA P100"
+      },
+      "description": {
+        "ko": "undefined년 출시. 16GB VRAM, 10.6 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 16GB VRAM and roughly 10.6 TFLOPS of performance."
+      }
+    },
+    "gpu_v100": {
+      "name": {
+        "ko": "NVIDIA V100",
+        "en": "NVIDIA V100"
+      },
+      "description": {
+        "ko": "undefined년 출시. 32GB VRAM, 125 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 32GB VRAM and roughly 125 TFLOPS of performance."
+      }
+    },
+    "gpu_a100": {
+      "name": {
+        "ko": "NVIDIA A100",
+        "en": "NVIDIA A100"
+      },
+      "description": {
+        "ko": "undefined년 출시. 80GB VRAM, 312 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 80GB VRAM and roughly 312 TFLOPS of performance."
+      }
+    },
+    "gpu_h100": {
+      "name": {
+        "ko": "NVIDIA H100",
+        "en": "NVIDIA H100"
+      },
+      "description": {
+        "ko": "undefined년 출시. 80GB VRAM, 990 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 80GB VRAM and roughly 990 TFLOPS of performance."
+      }
+    },
+    "gpu_l40s": {
+      "name": {
+        "ko": "NVIDIA L40S",
+        "en": "NVIDIA L40S"
+      },
+      "description": {
+        "ko": "undefined년 출시. 48GB VRAM, 181 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 48GB VRAM and roughly 181 TFLOPS of performance."
+      }
+    },
+    "gpu_b200": {
+      "name": {
+        "ko": "NVIDIA B200",
+        "en": "NVIDIA B200"
+      },
+      "description": {
+        "ko": "undefined년 출시. 192GB VRAM, 4500 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 192GB VRAM and roughly 4500 TFLOPS of performance."
+      }
+    },
+    "gpu_gb200": {
+      "name": {
+        "ko": "NVIDIA GB200",
+        "en": "NVIDIA GB200"
+      },
+      "description": {
+        "ko": "undefined년 출시. 288GB VRAM, 6000 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 288GB VRAM and roughly 6000 TFLOPS of performance."
+      }
+    },
+    "gpu_tpu_v3": {
+      "name": {
+        "ko": "Google TPU v3",
+        "en": "Google TPU v3"
+      },
+      "description": {
+        "ko": "undefined년 출시. 32GB VRAM, 105 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 32GB VRAM and roughly 105 TFLOPS of performance."
+      }
+    },
+    "gpu_tpu_v4": {
+      "name": {
+        "ko": "Google TPU v4",
+        "en": "Google TPU v4"
+      },
+      "description": {
+        "ko": "undefined년 출시. 32GB VRAM, 275 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 32GB VRAM and roughly 275 TFLOPS of performance."
+      }
+    },
+    "gpu_mi300x": {
+      "name": {
+        "ko": "AMD MI300X",
+        "en": "AMD MI300X"
+      },
+      "description": {
+        "ko": "undefined년 출시. 192GB VRAM, 1300 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 192GB VRAM and roughly 1300 TFLOPS of performance."
+      }
+    },
+    "gpu_rubin": {
+      "name": {
+        "ko": "NVIDIA Rubin",
+        "en": "NVIDIA Rubin"
+      },
+      "description": {
+        "ko": "undefined년 출시. 384GB VRAM, 9000 TFLOPS급 성능을 제공하는 가속기입니다.",
+        "en": "Released in undefined. An accelerator with 384GB VRAM and roughly 9000 TFLOPS of performance."
+      }
+    },
+    "data_web_text": {
+      "name": {
+        "ko": "웹 텍스트",
+        "en": "Web Text"
+      },
+      "description": {
+        "ko": "웹 텍스트 데이터입니다. 기본 단가 5,000 / TB, 최대 확보량 100TB 기준으로 설계되어 있습니다.",
+        "en": "Web Text data. It is tuned around base cost 5,000 per TB and approximately 100TB of market availability."
+      }
+    },
+    "data_books": {
+      "name": {
+        "ko": "도서",
+        "en": "Books"
+      },
+      "description": {
+        "ko": "도서 데이터입니다. 기본 단가 15,000 / TB, 최대 확보량 20TB 기준으로 설계되어 있습니다.",
+        "en": "Books data. It is tuned around base cost 15,000 per TB and approximately 20TB of market availability."
+      }
+    },
+    "data_code": {
+      "name": {
+        "ko": "코드",
+        "en": "Code"
+      },
+      "description": {
+        "ko": "코드 데이터입니다. 기본 단가 8,000 / TB, 최대 확보량 50TB 기준으로 설계되어 있습니다.",
+        "en": "Code data. It is tuned around base cost 8,000 per TB and approximately 50TB of market availability."
+      }
+    },
+    "data_scientific": {
+      "name": {
+        "ko": "과학 데이터",
+        "en": "Scientific"
+      },
+      "description": {
+        "ko": "과학 데이터 데이터입니다. 기본 단가 20,000 / TB, 최대 확보량 15TB 기준으로 설계되어 있습니다.",
+        "en": "Scientific data. It is tuned around base cost 20,000 per TB and approximately 15TB of market availability."
+      }
+    },
+    "data_images": {
+      "name": {
+        "ko": "이미지",
+        "en": "Images"
+      },
+      "description": {
+        "ko": "이미지 데이터입니다. 기본 단가 12,000 / TB, 최대 확보량 80TB 기준으로 설계되어 있습니다.",
+        "en": "Images data. It is tuned around base cost 12,000 per TB and approximately 80TB of market availability."
+      }
+    },
+    "data_audio": {
+      "name": {
+        "ko": "오디오",
+        "en": "Audio"
+      },
+      "description": {
+        "ko": "오디오 데이터입니다. 기본 단가 18,000 / TB, 최대 확보량 30TB 기준으로 설계되어 있습니다.",
+        "en": "Audio data. It is tuned around base cost 18,000 per TB and approximately 30TB of market availability."
+      }
+    },
+    "data_video": {
+      "name": {
+        "ko": "비디오",
+        "en": "Video"
+      },
+      "description": {
+        "ko": "비디오 데이터입니다. 기본 단가 25,000 / TB, 최대 확보량 40TB 기준으로 설계되어 있습니다.",
+        "en": "Video data. It is tuned around base cost 25,000 per TB and approximately 40TB of market availability."
+      }
+    },
+    "data_synthetic": {
+      "name": {
+        "ko": "합성 데이터",
+        "en": "Synthetic"
+      },
+      "description": {
+        "ko": "합성 데이터 데이터입니다. 기본 단가 3,000 / TB, 최대 확보량 200TB 기준으로 설계되어 있습니다.",
+        "en": "Synthetic data. It is tuned around base cost 3,000 per TB and approximately 200TB of market availability."
+      }
+    },
+    "dataMethod_purchase": {
+      "name": {
+        "ko": "데이터 구매",
+        "en": "Purchase"
+      },
+      "description": {
+        "ko": "데이터 마켓에서 즉시 구매합니다. 비싸지만 품질이 안정적입니다.. 기본 품질 80%, 신선도 90%, 법적 민감도 5%.",
+        "en": "Buy directly from a data marketplace. Expensive, but reliable and immediate.. Base quality 80%, freshness 90%, and legal sensitivity 5%."
+      }
+    },
+    "dataMethod_partnership": {
+      "name": {
+        "ko": "파트너십",
+        "en": "Partnership"
+      },
+      "description": {
+        "ko": "기업 및 기관과 데이터 공유 계약을 체결합니다. 느리지만 저렴합니다.. 기본 품질 75%, 신선도 70%, 법적 민감도 10%.",
+        "en": "Sign data-sharing agreements with institutions. Slower, but cheaper.. Base quality 75%, freshness 70%, and legal sensitivity 10%."
+      }
+    },
+    "dataMethod_scraping": {
+      "name": {
+        "ko": "웹 스크래핑",
+        "en": "Web Scraping"
+      },
+      "description": {
+        "ko": "공개 웹 데이터와 포럼을 수집합니다. 저렴하지만 법적 리스크가 큽니다.. 기본 품질 50%, 신선도 85%, 법적 민감도 40%.",
+        "en": "Collect public web data and forums. Cheap, but legally risky.. Base quality 50%, freshness 85%, and legal sensitivity 40%."
+      }
+    },
+    "dataMethod_synthetic": {
+      "name": {
+        "ko": "합성 데이터 생성",
+        "en": "Synthetic Generation"
+      },
+      "description": {
+        "ko": "기존 모델과 파이프라인으로 합성 데이터를 생성합니다. 컴퓨트 비용이 듭니다.. 기본 품질 60%, 신선도 95%, 법적 민감도 5%.",
+        "en": "Generate synthetic training data from existing models and pipelines. Compute-intensive.. Base quality 60%, freshness 95%, and legal sensitivity 5%."
+      }
+    },
+    "dataMethod_userLogs": {
+      "name": {
+        "ko": "사용자 로그 수집",
+        "en": "User Log Collection"
+      },
+      "description": {
+        "ko": "배포된 서비스의 상호작용 로그를 축적합니다. 무료지만 개인정보 리스크가 있습니다.. 기본 품질 70%, 신선도 100%, 법적 민감도 30%.",
+        "en": "Accumulate interaction logs from deployed services. Free, but privacy-sensitive.. Base quality 70%, freshness 100%, and legal sensitivity 30%."
+      }
+    },
+    "doctrine_aggressive": {
+      "name": {
+        "ko": "공격적 선제",
+        "en": "Aggressive First-Mover"
+      },
+      "description": {
+        "ko": "빠른 출시와 시장 선점을 중시합니다.",
+        "en": "Prioritizes rapid releases and market capture."
+      }
+    },
+    "doctrine_platform": {
+      "name": {
+        "ko": "플랫폼 생태계",
+        "en": "Platform Ecosystem"
+      },
+      "description": {
+        "ko": "인프라와 생태계 잠금을 중시합니다.",
+        "en": "Pushes infrastructure and ecosystem lock-in."
+      }
+    },
+    "doctrine_safety": {
+      "name": {
+        "ko": "안전 우선",
+        "en": "Safety-First"
+      },
+      "description": {
+        "ko": "장기 신뢰와 규제 대응을 중시합니다.",
+        "en": "Focuses on long-term trust and regulatory alignment."
+      }
+    },
+    "doctrine_research": {
+      "name": {
+        "ko": "연구 선도",
+        "en": "Research-Led"
+      },
+      "description": {
+        "ko": "성능 우위를 위해 연구에 집중합니다.",
+        "en": "Optimizes for research leadership and performance."
+      }
+    },
+    "doctrine_state_backed": {
+      "name": {
+        "ko": "국가 연계",
+        "en": "State-Backed"
+      },
+      "description": {
+        "ko": "정책적 지원과 데이터 접근을 활용합니다.",
+        "en": "Leverages state support and data access."
+      }
+    },
+    "bench_mmlu": {
+      "name": {
+        "ko": "학술 지식",
+        "en": "MMLU"
+      },
+      "description": {
+        "ko": "57개 과목에 걸친 종합 지식과 문제 해결 능력을 측정하는 벤치마크입니다.",
+        "en": "A benchmark that measures broad knowledge and problem solving across 57 subjects."
+      }
+    },
+    "bench_humaneval": {
+      "name": {
+        "ko": "코딩 능력",
+        "en": "HumanEval"
+      },
+      "description": {
+        "ko": "코드 생성 정확도를 pass@k 형태로 평가하는 프로그래밍 벤치마크입니다.",
+        "en": "A programming benchmark that evaluates code generation accuracy with pass@k metrics."
+      }
+    },
+    "bench_gsm8k": {
+      "name": {
+        "ko": "수학 추론",
+        "en": "GSM8K"
+      },
+      "description": {
+        "ko": "수학 추론과 단계별 풀이 능력을 평가하는 벤치마크입니다.",
+        "en": "A benchmark for mathematical reasoning and step-by-step solution ability."
+      }
+    },
+    "bench_helm": {
+      "name": {
+        "ko": "종합 평가",
+        "en": "HELM"
+      },
+      "description": {
+        "ko": "다양한 시나리오에서 모델의 전반적 거동을 비교하는 종합 평가군입니다.",
+        "en": "A holistic benchmark suite that compares model behavior across many scenarios."
+      }
+    },
+    "bench_arena_elo": {
+      "name": {
+        "ko": "사용자 선호",
+        "en": "Arena Elo"
+      },
+      "description": {
+        "ko": "실제 사용자 선호 비교로 산출되는 대전식 순위 지표입니다.",
+        "en": "A ladder-style ranking derived from real user preference comparisons."
+      }
+    },
+    "bench_multimodal_bench": {
+      "name": {
+        "ko": "멀티모달",
+        "en": "MMMU"
+      },
+      "description": {
+        "ko": "텍스트, 이미지, 복합 입력을 함께 평가하는 멀티모달 벤치마크입니다.",
+        "en": "A multimodal benchmark that evaluates text, image, and mixed-input performance together."
+      }
+    },
+    "funding_bootstrap": {
+      "name": {
+        "ko": "부트스트랩",
+        "en": "Bootstrap"
+      },
+      "description": {
+        "ko": "외부 투자 없이 창업자 자금과 초기 매출로 버티는 단계입니다.",
+        "en": "A stage where the company survives on founder capital and early revenue without outside investment."
+      }
+    },
+    "funding_seed": {
+      "name": {
+        "ko": "시드",
+        "en": "Seed"
+      },
+      "description": {
+        "ko": "첫 외부 자금을 받아 팀과 연구를 본격적으로 키우는 단계입니다.",
+        "en": "The first outside round used to expand the team and build real research momentum."
+      }
+    },
+    "funding_series_a": {
+      "name": {
+        "ko": "시리즈 A",
+        "en": "Series A"
+      },
+      "description": {
+        "ko": "제품과 연구가 시장 적합성을 증명하기 시작하는 성장 단계입니다.",
+        "en": "A growth round where product and research begin to prove market fit."
+      }
+    },
+    "funding_series_b": {
+      "name": {
+        "ko": "시리즈 B",
+        "en": "Series B"
+      },
+      "description": {
+        "ko": "운영 조직과 서비스 확장을 본격화하는 스케일링 단계입니다.",
+        "en": "A scaling round that professionalizes operations and expands live services."
+      }
+    },
+    "funding_series_c": {
+      "name": {
+        "ko": "시리즈 C",
+        "en": "Series C"
+      },
+      "description": {
+        "ko": "글로벌 영향력과 인프라 투자를 키우는 대형 성장 단계입니다.",
+        "en": "A large growth round focused on global reach and infrastructure expansion."
+      }
+    },
+    "funding_series_d": {
+      "name": {
+        "ko": "시리즈 D+",
+        "en": "Series D+"
+      },
+      "description": {
+        "ko": "AGI 경쟁을 위한 초대형 자본과 정치적 영향력이 필요한 단계입니다.",
+        "en": "A late-stage round that supplies the massive capital and influence needed for the AGI race."
+      }
+    },
+    "funding_ipo": {
+      "name": {
+        "ko": "IPO",
+        "en": "IPO"
+      },
+      "description": {
+        "ko": "상장을 통해 공개 시장 자금을 조달하는 최종 대형 자본 단계입니다.",
+        "en": "The final large-capital stage where the company raises money on public markets."
+      }
+    },
+    "act_startup": {
+      "name": {
+        "ko": "1막: 창업기",
+        "en": "Act 1: Startup"
+      },
+      "description": {
+        "ko": "생존, 첫 채용, 첫 연구, 첫 모델, 첫 투자.",
+        "en": "Survival, first hire, first research, first model, first investment."
+      }
+    },
+    "act_expansion": {
+      "name": {
+        "ko": "2막: 확장기",
+        "en": "Act 2: Expansion"
+      },
+      "description": {
+        "ko": "조직 분화, 제품-연구 균형, 인프라 전략.",
+        "en": "Organization growth, product-research balance, infrastructure strategy."
+      }
+    },
+    "act_political": {
+      "name": {
+        "ko": "3막: 정치경제기",
+        "en": "Act 3: Political Economy"
+      },
+      "description": {
+        "ko": "규제, 수출 통제, 로비, 공급망 전쟁.",
+        "en": "Regulation, export controls, lobbying, supply chain wars."
+      }
+    },
+    "act_frontier": {
+      "name": {
+        "ko": "4막: 프런티어기",
+        "en": "Act 4: Frontier"
+      },
+      "description": {
+        "ko": "AGI 안전, 거버넌스, 이사회 충돌, 세계 질서.",
+        "en": "AGI safety, governance, board conflicts, world order."
+      }
+    },
+    "ending_singularity": {
+      "name": {
+        "ko": "특이점 달성",
+        "en": "Singularity"
+      },
+      "description": {
+        "ko": "인간 수준을 넘어서는 AI를 완성해 새로운 문명을 여는 엔딩입니다.",
+        "en": "An ending where you build an AI beyond human level and open a new civilization."
+      }
+    },
+    "ending_bankrupt": {
+      "name": {
+        "ko": "파산",
+        "en": "Bankruptcy"
+      },
+      "description": {
+        "ko": "현금과 신뢰를 모두 잃고 회사가 해체되는 엔딩입니다.",
+        "en": "An ending where the company collapses after running out of cash and trust."
+      }
+    },
+    "ending_competitor_agi": {
+      "name": {
+        "ko": "경쟁사 AGI 달성",
+        "en": "Rival Reaches AGI"
+      },
+      "description": {
+        "ko": "경쟁사가 먼저 AGI를 만들어 주도권을 가져가는 엔딩입니다.",
+        "en": "An ending where a rival reaches AGI first and takes control of the era."
+      }
+    },
+    "ending_ipo_success": {
+      "name": {
+        "ko": "IPO 성공",
+        "en": "IPO Success"
+      },
+      "description": {
+        "ko": "상장을 통해 거대 AI 기업으로 자리 잡는 엔딩입니다.",
+        "en": "An ending where you become a major AI corporation through a successful IPO."
+      }
+    },
+    "ending_market_dominance": {
+      "name": {
+        "ko": "시장 지배",
+        "en": "Market Dominance"
+      },
+      "description": {
+        "ko": "AI 시장의 패권을 쥐고 생태계 기준을 재편하는 엔딩입니다.",
+        "en": "An ending where you seize AI market dominance and reshape the ecosystem standard."
+      }
+    },
+    "ending_safety_leader": {
+      "name": {
+        "ko": "안전 AI 리더",
+        "en": "Safety Leader"
+      },
+      "description": {
+        "ko": "가장 신뢰받는 안전 AI 조직으로 남는 엔딩입니다.",
+        "en": "An ending where you become the most trusted safe-AI organization."
+      }
+    },
+    "ending_time_limit": {
+      "name": {
+        "ko": "2031년 — 시대의 끝",
+        "en": "2031 - End of an Era"
+      },
+      "description": {
+        "ko": "시간 제한까지 버틴 뒤 성과를 결산하는 엔딩입니다.",
+        "en": "An ending that resolves when you survive to the time limit and tally your legacy."
+      }
+    },
+    "ending_public_infra": {
+      "name": {
+        "ko": "공공 인프라형 AGI",
+        "en": "Public Infrastructure AGI"
+      },
+      "description": {
+        "ko": "AGI를 공공재처럼 배포해 모두가 혜택을 누리게 하는 엔딩입니다.",
+        "en": "An ending where AGI becomes public infrastructure that benefits everyone."
+      }
+    },
+    "ending_military_hegemony": {
+      "name": {
+        "ko": "군산복합체형 패권",
+        "en": "Military Hegemony"
+      },
+      "description": {
+        "ko": "국가와 군사 계약 중심으로 패권을 구축하는 엔딩입니다.",
+        "en": "An ending where you build hegemony through state and military contracts."
+      }
+    },
+    "ending_open_source_liberation": {
+      "name": {
+        "ko": "오픈소스 해방",
+        "en": "Open Source Liberation"
+      },
+      "description": {
+        "ko": "AGI를 공개해 통제 대신 확산을 선택하는 엔딩입니다.",
+        "en": "An ending where you release AGI openly and choose diffusion over control."
+      }
+    },
+    "ending_ethical_failure": {
+      "name": {
+        "ko": "윤리적 유산",
+        "en": "Ethical Legacy"
+      },
+      "description": {
+        "ko": "AGI에는 못 닿았지만 안전 규범을 남기는 엔딩입니다.",
+        "en": "An ending where you miss AGI but leave behind the safety framework others build on."
+      }
+    },
+    "ending_acquisition": {
+      "name": {
+        "ko": "인수합병",
+        "en": "Acquisition"
+      },
+      "description": {
+        "ko": "더 큰 기업에 흡수되어 독립성을 잃는 엔딩입니다.",
+        "en": "An ending where a larger firm acquires you and independence disappears."
+      }
+    },
+    "ending_internal_coup": {
+      "name": {
+        "ko": "CEO 실각",
+        "en": "Internal Coup"
+      },
+      "description": {
+        "ko": "이사회가 창업자를 몰아내고 노선을 뒤집는 엔딩입니다.",
+        "en": "An ending where the board removes the founder and reverses the company direction."
+      }
+    },
+    "ending_state_absorption": {
+      "name": {
+        "ko": "국가 흡수",
+        "en": "State Absorption"
+      },
+      "description": {
+        "ko": "정부가 회사를 국유화해 AI를 국가 도구로 바꾸는 엔딩입니다.",
+        "en": "An ending where the state nationalizes the company and turns AI into a state instrument."
+      }
+    },
+    "internalAI_research_assist": {
+      "name": {
+        "ko": "연구 지원",
+        "en": "Research Assist"
+      },
+      "description": {
+        "ko": "연구 속도와 기술 진행 효율을 높이는 내부 AI 슬롯입니다.",
+        "en": "An internal AI slot that increases research speed and technology progress."
+      }
+    },
+    "internalAI_coding_assist": {
+      "name": {
+        "ko": "코딩 지원",
+        "en": "Coding Assist"
+      },
+      "description": {
+        "ko": "훈련 파이프라인과 칩 개발 같은 구현 작업을 가속하는 슬롯입니다.",
+        "en": "An internal AI slot that accelerates implementation work like training pipelines and chip development."
+      }
+    },
+    "internalAI_data_refine": {
+      "name": {
+        "ko": "데이터 정제",
+        "en": "Data Refine"
+      },
+      "description": {
+        "ko": "품질과 신선도를 개선해 데이터 자산을 더 강하게 만드는 슬롯입니다.",
+        "en": "An internal AI slot that improves data quality and freshness."
+      }
+    },
+    "internalAI_business_assist": {
+      "name": {
+        "ko": "경영 지원",
+        "en": "Business Assist"
+      },
+      "description": {
+        "ko": "투자 유치와 운영 효율, 오버헤드 최적화를 돕는 슬롯입니다.",
+        "en": "An internal AI slot that helps fundraising, operating efficiency, and overhead optimization."
+      }
+    },
+    "internalAI_safety_audit": {
+      "name": {
+        "ko": "안전 감사",
+        "en": "Safety Audit"
+      },
+      "description": {
+        "ko": "사고 예방, 레드팀, 안전 점수 개선에 기여하는 슬롯입니다.",
+        "en": "An internal AI slot that supports accident prevention, red teaming, and safety posture."
+      }
+    },
+    "route_llm": {
+      "name": {
+        "ko": "언어 노선",
+        "en": "LLM Route"
+      },
+      "description": {
+        "ko": "언어 모델과 텍스트 지능을 중심으로 성장하는 연구 노선입니다.",
+        "en": "A research route centered on language models and text intelligence."
+      }
+    },
+    "route_world": {
+      "name": {
+        "ko": "월드모델 노선",
+        "en": "World Route"
+      },
+      "description": {
+        "ko": "멀티모달 지각과 세계 모델링을 강화하는 연구 노선입니다.",
+        "en": "A research route focused on multimodal perception and world modeling."
+      }
+    },
+    "route_synergy": {
+      "name": {
+        "ko": "시너지 노선",
+        "en": "Synergy Route"
+      },
+      "description": {
+        "ko": "여러 능력과 시스템을 조합해 종합 성능을 끌어올리는 노선입니다.",
+        "en": "A route that combines many capabilities and systems to raise holistic performance."
+      }
+    },
+    "route_common": {
+      "name": {
+        "ko": "공통 노선",
+        "en": "Common Route"
+      },
+      "description": {
+        "ko": "여러 연구 축에서 공유되는 핵심 기반 기술 노선입니다.",
+        "en": "A route for foundational technologies shared across multiple research branches."
+      }
+    }
+  }
+}

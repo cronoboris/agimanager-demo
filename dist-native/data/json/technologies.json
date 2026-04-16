@@ -1,0 +1,1595 @@
+{
+  "TECH_TREE": {
+    "deep_learning_basics": {
+      "id": "deep_learning_basics",
+      "name": "딥러닝 기초",
+      "category": "foundation",
+      "route": "common",
+      "tier": 1,
+      "cost": 80,
+      "requires": [],
+      "description": "심층 신경망의 기본 원리와 학습 방법.",
+      "historicalContext": "AlexNet and modern deep learning were already well established by 2015.",
+      "effects": {
+        "researchSpeed": 1.05
+      }
+    },
+    "transformer": {
+      "id": "transformer",
+      "name": "Transformer",
+      "category": "foundation",
+      "route": "common",
+      "tier": 2,
+      "cost": 300,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "\"Attention Is All You Need\" - 혁명적 아키텍처.",
+      "historicalContext": "Attention Is All You Need (Vaswani et al., 2017).",
+      "effects": {
+        "modelQuality": 1.2
+      }
+    },
+    "reinforcement_learning": {
+      "id": "reinforcement_learning",
+      "name": "강화학습",
+      "category": "foundation",
+      "route": "common",
+      "tier": 2,
+      "cost": 300,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "보상 기반 학습. AlphaGo의 핵심 기술.",
+      "historicalContext": "AlphaGo and AlphaGo Zero made RL mainstream in 2016-2017.",
+      "effects": {
+        "researchSpeed": 1.05
+      }
+    },
+    "gpt_architecture": {
+      "id": "gpt_architecture",
+      "name": "GPT 아키텍처",
+      "category": "model_arch",
+      "route": "llm",
+      "tier": 2,
+      "cost": 550,
+      "requires": [
+        "transformer"
+      ],
+      "description": "자기회귀 언어 모델. 텍스트 생성의 기반.",
+      "historicalContext": "GPT-1 introduced the modern autoregressive language-model path in 2018.",
+      "effects": {
+        "unlockModality": "text"
+      }
+    },
+    "cnn": {
+      "id": "cnn",
+      "name": "CNN",
+      "category": "model_arch",
+      "route": "world",
+      "tier": 1,
+      "cost": 180,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "합성곱 신경망. 이미지 인식의 기초.",
+      "effects": {
+        "unlockModality": "image"
+      },
+      "historicalContext": "CNNs were a mature foundation by the ResNet era."
+    },
+    "scaling_laws": {
+      "id": "scaling_laws",
+      "name": "스케일링 법칙",
+      "category": "model_arch",
+      "route": "llm",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "gpt_architecture"
+      ],
+      "description": "모델 크기와 성능의 관계를 규명.",
+      "historicalContext": "Scaling laws became a serious planning tool around 2019-2020.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "vision_transformer": {
+      "id": "vision_transformer",
+      "name": "Vision Transformer",
+      "category": "model_arch",
+      "route": "world",
+      "tier": 2,
+      "cost": 900,
+      "requires": [
+        "cnn",
+        "transformer"
+      ],
+      "description": "Transformer를 비전에 적용. 이미지 이해의 혁신.",
+      "effects": {
+        "modelQuality": 1.2
+      },
+      "historicalContext": "Vision Transformer (ViT) showed transformer scaling in vision circa 2020."
+    },
+    "llm": {
+      "id": "llm",
+      "name": "대규모 언어모델",
+      "category": "model_arch",
+      "route": "llm",
+      "tier": 3,
+      "cost": 2400,
+      "requires": [
+        "scaling_laws"
+      ],
+      "description": "수십~수천억 파라미터의 LLM. 범용 텍스트 AI.",
+      "historicalContext": "GPT-3 defined the modern large-language-model era in 2020.",
+      "effects": {
+        "unlockProduct": "chatbot",
+        "modelQuality": 1.4
+      }
+    },
+    "rlhf": {
+      "id": "rlhf",
+      "name": "RLHF",
+      "category": "advanced_ai",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1400,
+      "requires": [
+        "llm",
+        "reinforcement_learning"
+      ],
+      "description": "인간 피드백으로 모델을 정렬. ChatGPT의 핵심.",
+      "historicalContext": "RLHF moved into production relevance with InstructGPT and ChatGPT in 2022.",
+      "effects": {
+        "safetyBonus": 1.2,
+        "modelQuality": 1.2
+      }
+    },
+    "chain_of_thought": {
+      "id": "chain_of_thought",
+      "name": "사고의 사슬(CoT)",
+      "category": "advanced_ai",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1500,
+      "requires": [
+        "rlhf"
+      ],
+      "description": "단계적 추론 능력. 복잡한 문제 해결 가능.",
+      "historicalContext": "Chain-of-thought prompting emerged as a practical reasoning unlock in 2022.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "tool_use": {
+      "id": "tool_use",
+      "name": "도구 사용 AI",
+      "category": "advanced_ai",
+      "route": "llm",
+      "tier": 3,
+      "cost": 6500,
+      "requires": [
+        "chain_of_thought"
+      ],
+      "description": "AI가 외부 도구(검색, 코드, API)를 활용.",
+      "historicalContext": "Toolformer, plugins, and agents pushed tool use into the mainstream in 2023.",
+      "effects": {
+        "unlockProduct": "ai_agent"
+      }
+    },
+    "video_prediction": {
+      "id": "video_prediction",
+      "name": "영상 예측",
+      "category": "advanced_ai",
+      "route": "world",
+      "tier": 2,
+      "cost": 1000,
+      "requires": [
+        "vision_transformer"
+      ],
+      "description": "다음 프레임을 예측. 세계의 역학을 학습하는 첫 걸음.",
+      "historicalContext": "초기 비디오 예측 연구와 self-supervised video learning 흐름을 반영한다.",
+      "effects": {
+        "modelQuality": 1.2
+      }
+    },
+    "physics_simulation": {
+      "id": "physics_simulation",
+      "name": "물리 시뮬레이션 AI",
+      "category": "advanced_ai",
+      "route": "world",
+      "tier": 2,
+      "cost": 950,
+      "requires": [
+        "vision_transformer",
+        "reinforcement_learning"
+      ],
+      "description": "물리 법칙을 학습하는 AI. 현실 세계 모델링.",
+      "historicalContext": "딥마인드의 세계모델과 physics-informed learning 연구를 반영한다.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "cross_modal_learning": {
+      "id": "cross_modal_learning",
+      "name": "교차 모달 학습",
+      "category": "advanced_ai",
+      "route": "synergy",
+      "tier": 2,
+      "cost": 1100,
+      "requires": [
+        "gpt_architecture",
+        "cnn"
+      ],
+      "description": "텍스트와 이미지를 연결하는 학습. 두 루트의 첫 교차점.",
+      "historicalContext": "CLIP(2021) 계열의 교차 모달 표현학습을 반영한다.",
+      "effects": {
+        "modelQuality": 1.2,
+        "synergyBonus": {
+          "llm": 1.1,
+          "world": 1.1
+        }
+      }
+    },
+    "autonomous_agent": {
+      "id": "autonomous_agent",
+      "name": "자율 에이전트",
+      "category": "frontier_ai",
+      "route": "llm",
+      "tier": 4,
+      "cost": 37000,
+      "requires": [
+        "tool_use"
+      ],
+      "description": "스스로 계획하고 실행하는 AI.",
+      "historicalContext": "AutoGPT-style autonomous agents kicked off the agent wave in 2023.",
+      "effects": {
+        "agiProgress": 0.2
+      }
+    },
+    "multimodal_llm": {
+      "id": "multimodal_llm",
+      "name": "멀티모달 LLM",
+      "category": "frontier_ai",
+      "route": "synergy",
+      "tier": 3,
+      "cost": 3600,
+      "requires": [
+        "llm",
+        "vision_transformer"
+      ],
+      "description": "텍스트+이미지+영상을 통합 이해하는 LLM.",
+      "historicalContext": "Frontier multimodal LLMs arrived with GPT-4V-class systems in 2023.",
+      "effects": {
+        "unlockModality": "multimodal",
+        "modelQuality": 1.5
+      }
+    },
+    "world_model_core": {
+      "id": "world_model_core",
+      "name": "월드모델 코어",
+      "category": "frontier_ai",
+      "route": "world",
+      "tier": 3,
+      "cost": 2600,
+      "requires": [
+        "video_prediction",
+        "physics_simulation"
+      ],
+      "description": "세계의 인과관계와 물리를 시뮬레이션하는 AI.",
+      "historicalContext": "World-model work accelerated with Sora-class generative simulators in 2024.",
+      "effects": {
+        "agiProgress": 0.2
+      }
+    },
+    "spatial_reasoning": {
+      "id": "spatial_reasoning",
+      "name": "공간 추론",
+      "category": "frontier_ai",
+      "route": "world",
+      "tier": 2,
+      "cost": 1700,
+      "requires": [
+        "world_model_core"
+      ],
+      "description": "3D 공간에 대한 이해와 조작 능력.",
+      "historicalContext": "Embodied reasoning과 3D representation learning 연구를 반영한다.",
+      "effects": {
+        "modelQuality": 1.3
+      }
+    },
+    "llm_reasoning": {
+      "id": "llm_reasoning",
+      "name": "LLM 범용 추론",
+      "category": "frontier_ai",
+      "route": "llm",
+      "tier": 3,
+      "cost": 10000,
+      "requires": [
+        "autonomous_agent",
+        "multimodal_llm"
+      ],
+      "description": "언어를 통한 범용 추론. LLM 루트의 정점.",
+      "historicalContext": "Reasoning-specialized frontier models became the new bar around 2024.",
+      "effects": {
+        "agiProgress": 0.4
+      }
+    },
+    "embodied_ai": {
+      "id": "embodied_ai",
+      "name": "체화 지능",
+      "category": "frontier_ai",
+      "route": "world",
+      "tier": 3,
+      "cost": 8200,
+      "requires": [
+        "spatial_reasoning"
+      ],
+      "description": "몸을 가진 AI. 물리 세계와 상호작용하며 학습.",
+      "historicalContext": "General-purpose embodied AI remains a near-future frontier challenge.",
+      "effects": {
+        "agiProgress": 0.3,
+        "unlockProduct": "robot"
+      }
+    },
+    "cognitive_architecture": {
+      "id": "cognitive_architecture",
+      "name": "인지 아키텍처",
+      "category": "frontier_ai",
+      "route": "synergy",
+      "tier": 3,
+      "cost": 9000,
+      "requires": [
+        "autonomous_agent",
+        "spatial_reasoning"
+      ],
+      "description": "언어적 추론과 공간 이해를 통합하는 인지 구조.",
+      "historicalContext": "Unified cognitive architectures represent late-stage AGI research.",
+      "effects": {
+        "agiProgress": 0.3,
+        "synergyBonus": {
+          "llm": 1.2,
+          "world": 1.2
+        }
+      }
+    },
+    "world_understanding": {
+      "id": "world_understanding",
+      "name": "세계 이해 AI",
+      "category": "frontier_ai",
+      "route": "world",
+      "tier": 4,
+      "cost": 35000,
+      "requires": [
+        "embodied_ai",
+        "world_model_core"
+      ],
+      "description": "세계를 근본적으로 이해하는 AI. 월드모델 루트의 정점.",
+      "effects": {
+        "agiProgress": 0.4
+      }
+    },
+    "unified_intelligence": {
+      "id": "unified_intelligence",
+      "name": "통합 지능",
+      "category": "frontier_ai",
+      "route": "synergy",
+      "tier": 4,
+      "cost": 39000,
+      "requires": [
+        "cognitive_architecture",
+        "multimodal_llm",
+        "world_model_core"
+      ],
+      "description": "언어·시각·세계 모델을 하나로. 양쪽 루트의 완전한 융합.",
+      "effects": {
+        "agiProgress": 0.5,
+        "synergyBonus": {
+          "llm": 1.3,
+          "world": 1.3
+        }
+      }
+    },
+    "gan": {
+      "id": "gan",
+      "name": "GAN",
+      "category": "generative",
+      "route": "common",
+      "tier": 1,
+      "cost": 200,
+      "requires": [
+        "deep_learning_basics"
+      ],
+      "description": "생성적 적대 신경망. 이미지 생성의 시작.",
+      "historicalContext": "GAN(2014)과 그 후속 이미지 생성 연구를 반영한다.",
+      "effects": {}
+    },
+    "diffusion": {
+      "id": "diffusion",
+      "name": "Diffusion 모델",
+      "category": "generative",
+      "route": "common",
+      "tier": 2,
+      "cost": 800,
+      "requires": [
+        "gan"
+      ],
+      "description": "확산 모델. Stable Diffusion, DALL-E의 기반.",
+      "historicalContext": "DDPM and later Stable Diffusion defined the modern diffusion wave.",
+      "effects": {
+        "unlockProduct": "image_gen"
+      }
+    },
+    "video_generation": {
+      "id": "video_generation",
+      "name": "영상 생성",
+      "category": "generative",
+      "route": "world",
+      "tier": 3,
+      "cost": 7000,
+      "requires": [
+        "diffusion",
+        "video_prediction"
+      ],
+      "description": "AI 영상 생성. Sora의 기반 기술.",
+      "historicalContext": "Runway Gen-2, Pika, Sora로 이어지는 영상 생성 경쟁을 반영한다.",
+      "effects": {
+        "unlockProduct": "video_gen",
+        "modelQuality": 1.2
+      }
+    },
+    "generative_world_model": {
+      "id": "generative_world_model",
+      "name": "생성형 월드모델",
+      "category": "generative",
+      "route": "synergy",
+      "tier": 4,
+      "cost": 21000,
+      "requires": [
+        "video_generation",
+        "world_model_core"
+      ],
+      "description": "세계를 생성하고 시뮬레이션. 두 루트의 교차점.",
+      "historicalContext": "Sora 이후의 생성형 world model 연구를 반영한다.",
+      "effects": {
+        "agiProgress": 0.2,
+        "modelQuality": 1.4
+      }
+    },
+    "data_collection": {
+      "id": "data_collection",
+      "name": "데이터 수집",
+      "category": "data",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "웹 크롤링, 데이터셋 구축 기초.",
+      "historicalContext": "대규모 웹 크롤링과 공개 코퍼스 구축의 출발점.",
+      "effects": {
+        "dataGain": 1.2
+      }
+    },
+    "data_refinement": {
+      "id": "data_refinement",
+      "name": "데이터 정제",
+      "category": "data",
+      "route": "common",
+      "tier": 2,
+      "cost": 450,
+      "requires": [
+        "data_collection"
+      ],
+      "description": "데이터 품질 향상. 노이즈 제거, 라벨링.",
+      "historicalContext": "정제된 학습 데이터가 성능을 좌우한다는 경험적 교훈을 반영한다.",
+      "effects": {
+        "dataQuality": 1.2
+      }
+    },
+    "synthetic_data": {
+      "id": "synthetic_data",
+      "name": "합성 데이터",
+      "category": "data",
+      "route": "common",
+      "tier": 3,
+      "cost": 3400,
+      "requires": [
+        "data_refinement"
+      ],
+      "description": "AI로 학습 데이터를 생성.",
+      "historicalContext": "합성 데이터와 self-training이 본격화된 2021년 이후 흐름을 반영한다.",
+      "effects": {
+        "dataGain": 1.5
+      }
+    },
+    "self_learning_data": {
+      "id": "self_learning_data",
+      "name": "자기학습 데이터",
+      "category": "data",
+      "route": "common",
+      "tier": 4,
+      "cost": 18000,
+      "requires": [
+        "synthetic_data"
+      ],
+      "description": "AI가 스스로 학습 데이터를 생산하고 개선.",
+      "historicalContext": "Constitutional AI와 self-play 기반 데이터 확장 흐름을 반영한다.",
+      "effects": {
+        "dataGain": 2,
+        "agiProgress": 0.1
+      }
+    },
+    "distributed_learning": {
+      "id": "distributed_learning",
+      "name": "분산 학습",
+      "category": "data",
+      "route": "common",
+      "tier": 2,
+      "cost": 550,
+      "requires": [
+        "data_collection"
+      ],
+      "description": "여러 노드에서 병렬 학습.",
+      "historicalContext": "Horovod류 분산 학습과 대규모 클러스터 훈련을 반영한다.",
+      "effects": {
+        "trainingSpeed": 1.3
+      }
+    },
+    "federated_learning": {
+      "id": "federated_learning",
+      "name": "연합 학습",
+      "category": "data",
+      "route": "common",
+      "tier": 3,
+      "cost": 2800,
+      "requires": [
+        "distributed_learning"
+      ],
+      "description": "데이터를 공유하지 않고 모델만 교환.",
+      "historicalContext": "Google Federated Learning과 프라이버시 보존 학습 흐름을 반영한다.",
+      "effects": {
+        "dataGain": 1.3,
+        "privacyBonus": true
+      }
+    },
+    "gpu_utilization": {
+      "id": "gpu_utilization",
+      "name": "GPU 활용",
+      "category": "chip",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "GPU를 AI 학습에 활용하는 기초 기술.",
+      "historicalContext": "2017년 이후 GPU가 AI 연구의 표준 가속기로 자리잡은 흐름을 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.1
+      }
+    },
+    "gpu_cluster": {
+      "id": "gpu_cluster",
+      "name": "GPU 클러스터",
+      "category": "chip",
+      "route": "common",
+      "tier": 2,
+      "cost": 1200,
+      "requires": [
+        "gpu_utilization"
+      ],
+      "description": "다수의 GPU를 묶어 대규모 학습.",
+      "historicalContext": "NVLink, NCCL, 대규모 클러스터 훈련이 본격화된 흐름을 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.2,
+        "maxCompute": 1.5
+      }
+    },
+    "custom_ai_chip": {
+      "id": "custom_ai_chip",
+      "name": "전용 AI칩 설계",
+      "category": "chip",
+      "route": "common",
+      "tier": 3,
+      "cost": 3600,
+      "requires": [
+        "gpu_cluster"
+      ],
+      "description": "AI 전용 프로세서 설계.",
+      "historicalContext": "Cloud TPUs and bespoke accelerators made custom AI chips viable by 2020.",
+      "effects": {
+        "computeEfficiency": 1.5,
+        "computeCost": 0.7
+      }
+    },
+    "next_gen_processor": {
+      "id": "next_gen_processor",
+      "name": "차세대 AI 프로세서",
+      "category": "chip",
+      "route": "common",
+      "tier": 4,
+      "cost": 17000,
+      "requires": [
+        "custom_ai_chip"
+      ],
+      "description": "최첨단 AI 전용 칩.",
+      "historicalContext": "Hopper 이후의 차세대 AI 가속기 경쟁을 반영한다.",
+      "effects": {
+        "computeEfficiency": 2,
+        "computeCost": 0.5
+      }
+    },
+    "fpga": {
+      "id": "fpga",
+      "name": "FPGA 활용",
+      "category": "chip",
+      "route": "common",
+      "tier": 2,
+      "cost": 600,
+      "requires": [
+        "gpu_utilization"
+      ],
+      "description": "프로그래머블 하드웨어로 유연한 AI 가속.",
+      "historicalContext": "AI 추론/인프라에서 FPGA가 틈새 최적화 장비로 쓰이던 시기를 반영한다.",
+      "effects": {
+        "computeEfficiency": 1.15
+      }
+    },
+    "custom_asic": {
+      "id": "custom_asic",
+      "name": "커스텀 ASIC",
+      "category": "chip",
+      "route": "common",
+      "tier": 3,
+      "cost": 4200,
+      "requires": [
+        "fpga"
+      ],
+      "description": "특화 회로 설계. 최고 효율의 AI 칩.",
+      "historicalContext": "Second-wave AI ASICs followed the first large custom accelerator deployments.",
+      "effects": {
+        "computeEfficiency": 1.6
+      }
+    },
+    "neuromorphic_chip": {
+      "id": "neuromorphic_chip",
+      "name": "뉴로모픽 칩",
+      "category": "chip",
+      "route": "common",
+      "tier": 4,
+      "cost": 12000,
+      "requires": [
+        "custom_asic"
+      ],
+      "description": "뇌 구조를 모방한 칩. 초저전력 AI.",
+      "historicalContext": "Loihi 계열과 미래 저전력 컴퓨팅 연구를 반영한다.",
+      "effects": {
+        "computeEfficiency": 2.5,
+        "powerCost": 0.3,
+        "agiProgress": 0.1
+      }
+    },
+    "cloud_server": {
+      "id": "cloud_server",
+      "name": "클라우드 서버",
+      "category": "infra",
+      "route": "common",
+      "tier": 1,
+      "cost": 100,
+      "requires": [],
+      "description": "클라우드 기반 서버 활용.",
+      "historicalContext": "하이퍼스케일 클라우드가 AI 인프라의 기본 전제가 된 흐름을 반영한다.",
+      "effects": {
+        "maxCompute": 1.2
+      }
+    },
+    "own_datacenter": {
+      "id": "own_datacenter",
+      "name": "자체 데이터센터",
+      "category": "infra",
+      "route": "common",
+      "tier": 3,
+      "cost": 4000,
+      "requires": [
+        "cloud_server"
+      ],
+      "description": "자체 데이터센터 구축.",
+      "historicalContext": "Dedicated AI datacenters became strategic rather than optional by 2019.",
+      "effects": {
+        "maxCompute": 2,
+        "computeCost": 0.8
+      }
+    },
+    "ai_farm": {
+      "id": "ai_farm",
+      "name": "대규모 AI팜",
+      "category": "infra",
+      "route": "common",
+      "tier": 3,
+      "cost": 8000,
+      "requires": [
+        "own_datacenter"
+      ],
+      "description": "초대규모 AI 학습 인프라.",
+      "historicalContext": "Hyperscale AI farms emerged once frontier training runs became capital intensive.",
+      "effects": {
+        "maxCompute": 5,
+        "computeCost": 0.6
+      }
+    },
+    "standard_cooling": {
+      "id": "standard_cooling",
+      "name": "표준 냉각",
+      "category": "infra",
+      "route": "common",
+      "tier": 1,
+      "cost": 150,
+      "requires": [],
+      "description": "기본 공랭 냉각 시스템.",
+      "historicalContext": "초기 AI 랙은 표준 공랭으로 버틸 수 있었지만, 대형 GPU부터는 병목이 되기 시작한다.",
+      "effects": {
+        "powerCost": 0.95
+      }
+    },
+    "water_cooling": {
+      "id": "water_cooling",
+      "name": "수냉 시스템",
+      "category": "infra",
+      "route": "common",
+      "tier": 2,
+      "cost": 1500,
+      "requires": [
+        "standard_cooling"
+      ],
+      "description": "수냉식 냉각. 효율 향상.",
+      "historicalContext": "고밀도 GPU 랙에서 수냉이 현실적인 선택지가 된 흐름을 반영한다.",
+      "effects": {
+        "powerCost": 0.8
+      }
+    },
+    "advanced_cooling": {
+      "id": "advanced_cooling",
+      "name": "첨단 냉각기술",
+      "category": "infra",
+      "route": "common",
+      "tier": 3,
+      "cost": 3200,
+      "requires": [
+        "water_cooling"
+      ],
+      "description": "침수냉각/극저온 냉각.",
+      "historicalContext": "Immersion and advanced liquid cooling became meaningful for dense AI racks in the early 2020s.",
+      "effects": {
+        "powerCost": 0.5
+      }
+    },
+    "foundry_external": {
+      "id": "foundry_external",
+      "name": "반도체 공정(외부)",
+      "category": "infra",
+      "route": "common",
+      "tier": 2,
+      "cost": 800,
+      "requires": [],
+      "description": "외부 파운드리에 칩 생산 위탁.",
+      "historicalContext": "파운드리 외주가 AI 하드웨어 공급망의 기본이 된 흐름을 반영한다.",
+      "effects": {}
+    },
+    "foundry_partnership": {
+      "id": "foundry_partnership",
+      "name": "파운드리 협력",
+      "category": "infra",
+      "route": "common",
+      "tier": 3,
+      "cost": 5000,
+      "requires": [
+        "foundry_external"
+      ],
+      "description": "파운드리와 전략적 파트너십.",
+      "historicalContext": "선단 공정 확보를 위한 장기 파운드리 협력이 중요해진 흐름을 반영한다.",
+      "effects": {
+        "chipProductionSpeed": 1.3
+      }
+    },
+    "own_fab": {
+      "id": "own_fab",
+      "name": "자체 팹",
+      "category": "infra",
+      "route": "common",
+      "tier": 4,
+      "cost": 30000,
+      "requires": [
+        "foundry_partnership"
+      ],
+      "description": "자체 반도체 공장. 한국 보너스.",
+      "historicalContext": "자체 팹은 2025년대에야 현실적인 극후반 선택지로 남는다.",
+      "effects": {
+        "chipProductionSpeed": 2,
+        "computeCost": 0.4
+      }
+    },
+    "power_grid": {
+      "id": "power_grid",
+      "name": "기존 전력망",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 500,
+      "requires": [],
+      "description": "기존 전력망에서 전력 공급.",
+      "effects": {}
+    },
+    "power_optimization": {
+      "id": "power_optimization",
+      "name": "전력 계약 최적화",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 350,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "전력 계약 최적화로 비용 절감.",
+      "effects": {
+        "powerCost": 0.85
+      }
+    },
+    "dedicated_power": {
+      "id": "dedicated_power",
+      "name": "전용 발전시설",
+      "category": "energy",
+      "route": "common",
+      "tier": 3,
+      "cost": 3000,
+      "requires": [
+        "power_optimization"
+      ],
+      "description": "데이터센터 전용 발전소.",
+      "effects": {
+        "powerCost": 0.5,
+        "maxPower": 3
+      }
+    },
+    "energy_efficiency": {
+      "id": "energy_efficiency",
+      "name": "에너지 효율 연구",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 400,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "전력 소비를 줄이는 연구.",
+      "effects": {
+        "powerCost": 0.8
+      }
+    },
+    "low_power_chip": {
+      "id": "low_power_chip",
+      "name": "저전력 AI칩",
+      "category": "energy",
+      "route": "common",
+      "tier": 3,
+      "cost": 4700,
+      "requires": [
+        "energy_efficiency",
+        "custom_ai_chip"
+      ],
+      "description": "초저전력 AI 칩 설계.",
+      "effects": {
+        "powerCost": 0.4,
+        "computeEfficiency": 1.3
+      }
+    },
+    "renewable_energy": {
+      "id": "renewable_energy",
+      "name": "재생 에너지",
+      "category": "energy",
+      "route": "common",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "power_grid"
+      ],
+      "description": "태양광/풍력 에너지 도입.",
+      "effects": {
+        "powerCost": 0.7,
+        "reputationBonus": 5
+      }
+    },
+    "smr": {
+      "id": "smr",
+      "name": "소형 원자로(SMR)",
+      "category": "energy",
+      "route": "common",
+      "tier": 4,
+      "cost": 15000,
+      "requires": [
+        "renewable_energy",
+        "dedicated_power"
+      ],
+      "description": "무한에 가까운 전력 공급.",
+      "effects": {
+        "powerCost": 0.1,
+        "maxPower": 10
+      }
+    },
+    "chatbot_product": {
+      "id": "chatbot_product",
+      "name": "챗봇",
+      "category": "product",
+      "route": "llm",
+      "tier": 1,
+      "cost": 300,
+      "requires": [
+        "llm"
+      ],
+      "description": "대화형 AI 서비스.",
+      "effects": {
+        "monthlyRevenue": 50000
+      }
+    },
+    "ai_assistant": {
+      "id": "ai_assistant",
+      "name": "AI 비서",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1800,
+      "requires": [
+        "chatbot_product",
+        "autonomous_agent"
+      ],
+      "description": "업무를 자동 처리하는 AI 비서.",
+      "effects": {
+        "monthlyRevenue": 200000,
+        "unemploymentImpact": {
+          "office": 5
+        }
+      }
+    },
+    "code_gen": {
+      "id": "code_gen",
+      "name": "코드 생성",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1200,
+      "requires": [
+        "llm"
+      ],
+      "description": "AI 코드 생성 도구.",
+      "effects": {
+        "monthlyRevenue": 100000,
+        "unemploymentImpact": {
+          "development": 3
+        }
+      }
+    },
+    "image_gen_product": {
+      "id": "image_gen_product",
+      "name": "이미지 생성",
+      "category": "product",
+      "route": "common",
+      "tier": 2,
+      "cost": 1450,
+      "requires": [
+        "diffusion"
+      ],
+      "description": "AI 이미지 생성 서비스.",
+      "effects": {
+        "monthlyRevenue": 80000,
+        "unemploymentImpact": {
+          "design": 3
+        }
+      }
+    },
+    "video_gen_product": {
+      "id": "video_gen_product",
+      "name": "영상 생성 서비스",
+      "category": "product",
+      "route": "world",
+      "tier": 3,
+      "cost": 5000,
+      "requires": [
+        "video_generation"
+      ],
+      "description": "AI 영상 제작 플랫폼.",
+      "effects": {
+        "monthlyRevenue": 150000,
+        "unemploymentImpact": {
+          "design": 5
+        }
+      }
+    },
+    "autonomous_driving": {
+      "id": "autonomous_driving",
+      "name": "자율주행",
+      "category": "product",
+      "route": "world",
+      "tier": 3,
+      "cost": 7800,
+      "requires": [
+        "embodied_ai"
+      ],
+      "description": "AI 자율주행 시스템.",
+      "effects": {
+        "monthlyRevenue": 300000,
+        "unemploymentImpact": {
+          "transport": 8
+        }
+      }
+    },
+    "robot_ai": {
+      "id": "robot_ai",
+      "name": "범용 로봇 AI",
+      "category": "product",
+      "route": "world",
+      "tier": 3,
+      "cost": 7400,
+      "requires": [
+        "embodied_ai"
+      ],
+      "description": "AI 기반 범용 로봇 제어.",
+      "effects": {
+        "monthlyRevenue": 200000,
+        "unemploymentImpact": {
+          "manufacturing": 5
+        }
+      }
+    },
+    "military_ai": {
+      "id": "military_ai",
+      "name": "군사 AI",
+      "category": "product",
+      "route": "common",
+      "tier": 2,
+      "cost": 1400,
+      "requires": [
+        "cnn",
+        "data_refinement"
+      ],
+      "description": "군사 정보 분석 AI. 정부 계약.",
+      "effects": {
+        "monthlyRevenue": 300000,
+        "favorabilityPenalty": -10
+      }
+    },
+    "ai_simulation": {
+      "id": "ai_simulation",
+      "name": "AI 시뮬레이션",
+      "category": "product",
+      "route": "synergy",
+      "tier": 3,
+      "cost": 5200,
+      "requires": [
+        "generative_world_model"
+      ],
+      "description": "현실 세계를 AI로 시뮬레이션.",
+      "effects": {
+        "monthlyRevenue": 250000
+      }
+    },
+    "api_platform": {
+      "id": "api_platform",
+      "name": "API 플랫폼",
+      "category": "product",
+      "route": "llm",
+      "tier": 1,
+      "cost": 60,
+      "requires": [],
+      "description": "외부 개발자를 위한 API 서비스 채널을 연다.",
+      "historicalContext": "API-first AI monetization became the dominant business model as frontier models were commercialized.",
+      "effects": {
+        "unlockServiceChannel": "api",
+        "serviceRevenueMult": {
+          "api": 1.2
+        }
+      }
+    },
+    "consumer_ux": {
+      "id": "consumer_ux",
+      "name": "소비자 UX",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1250,
+      "requires": [
+        "chatbot_product"
+      ],
+      "description": "소비자 챗봇을 더 쉽게 쓰게 만드는 경험 설계.",
+      "historicalContext": "Consumer AI apps took off after chat-first interfaces became mainstream.",
+      "effects": {
+        "serviceRevenueMult": {
+          "consumer_chat": 1.25
+        }
+      }
+    },
+    "enterprise_integration": {
+      "id": "enterprise_integration",
+      "name": "엔터프라이즈 통합",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 850,
+      "requires": [
+        "api_platform"
+      ],
+      "description": "기업용 시스템과 모델을 깊게 연결한다.",
+      "historicalContext": "Enterprise AI adoption accelerated once model APIs could plug into internal workflows.",
+      "effects": {
+        "unlockServiceChannel": "enterprise",
+        "serviceRevenueMult": {
+          "enterprise": 1.3,
+          "b2b_license": 1.3
+        }
+      }
+    },
+    "model_optimization": {
+      "id": "model_optimization",
+      "name": "모델 최적화",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 700,
+      "requires": [
+        "api_platform"
+      ],
+      "description": "같은 품질을 더 적은 연산으로 제공한다.",
+      "historicalContext": "Inference optimization became critical once serving costs started to dominate margins.",
+      "effects": {
+        "inferenceCostMult": 0.8
+      }
+    },
+    "multi_tenant": {
+      "id": "multi_tenant",
+      "name": "멀티테넌트 서빙",
+      "category": "product",
+      "route": "llm",
+      "tier": 3,
+      "cost": 2300,
+      "requires": [
+        "model_optimization"
+      ],
+      "description": "여러 고객을 한 인프라에서 효율적으로 서비스한다.",
+      "historicalContext": "Multi-tenant serving let AI providers compress overhead while scaling B2B usage.",
+      "effects": {
+        "serviceEfficiencyMult": 1.3
+      }
+    },
+    "edge_deployment": {
+      "id": "edge_deployment",
+      "name": "엣지 배포",
+      "category": "product",
+      "route": "world",
+      "tier": 3,
+      "cost": 2200,
+      "requires": [
+        "model_optimization"
+      ],
+      "description": "모델을 모바일과 현장 기기로 내려보낸다.",
+      "historicalContext": "Edge deployment expanded once on-device AI became commercially viable.",
+      "effects": {
+        "serviceRevenueMult": {
+          "consumer_chat": 1.4
+        },
+        "inferenceCostMult": 0.7
+      }
+    },
+    "model_distillation": {
+      "id": "model_distillation",
+      "name": "모델 증류",
+      "category": "product",
+      "route": "llm",
+      "tier": 2,
+      "cost": 1900,
+      "requires": [
+        "scaling_laws"
+      ],
+      "description": "큰 모델의 지식을 더 작은 모델로 옮긴다.",
+      "historicalContext": "Distillation became a key tool for shipping smaller, cheaper service models from frontier teachers.",
+      "effects": {
+        "inferenceCostMult": 0.85,
+        "serviceEfficiencyMult": 1.15
+      }
+    },
+    "serving_infrastructure": {
+      "id": "serving_infrastructure",
+      "name": "서빙 인프라",
+      "category": "product",
+      "route": "common",
+      "tier": 1,
+      "cost": 250,
+      "requires": [
+        "cloud_server"
+      ],
+      "description": "모델 서비스 전체를 지탱하는 운영 인프라.",
+      "historicalContext": "Serving infrastructure emerged as a first-class bottleneck once AI traffic turned into a real business.",
+      "effects": {
+        "serviceEfficiencyMult": 1.1
+      }
+    },
+    "bias_audit": {
+      "id": "bias_audit",
+      "name": "편향성 감사",
+      "category": "safety",
+      "route": "common",
+      "tier": 1,
+      "cost": 180,
+      "requires": [],
+      "description": "AI 모델의 편향성을 감지하고 교정.",
+      "historicalContext": "공정성/편향성 평가가 출시 전 필수 절차가 된 흐름을 반영한다.",
+      "effects": {
+        "safetyBonus": 1.1,
+        "reputationBonus": 3
+      }
+    },
+    "interpretable_ai": {
+      "id": "interpretable_ai",
+      "name": "해석 가능 AI",
+      "category": "safety",
+      "route": "common",
+      "tier": 3,
+      "cost": 7500,
+      "requires": [
+        "rlhf",
+        "bias_audit"
+      ],
+      "description": "AI의 판단 과정을 설명 가능하게.",
+      "historicalContext": "설명 가능성과 해석성 연구가 2020년대 초반에 본격화된 흐름을 반영한다.",
+      "effects": {
+        "safetyBonus": 1.3,
+        "reputationBonus": 5
+      }
+    },
+    "value_alignment": {
+      "id": "value_alignment",
+      "name": "가치 정렬",
+      "category": "safety",
+      "route": "common",
+      "tier": 4,
+      "cost": 32000,
+      "requires": [
+        "interpretable_ai"
+      ],
+      "description": "AI를 인간의 가치와 정렬.",
+      "historicalContext": "Alignment research became strategic as frontier models approached deployment scale.",
+      "effects": {
+        "safetyBonus": 1.5,
+        "agiProgress": 0.2
+      }
+    },
+    "controllable_agi": {
+      "id": "controllable_agi",
+      "name": "통제 가능 AGI",
+      "category": "safety",
+      "route": "common",
+      "tier": 5,
+      "cost": 70000,
+      "requires": [
+        "value_alignment"
+      ],
+      "description": "안전하게 통제 가능한 AGI 프레임워크.",
+      "historicalContext": "Controlling AGI-class systems is still a frontier safety problem.",
+      "effects": {
+        "safetyBonus": 2,
+        "agiProgress": 0.3,
+        "enableSafeAGI": true
+      }
+    },
+    "security_basics": {
+      "id": "security_basics",
+      "name": "보안 기초",
+      "category": "safety",
+      "route": "common",
+      "tier": 1,
+      "cost": 140,
+      "requires": [],
+      "description": "AI 시스템 보안의 기초.",
+      "historicalContext": "2017년 이후 AI 안전과 보안이 기본 전제가 된 흐름을 반영한다.",
+      "effects": {
+        "securityLevel": 1.1
+      }
+    },
+    "adversarial_defense": {
+      "id": "adversarial_defense",
+      "name": "적대적 방어",
+      "category": "safety",
+      "route": "common",
+      "tier": 2,
+      "cost": 750,
+      "requires": [
+        "security_basics"
+      ],
+      "description": "적대적 공격에 대한 방어 기술.",
+      "historicalContext": "적대적 예제와 모델 취약성 연구가 확장된 흐름을 반영한다.",
+      "effects": {
+        "securityLevel": 1.3
+      }
+    },
+    "quantum_basics": {
+      "id": "quantum_basics",
+      "name": "양자 기초 연구",
+      "category": "quantum",
+      "route": "common",
+      "tier": 4,
+      "cost": 23000,
+      "requires": [
+        "next_gen_processor",
+        "advanced_cooling"
+      ],
+      "description": "양자컴퓨팅 기초 연구.",
+      "effects": {}
+    },
+    "qubit_stabilization": {
+      "id": "qubit_stabilization",
+      "name": "양자비트 안정화",
+      "category": "quantum",
+      "route": "common",
+      "tier": 4,
+      "cost": 26000,
+      "requires": [
+        "quantum_basics"
+      ],
+      "description": "큐비트의 결맞음 시간 연장.",
+      "effects": {
+        "computeEfficiency": 3
+      }
+    },
+    "quantum_error_correction": {
+      "id": "quantum_error_correction",
+      "name": "양자 오류 보정",
+      "category": "quantum",
+      "route": "common",
+      "tier": 4,
+      "cost": 30000,
+      "requires": [
+        "qubit_stabilization"
+      ],
+      "description": "양자 오류를 보정하여 안정적 연산.",
+      "effects": {
+        "computeEfficiency": 5
+      }
+    },
+    "quantum_ai_acceleration": {
+      "id": "quantum_ai_acceleration",
+      "name": "양자 AI 가속",
+      "category": "quantum",
+      "route": "common",
+      "tier": 5,
+      "cost": 60000,
+      "requires": [
+        "quantum_error_correction"
+      ],
+      "description": "양자컴퓨팅으로 AI 학습 초가속.",
+      "effects": {
+        "computeEfficiency": 10,
+        "agiProgress": 0.3
+      }
+    },
+    "agi_foundation": {
+      "id": "agi_foundation",
+      "name": "AGI 기초",
+      "category": "integration",
+      "route": "synergy",
+      "tier": 4,
+      "cost": 47000,
+      "requires": [
+        "llm_reasoning",
+        "world_understanding",
+        "self_learning_data",
+        "value_alignment"
+      ],
+      "description": "범용 인공지능의 이론적 토대. LLM + 월드모델을 통합.",
+      "historicalContext": "AGI foundation research is a late-stage convergence of frontier capabilities.",
+      "effects": {
+        "agiProgress": 0.5
+      }
+    },
+    "agi_llm_path": {
+      "id": "agi_llm_path",
+      "name": "AGI (LLM 경로)",
+      "category": "integration",
+      "route": "llm",
+      "tier": 4,
+      "cost": 44000,
+      "requires": [
+        "llm_reasoning",
+        "self_learning_data",
+        "value_alignment"
+      ],
+      "description": "언어 기반 범용 추론으로 AGI 접근. 불완전하지만 빠름.",
+      "historicalContext": "An AGI path through LLMs requires many late-stage reasoning and alignment breakthroughs.",
+      "effects": {
+        "agiProgress": 0.4
+      }
+    },
+    "agi_world_path": {
+      "id": "agi_world_path",
+      "name": "AGI (월드모델 경로)",
+      "category": "integration",
+      "route": "world",
+      "tier": 4,
+      "cost": 42000,
+      "requires": [
+        "world_understanding",
+        "self_learning_data",
+        "value_alignment"
+      ],
+      "description": "세계 이해 기반 AGI 접근. 언어 능력 제한.",
+      "historicalContext": "A world-model path to AGI depends on multimodal simulation and embodied reasoning.",
+      "effects": {
+        "agiProgress": 0.4
+      }
+    },
+    "agi": {
+      "id": "agi",
+      "name": "AGI",
+      "category": "integration",
+      "route": "synergy",
+      "tier": 5,
+      "cost": 85000,
+      "requires": [
+        "agi_foundation"
+      ],
+      "description": "인간 수준의 범용 인공지능. 완전한 AGI.",
+      "historicalContext": "AGI is treated here as a late-2020s frontier milestone.",
+      "effects": {
+        "agiProgress": 1
+      }
+    },
+    "agi_partial": {
+      "id": "agi_partial",
+      "name": "부분적 AGI",
+      "category": "integration",
+      "route": "common",
+      "tier": 4,
+      "cost": 50000,
+      "requires": [],
+      "requiresAny": [
+        "agi_llm_path",
+        "agi_world_path"
+      ],
+      "description": "한쪽 경로만으로 달성한 불완전한 AGI. 위험하지만 빠름.",
+      "historicalContext": "Partial AGI arrives only after multiple frontier systems converge.",
+      "effects": {
+        "agiProgress": 0.7
+      }
+    },
+    "self_improvement": {
+      "id": "self_improvement",
+      "name": "자기 개선",
+      "category": "integration",
+      "route": "common",
+      "tier": 5,
+      "cost": 105000,
+      "requires": [],
+      "requiresAny": [
+        "agi",
+        "agi_partial"
+      ],
+      "description": "AI가 스스로를 개선하는 능력.",
+      "historicalContext": "Recursive self-improvement remains a speculative late-stage frontier.",
+      "effects": {
+        "asiProgress": 0.5
+      }
+    },
+    "asi": {
+      "id": "asi",
+      "name": "ASI",
+      "category": "integration",
+      "route": "common",
+      "tier": 5,
+      "cost": 128000,
+      "requires": [
+        "self_improvement"
+      ],
+      "description": "초인간 인공지능. 인간을 뛰어넘는 지능.",
+      "historicalContext": "ASI remains beyond AGI and should be an endgame breakthrough.",
+      "effects": {
+        "asiProgress": 1
+      }
+    },
+    "singularity": {
+      "id": "singularity",
+      "name": "특이점",
+      "category": "integration",
+      "route": "common",
+      "tier": 5,
+      "cost": 150000,
+      "requires": [
+        "asi"
+      ],
+      "description": "기술적 특이점 도달. 세계가 변한다.",
+      "historicalContext": "The singularity is modeled as a very-late-game speculative endpoint.",
+      "effects": {
+        "singularity": true
+      }
+    }
+  },
+  "TECH_CATEGORIES": {
+    "foundation": {
+      "name": "기초 연구",
+      "color": "#94a3b8",
+      "icon": "📐"
+    },
+    "model_arch": {
+      "name": "모델 아키텍처",
+      "color": "#3b82f6",
+      "icon": "🧬"
+    },
+    "advanced_ai": {
+      "name": "고급 AI",
+      "color": "#8b5cf6",
+      "icon": "🧠"
+    },
+    "frontier_ai": {
+      "name": "프론티어 AI",
+      "color": "#f97316",
+      "icon": "🚀"
+    },
+    "generative": {
+      "name": "생성 AI",
+      "color": "#a855f7",
+      "icon": "🎨"
+    },
+    "data": {
+      "name": "데이터",
+      "color": "#10b981",
+      "icon": "📊"
+    },
+    "chip": {
+      "name": "칩/프로세서",
+      "color": "#eab308",
+      "icon": "⚡"
+    },
+    "infra": {
+      "name": "인프라",
+      "color": "#6366f1",
+      "icon": "🏗️"
+    },
+    "energy": {
+      "name": "전력/에너지",
+      "color": "#ef4444",
+      "icon": "🔋"
+    },
+    "product": {
+      "name": "AI 제품",
+      "color": "#22c55e",
+      "icon": "📦"
+    },
+    "safety": {
+      "name": "안전/정렬",
+      "color": "#14b8a6",
+      "icon": "🛡️"
+    },
+    "quantum": {
+      "name": "양자컴퓨팅",
+      "color": "#ec4899",
+      "icon": "⚛️"
+    },
+    "integration": {
+      "name": "AGI/ASI",
+      "color": "#f97316",
+      "icon": "🌟"
+    }
+  },
+  "ROUTE_INFO": {
+    "llm": {
+      "name": "LLM",
+      "color": "#3b82f6"
+    },
+    "world": {
+      "name": "월드모델",
+      "color": "#f59e0b"
+    },
+    "common": {
+      "name": "공통",
+      "color": "#94a3b8"
+    },
+    "synergy": {
+      "name": "시너지",
+      "color": "#a855f7"
+    }
+  }
+}

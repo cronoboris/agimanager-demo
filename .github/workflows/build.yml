@@ -1,0 +1,195 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            target: aarch64-apple-darwin
+            name: macOS-ARM64
+          - platform: macos-13
+            target: x86_64-apple-darwin
+            name: macOS-Intel
+          - platform: windows-latest
+            target: x86_64-pc-windows-msvc
+            name: Windows-x64
+          - platform: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            name: Linux-x64
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Install Linux dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install Tauri CLI
+        run: npm install --save-dev @tauri-apps/cli@latest
+
+      - name: Prepare web assets
+        run: |
+          mkdir -p dist
+          cp index.html dist/
+          cp -r css dist/
+          cp -r js dist/
+        shell: bash
+
+      - name: Prepare Tauri project
+        run: |
+          mkdir -p src-tauri/src src-tauri/icons
+        shell: bash
+
+      - name: Write Tauri config
+        shell: bash
+        run: |
+          cat > src-tauri/tauri.conf.json << 'CONF'
+          {
+            "productName": "AGI Manager",
+            "version": "0.2.1",
+            "identifier": "com.mimir.agimanager",
+            "build": { "frontendDist": "../dist" },
+            "app": {
+              "windows": [{
+                "title": "AGI Manager",
+                "width": 1440, "height": 900,
+                "minWidth": 1024, "minHeight": 700
+              }],
+              "security": { "csp": null }
+            },
+            "bundle": {
+              "active": true,
+              "targets": "all",
+              "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.png"]
+            }
+          }
+          CONF
+
+          cat > src-tauri/Cargo.toml << 'CARGO'
+          [package]
+          name = "agi-manager"
+          version = "0.2.1"
+          description = "AGI Manager — AI Startup Simulation"
+          authors = ["Mimir"]
+          edition = "2021"
+
+          [build-dependencies]
+          tauri-build = { version = "2", features = [] }
+
+          [dependencies]
+          tauri = { version = "2", features = [] }
+          serde_json = "1"
+          serde = { version = "1", features = ["derive"] }
+
+          [features]
+          default = ["custom-protocol"]
+          custom-protocol = ["tauri/custom-protocol"]
+          CARGO
+
+          cat > src-tauri/build.rs << 'BUILD'
+          fn main() { tauri_build::build() }
+          BUILD
+
+          cat > src-tauri/src/main.rs << 'MAIN'
+          #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+          fn main() {
+              tauri::Builder::default()
+                  .run(tauri::generate_context!())
+                  .expect("error while running tauri application");
+          }
+          MAIN
+
+      - name: Generate icon
+        shell: bash
+        run: |
+          npm install --save-dev sharp
+          node -e "
+          const sharp = require('sharp');
+          (async () => {
+            const w=256, h=256;
+            const buf = Buffer.alloc(w*h*4, 0);
+            for(let y=0;y<h;y++) for(let x=0;x<w;x++) {
+              const i=(y*w+x)*4;
+              buf[i]=6; buf[i+1]=10; buf[i+2]=20; buf[i+3]=255;
+              const lx=(x-w*0.3)/(w*0.4), ly=(y-h*0.2)/(h*0.6);
+              if(lx>=0&&lx<=1&&ly>=0&&ly<=1) {
+                if(Math.abs(lx-ly*0.5)<0.08||Math.abs(lx-(1-ly*0.5))<0.08||(ly>0.45&&ly<0.55&&lx>0.2&&lx<0.8)) {
+                  buf[i]=0; buf[i+1]=229; buf[i+2]=255;
+                }
+              }
+            }
+            // Generate all required sizes
+            for(const s of [32,128,256]) {
+              await sharp(buf,{raw:{width:w,height:h,channels:4}}).resize(s,s).png().toFile('src-tauri/icons/'+s+'x'+s+'.png');
+            }
+            await sharp(buf,{raw:{width:w,height:h,channels:4}}).resize(256,256).png().toFile('src-tauri/icons/128x128@2x.png');
+            await sharp(buf,{raw:{width:w,height:h,channels:4}}).resize(256,256).png().toFile('src-tauri/icons/icon.png');
+            console.log('PNG icons generated');
+          })().catch(e => { console.error(e); process.exit(1); });
+          "
+          # Generate .ico from PNG using npx tauri icon (handles all formats)
+          npx tauri icon src-tauri/icons/icon.png 2>/dev/null || echo "tauri icon generation skipped"
+
+      - name: Verify generated icons
+        shell: bash
+        run: |
+          ls -la src-tauri/icons/
+          test -s src-tauri/icons/icon.png
+          test -s src-tauri/icons/icon.ico
+
+      - name: Build Tauri
+        run: npx tauri build --target ${{ matrix.target }}
+
+      - name: Find bundles (Unix)
+        if: matrix.platform != 'windows-latest'
+        run: find src-tauri/target/${{ matrix.target }}/release/bundle -type f \( -name "*.app" -o -name "*.dmg" -o -name "*.deb" -o -name "*.AppImage" \) 2>/dev/null || true
+
+      - name: Find bundles (Windows)
+        if: matrix.platform == 'windows-latest'
+        shell: bash
+        run: find src-tauri/target/${{ matrix.target }}/release/bundle -type f -name "*.msi" -o -name "*.exe" 2>/dev/null || true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: AGI-Manager-${{ matrix.name }}
+          path: |
+            src-tauri/target/${{ matrix.target }}/release/bundle/**/*
+          if-no-files-found: warn
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            src-tauri/target/${{ matrix.target }}/release/bundle/macos/*.app
+            src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
+            src-tauri/target/${{ matrix.target }}/release/bundle/msi/*.msi
+            src-tauri/target/${{ matrix.target }}/release/bundle/nsis/*.exe
+            src-tauri/target/${{ matrix.target }}/release/bundle/deb/*.deb
+            src-tauri/target/${{ matrix.target }}/release/bundle/appimage/*.AppImage
+          draft: true

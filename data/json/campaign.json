@@ -1,0 +1,83 @@
+{
+    "ACTS": {
+        "startup": {
+            "name": {
+                "ko": "1막: 창업기",
+                "en": "Act 1: Startup"
+            },
+            "description": {
+                "ko": "생존, 첫 채용, 첫 연구, 첫 모델, 첫 투자",
+                "en": "Survival, first hire, first research, first model, first investment"
+            },
+            "icon": "🌱",
+            "themeColor": "#3b82f6",
+            "conditions": {
+                "always": true
+            },
+            "unlocks": [],
+            "musicEra": "early"
+        },
+        "expansion": {
+            "name": {
+                "ko": "2막: 확장기",
+                "en": "Act 2: Expansion"
+            },
+            "description": {
+                "ko": "조직 분화, 제품-연구 균형, 인프라 전략",
+                "en": "Organization growth, product-research balance, infrastructure strategy"
+            },
+            "icon": "🏗️",
+            "themeColor": "#10b981",
+            "conditions": {
+                "minTeamSize": 8,
+                "minFundingRound": "seriesA",
+                "minTechCount": 10,
+                "anyOf": true
+            },
+            "unlocks": ["chipProgram", "datacenter"],
+            "musicEra": "mid"
+        },
+        "political": {
+            "name": {
+                "ko": "3막: 정치경제기",
+                "en": "Act 3: Political Economy"
+            },
+            "description": {
+                "ko": "규제, 수출 통제, 로비, 공급망 전쟁",
+                "en": "Regulation, export controls, lobbying, supply chain wars"
+            },
+            "icon": "⚖️",
+            "themeColor": "#f59e0b",
+            "conditions": {
+                "minTeamSize": 20,
+                "minModelPerformance": 40,
+                "minFundingRound": "seriesB",
+                "globalAILevel": 40,
+                "anyOf": true
+            },
+            "unlocks": ["lobbying", "exportControls", "boardPressure"],
+            "musicEra": "mid"
+        },
+        "frontier": {
+            "name": {
+                "ko": "4막: 프런티어기",
+                "en": "Act 4: Frontier"
+            },
+            "description": {
+                "ko": "AGI 안전, 거버넌스, 이사회 충돌, 세계 질서",
+                "en": "AGI safety, governance, board conflicts, world order"
+            },
+            "icon": "🌌",
+            "themeColor": "#ef4444",
+            "conditions": {
+                "minModelPerformance": 70,
+                "minFundingRound": "seriesC",
+                "globalAILevel": 70,
+                "anyOf": true
+            },
+            "unlocks": ["agiGovernance", "internalCrisis", "worldOrder"],
+            "musicEra": "late"
+        }
+    },
+    "ACT_ORDER": ["startup", "expansion", "political", "frontier"]
+}

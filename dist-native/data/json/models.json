@@ -1,0 +1,983 @@
+{
+  "CAPABILITY_BENCHMARKS": {
+    "language": {
+      "id": "language",
+      "name": "언어",
+      "icon": "📝",
+      "color": "#3b82f6",
+      "desc": "텍스트 이해 및 생성"
+    },
+    "reasoning": {
+      "id": "reasoning",
+      "name": "추론",
+      "icon": "🧠",
+      "color": "#8b5cf6",
+      "desc": "논리, 문제 해결"
+    },
+    "coding": {
+      "id": "coding",
+      "name": "코딩",
+      "icon": "💻",
+      "color": "#10b981",
+      "desc": "코드 생성 및 디버깅"
+    },
+    "math": {
+      "id": "math",
+      "name": "수학",
+      "icon": "🔢",
+      "color": "#f59e0b",
+      "desc": "수학적 추론"
+    },
+    "multimodal": {
+      "id": "multimodal",
+      "name": "멀티모달",
+      "icon": "🖼️",
+      "color": "#ec4899",
+      "desc": "비전, 오디오, 영상"
+    },
+    "safety": {
+      "id": "safety",
+      "name": "안전",
+      "icon": "🛡️",
+      "color": "#14b8a6",
+      "desc": "정렬, 거절 정확도"
+    },
+    "speed": {
+      "id": "speed",
+      "name": "속도",
+      "icon": "⚡",
+      "color": "#eab308",
+      "desc": "추론 효율성"
+    }
+  },
+  "BENCHMARK_WEIGHTS": {
+    "language": 0.2,
+    "reasoning": 0.2,
+    "coding": 0.15,
+    "math": 0.15,
+    "multimodal": 0.1,
+    "safety": 0.1,
+    "speed": 0.1
+  },
+  "BENCHMARKS": [
+    {
+      "id": "mmlu",
+      "name": "MMLU",
+      "nameKo": "학술 지식",
+      "capWeights": {
+        "reasoning": 0.5,
+        "language": 0.3,
+        "math": 0.2
+      },
+      "description": "대학 수준 학술 지식 평가"
+    },
+    {
+      "id": "humaneval",
+      "name": "HumanEval",
+      "nameKo": "코딩 능력",
+      "capWeights": {
+        "coding": 0.8,
+        "reasoning": 0.2
+      },
+      "description": "프로그래밍 문제 해결 능력"
+    },
+    {
+      "id": "gsm8k",
+      "name": "GSM8K",
+      "nameKo": "수학 추론",
+      "capWeights": {
+        "math": 0.6,
+        "reasoning": 0.4
+      },
+      "description": "초등~중등 수학 문제 추론"
+    },
+    {
+      "id": "helm",
+      "name": "HELM",
+      "nameKo": "종합 평가",
+      "capWeights": {
+        "language": 0.3,
+        "reasoning": 0.3,
+        "safety": 0.2,
+        "speed": 0.2
+      },
+      "description": "안전성 포함 종합 평가"
+    },
+    {
+      "id": "arena_elo",
+      "name": "Arena Elo",
+      "nameKo": "사용자 선호",
+      "capWeights": {
+        "language": 0.4,
+        "reasoning": 0.3,
+        "speed": 0.3
+      },
+      "description": "사용자 블라인드 평가 기반 순위"
+    },
+    {
+      "id": "multimodal_bench",
+      "name": "MMMU",
+      "nameKo": "멀티모달",
+      "capWeights": {
+        "multimodal": 0.7,
+        "reasoning": 0.3
+      },
+      "description": "이미지/영상 이해 능력"
+    }
+  ],
+  "MARKET_EXPECTATIONS": {
+    "2017": {
+      "mmlu": 5,
+      "humaneval": 0,
+      "gsm8k": 3,
+      "helm": 5,
+      "arena_elo": 5,
+      "multimodal_bench": 0
+    },
+    "2018": {
+      "mmlu": 10,
+      "humaneval": 5,
+      "gsm8k": 5,
+      "helm": 10,
+      "arena_elo": 10,
+      "multimodal_bench": 2
+    },
+    "2019": {
+      "mmlu": 15,
+      "humaneval": 10,
+      "gsm8k": 8,
+      "helm": 15,
+      "arena_elo": 15,
+      "multimodal_bench": 5
+    },
+    "2020": {
+      "mmlu": 25,
+      "humaneval": 15,
+      "gsm8k": 15,
+      "helm": 25,
+      "arena_elo": 25,
+      "multimodal_bench": 10
+    },
+    "2021": {
+      "mmlu": 35,
+      "humaneval": 25,
+      "gsm8k": 25,
+      "helm": 35,
+      "arena_elo": 35,
+      "multimodal_bench": 15
+    },
+    "2022": {
+      "mmlu": 50,
+      "humaneval": 40,
+      "gsm8k": 40,
+      "helm": 50,
+      "arena_elo": 50,
+      "multimodal_bench": 25
+    },
+    "2023": {
+      "mmlu": 65,
+      "humaneval": 55,
+      "gsm8k": 55,
+      "helm": 60,
+      "arena_elo": 65,
+      "multimodal_bench": 40
+    },
+    "2024": {
+      "mmlu": 75,
+      "humaneval": 65,
+      "gsm8k": 65,
+      "helm": 70,
+      "arena_elo": 75,
+      "multimodal_bench": 55
+    },
+    "2025": {
+      "mmlu": 82,
+      "humaneval": 72,
+      "gsm8k": 72,
+      "helm": 78,
+      "arena_elo": 82,
+      "multimodal_bench": 65
+    }
+  },
+  "MODEL_ARCHITECTURES": {
+    "cnn": {
+      "id": "cnn",
+      "name": "CNN",
+      "nameKr": "합성곱 신경망",
+      "icon": "👁️",
+      "description": "이미지 인식 및 분류에 특화된 아키텍처",
+      "requiredTech": [
+        "cnn"
+      ],
+      "maxScale": "large",
+      "strengths": {
+        "multimodal": 1.5
+      },
+      "weaknesses": {
+        "language": 0.3,
+        "coding": 0.2,
+        "reasoning": 0.5
+      },
+      "baseCapabilities": {
+        "language": 0,
+        "reasoning": 5,
+        "coding": 0,
+        "math": 5,
+        "multimodal": 20,
+        "safety": 10,
+        "speed": 30
+      },
+      "dataTypes": [
+        "images"
+      ],
+      "trainingEfficiency": 1.5,
+      "inferenceEfficiency": 1.3
+    },
+    "rnn_lstm": {
+      "id": "rnn_lstm",
+      "name": "RNN/LSTM",
+      "nameKr": "RNN/LSTM",
+      "icon": "🔁",
+      "description": "순차 데이터 처리에 적합한 순환 신경망",
+      "requiredTech": [
+        "deep_learning_basics"
+      ],
+      "maxScale": "medium",
+      "strengths": {
+        "language": 0.8
+      },
+      "weaknesses": {
+        "multimodal": 0.2,
+        "coding": 0.3
+      },
+      "baseCapabilities": {
+        "language": 15,
+        "reasoning": 5,
+        "coding": 5,
+        "math": 5,
+        "multimodal": 0,
+        "safety": 10,
+        "speed": 25
+      },
+      "dataTypes": [
+        "web_text"
+      ],
+      "trainingEfficiency": 1.2,
+      "inferenceEfficiency": 1
+    },
+    "transformer": {
+      "id": "transformer",
+      "name": "Transformer",
+      "nameKr": "트랜스포머",
+      "icon": "⚡",
+      "description": "Attention 메커니즘 기반의 범용 아키텍처. 2017년 \"Attention Is All You Need\".",
+      "requiredTech": [
+        "transformer"
+      ],
+      "maxScale": "xlarge",
+      "strengths": {
+        "language": 1.2,
+        "reasoning": 1
+      },
+      "weaknesses": {},
+      "baseCapabilities": {
+        "language": 20,
+        "reasoning": 10,
+        "coding": 10,
+        "math": 10,
+        "multimodal": 0,
+        "safety": 10,
+        "speed": 20
+      },
+      "dataTypes": [
+        "web_text",
+        "books"
+      ],
+      "optimalDataMix": {
+        "web_text": 0.55,
+        "books": 0.45
+      },
+      "trainingEfficiency": 1,
+      "inferenceEfficiency": 0.8
+    },
+    "gpt": {
+      "id": "gpt",
+      "name": "GPT",
+      "nameKr": "GPT 아키텍처",
+      "icon": "🗣️",
+      "description": "자기회귀 언어 모델. 텍스트 생성의 혁명.",
+      "requiredTech": [
+        "gpt_architecture"
+      ],
+      "maxScale": "frontier",
+      "strengths": {
+        "language": 1.5,
+        "coding": 1.3,
+        "reasoning": 1.2
+      },
+      "weaknesses": {
+        "multimodal": 0.3
+      },
+      "baseCapabilities": {
+        "language": 30,
+        "reasoning": 15,
+        "coding": 20,
+        "math": 10,
+        "multimodal": 0,
+        "safety": 10,
+        "speed": 15
+      },
+      "dataTypes": [
+        "web_text",
+        "books",
+        "code"
+      ],
+      "optimalDataMix": {
+        "web_text": 0.4,
+        "books": 0.2,
+        "code": 0.3,
+        "synthetic": 0.1
+      },
+      "trainingEfficiency": 0.8,
+      "inferenceEfficiency": 0.7
+    },
+    "diffusion": {
+      "id": "diffusion",
+      "name": "Diffusion",
+      "nameKr": "디퓨전 모델",
+      "icon": "🎨",
+      "description": "노이즈 제거 기반 생성 모델. 이미지/영상 생성의 혁명.",
+      "requiredTech": [
+        "diffusion"
+      ],
+      "maxScale": "large",
+      "strengths": {
+        "multimodal": 2
+      },
+      "weaknesses": {
+        "language": 0.1,
+        "reasoning": 0.1,
+        "coding": 0
+      },
+      "baseCapabilities": {
+        "language": 0,
+        "reasoning": 0,
+        "coding": 0,
+        "math": 0,
+        "multimodal": 40,
+        "safety": 10,
+        "speed": 10
+      },
+      "dataTypes": [
+        "images",
+        "web_text"
+      ],
+      "optimalDataMix": {
+        "images": 0.6,
+        "web_text": 0.2,
+        "video": 0.2
+      },
+      "trainingEfficiency": 0.7,
+      "inferenceEfficiency": 0.5
+    },
+    "moe": {
+      "id": "moe",
+      "name": "Mixture of Experts",
+      "nameKr": "전문가 혼합",
+      "icon": "🧩",
+      "description": "조건부 연산으로 효율적 스케일링. 추론 비용 대비 높은 성능.",
+      "requiredTech": [
+        "scaling_laws",
+        "llm"
+      ],
+      "maxScale": "massive",
+      "strengths": {
+        "language": 1.3,
+        "reasoning": 1.4,
+        "speed": 1.5
+      },
+      "weaknesses": {},
+      "baseCapabilities": {
+        "language": 30,
+        "reasoning": 20,
+        "coding": 20,
+        "math": 15,
+        "multimodal": 0,
+        "safety": 10,
+        "speed": 25
+      },
+      "dataTypes": [
+        "web_text",
+        "books",
+        "code",
+        "scientific"
+      ],
+      "optimalDataMix": {
+        "web_text": 0.3,
+        "books": 0.2,
+        "code": 0.2,
+        "scientific": 0.2,
+        "synthetic": 0.1
+      },
+      "trainingEfficiency": 0.6,
+      "inferenceEfficiency": 1.2
+    },
+    "multimodal_arch": {
+      "id": "multimodal_arch",
+      "name": "Multimodal",
+      "nameKr": "멀티모달",
+      "icon": "🌐",
+      "description": "텍스트, 이미지, 오디오, 비디오를 모두 처리하는 통합 아키텍처.",
+      "requiredTech": [
+        "multimodal_llm"
+      ],
+      "maxScale": "frontier",
+      "strengths": {
+        "language": 1.2,
+        "multimodal": 1.8,
+        "reasoning": 1.3
+      },
+      "weaknesses": {},
+      "baseCapabilities": {
+        "language": 25,
+        "reasoning": 15,
+        "coding": 15,
+        "math": 15,
+        "multimodal": 30,
+        "safety": 10,
+        "speed": 12
+      },
+      "dataTypes": [
+        "web_text",
+        "books",
+        "code",
+        "images",
+        "audio",
+        "video"
+      ],
+      "optimalDataMix": {
+        "web_text": 0.2,
+        "books": 0.15,
+        "code": 0.15,
+        "images": 0.2,
+        "audio": 0.1,
+        "video": 0.15,
+        "synthetic": 0.05
+      },
+      "trainingEfficiency": 0.4,
+      "inferenceEfficiency": 0.6
+    },
+    "agent_arch": {
+      "id": "agent_arch",
+      "name": "Agent Architecture",
+      "nameKr": "에이전트",
+      "icon": "🤖",
+      "description": "도구 사용, 계획, 자율 실행이 가능한 에이전트 아키텍처.",
+      "requiredTech": [
+        "tool_use",
+        "chain_of_thought"
+      ],
+      "maxScale": "massive",
+      "strengths": {
+        "reasoning": 1.8,
+        "coding": 1.6,
+        "language": 1.3
+      },
+      "weaknesses": {
+        "speed": 0.5
+      },
+      "baseCapabilities": {
+        "language": 25,
+        "reasoning": 30,
+        "coding": 25,
+        "math": 20,
+        "multimodal": 10,
+        "safety": 5,
+        "speed": 8
+      },
+      "dataTypes": [
+        "web_text",
+        "code",
+        "scientific"
+      ],
+      "trainingEfficiency": 0.3,
+      "inferenceEfficiency": 0.4,
+      "optimalDataMix": {
+        "web_text": 0.25,
+        "code": 0.35,
+        "scientific": 0.2,
+        "synthetic": 0.2
+      }
+    }
+  },
+  "PARAMETER_SCALES": {
+    "tiny": {
+      "id": "tiny",
+      "name": "초소형",
+      "params": "<100M",
+      "icon": "🔹",
+      "computeReq": 2,
+      "minGPU": 2,
+      "minTFLOPS": 10,
+      "trainingDays": 5,
+      "dataReqTB": 0.5,
+      "requiredPFLOPS": 1,
+      "minVRAM": 8,
+      "requiresTech": [],
+      "trainingCostMult": 0.2,
+      "dailyCostMult": 0.1,
+      "capMult": 0.3
+    },
+    "small": {
+      "id": "small",
+      "name": "소형",
+      "params": "100M-1B",
+      "icon": "🔸",
+      "computeReq": 5,
+      "minGPU": 5,
+      "minTFLOPS": 50,
+      "trainingDays": 15,
+      "dataReqTB": 2,
+      "requiredPFLOPS": 50,
+      "minVRAM": 16,
+      "requiresTech": [
+        "transformer"
+      ],
+      "trainingCostMult": 0.5,
+      "dailyCostMult": 0.3,
+      "capMult": 0.5
+    },
+    "medium": {
+      "id": "medium",
+      "name": "중형",
+      "params": "1B-10B",
+      "icon": "🟡",
+      "computeReq": 20,
+      "minGPU": 20,
+      "minTFLOPS": 200,
+      "trainingDays": 45,
+      "dataReqTB": 10,
+      "requiredPFLOPS": 500,
+      "minVRAM": 32,
+      "requiresTech": [
+        "scaling_laws"
+      ],
+      "trainingCostMult": 1,
+      "dailyCostMult": 1,
+      "capMult": 0.7
+    },
+    "large": {
+      "id": "large",
+      "name": "대형",
+      "params": "10B-100B",
+      "icon": "🟠",
+      "computeReq": 50,
+      "minGPU": 50,
+      "minTFLOPS": 1000,
+      "trainingDays": 90,
+      "dataReqTB": 50,
+      "requiredPFLOPS": 5000,
+      "minVRAM": 80,
+      "requiresTech": [
+        "scaling_laws",
+        "distributed_learning"
+      ],
+      "trainingCostMult": 3,
+      "dailyCostMult": 3,
+      "capMult": 0.85
+    },
+    "xlarge": {
+      "id": "xlarge",
+      "name": "초대형",
+      "params": "100B-500B",
+      "icon": "🔴",
+      "computeReq": 200,
+      "minGPU": 200,
+      "minTFLOPS": 5000,
+      "trainingDays": 150,
+      "dataReqTB": 200,
+      "requiredPFLOPS": 30000,
+      "minVRAM": 128,
+      "requiresTech": [
+        "llm",
+        "gpu_cluster"
+      ],
+      "trainingCostMult": 10,
+      "dailyCostMult": 8,
+      "capMult": 0.95
+    },
+    "frontier": {
+      "id": "frontier",
+      "name": "프론티어",
+      "params": "500B-2T",
+      "icon": "💎",
+      "computeReq": 500,
+      "minGPU": 500,
+      "minTFLOPS": 10000,
+      "trainingDays": 240,
+      "dataReqTB": 500,
+      "requiredPFLOPS": 100000,
+      "minVRAM": 192,
+      "requiresTech": [
+        "llm",
+        "gpu_cluster",
+        "scaling_laws",
+        "synthetic_data"
+      ],
+      "trainingCostMult": 30,
+      "dailyCostMult": 20,
+      "capMult": 1
+    },
+    "massive": {
+      "id": "massive",
+      "name": "거대",
+      "params": "2T+",
+      "icon": "🌟",
+      "computeReq": 1000,
+      "minGPU": 1000,
+      "minTFLOPS": 50000,
+      "trainingDays": 365,
+      "dataReqTB": 1000,
+      "requiredPFLOPS": 500000,
+      "minVRAM": 192,
+      "requiresTech": [
+        "llm",
+        "gpu_cluster",
+        "scaling_laws",
+        "synthetic_data",
+        "own_datacenter"
+      ],
+      "trainingCostMult": 100,
+      "dailyCostMult": 50,
+      "capMult": 1
+    }
+  },
+  "TRAINING_PHASES": [
+    {
+      "id": "data_curation",
+      "name": "데이터 큐레이션",
+      "icon": "📚",
+      "description": "학습 데이터 수집, 정제, 라벨링",
+      "durationPct": 10,
+      "primaryResource": "talent",
+      "talentSpecialties": [
+        "data",
+        "nlp",
+        "vision"
+      ],
+      "computeIntensity": 0.1,
+      "requiredTech": [],
+      "optional": false
+    },
+    {
+      "id": "pretraining",
+      "name": "사전 학습",
+      "icon": "⚙️",
+      "description": "GPU 집약적 대규모 사전 학습",
+      "durationPct": 50,
+      "primaryResource": "compute",
+      "talentSpecialties": [
+        "ml",
+        "infra"
+      ],
+      "computeIntensity": 1,
+      "requiredTech": [],
+      "optional": false
+    },
+    {
+      "id": "finetuning",
+      "name": "파인튜닝",
+      "icon": "🎯",
+      "description": "인재 집약적 특화 학습 및 지시 따르기 훈련",
+      "durationPct": 20,
+      "primaryResource": "talent",
+      "talentSpecialties": [
+        "ml",
+        "nlp",
+        "vision"
+      ],
+      "computeIntensity": 0.3,
+      "requiredTech": [],
+      "optional": false
+    },
+    {
+      "id": "alignment",
+      "name": "정렬/RLHF",
+      "icon": "🛡️",
+      "description": "안전성 및 인간 피드백 기반 정렬",
+      "durationPct": 15,
+      "primaryResource": "talent",
+      "talentSpecialties": [
+        "safety",
+        "rl"
+      ],
+      "computeIntensity": 0.4,
+      "requiredTech": [
+        "rlhf"
+      ],
+      "optional": true,
+      "skipPenalty": {
+        "safety": -30
+      }
+    },
+    {
+      "id": "evaluation",
+      "name": "평가/레드팀",
+      "icon": "🔍",
+      "description": "종합 벤치마크 및 취약점 테스트",
+      "durationPct": 5,
+      "primaryResource": "talent",
+      "talentSpecialties": [
+        "safety",
+        "ml"
+      ],
+      "computeIntensity": 0.2,
+      "requiredTech": [],
+      "optional": false
+    }
+  ],
+  "DATA_TYPES": {
+    "web_text": {
+      "id": "web_text",
+      "name": "웹 텍스트",
+      "icon": "🌐",
+      "costPerTB": 5000,
+      "availableTB": 100
+    },
+    "books": {
+      "id": "books",
+      "name": "도서",
+      "icon": "📚",
+      "costPerTB": 15000,
+      "availableTB": 20
+    },
+    "code": {
+      "id": "code",
+      "name": "코드",
+      "icon": "💻",
+      "costPerTB": 8000,
+      "availableTB": 50
+    },
+    "scientific": {
+      "id": "scientific",
+      "name": "과학 논문",
+      "icon": "🔬",
+      "costPerTB": 20000,
+      "availableTB": 15
+    },
+    "images": {
+      "id": "images",
+      "name": "이미지",
+      "icon": "🖼️",
+      "costPerTB": 12000,
+      "availableTB": 80
+    },
+    "audio": {
+      "id": "audio",
+      "name": "오디오",
+      "icon": "🔊",
+      "costPerTB": 18000,
+      "availableTB": 30
+    },
+    "video": {
+      "id": "video",
+      "name": "비디오",
+      "icon": "🎬",
+      "costPerTB": 25000,
+      "availableTB": 40
+    },
+    "synthetic": {
+      "id": "synthetic",
+      "name": "합성 데이터",
+      "icon": "🧪",
+      "costPerTB": 3000,
+      "availableTB": 200
+    }
+  },
+  "CAP_DATA_MAP": {
+    "language": [
+      "web_text",
+      "books",
+      "synthetic"
+    ],
+    "reasoning": [
+      "web_text",
+      "scientific",
+      "code",
+      "synthetic"
+    ],
+    "coding": [
+      "code",
+      "synthetic"
+    ],
+    "math": [
+      "scientific",
+      "code",
+      "synthetic"
+    ],
+    "multimodal": [
+      "images",
+      "audio",
+      "video"
+    ],
+    "safety": [
+      "web_text",
+      "synthetic"
+    ],
+    "speed": [
+      "synthetic"
+    ]
+  },
+  "TECH_CAP_BONUSES": {
+    "language": {
+      "transformer": 10,
+      "gpt_architecture": 15,
+      "llm": 20,
+      "scaling_laws": 10
+    },
+    "reasoning": {
+      "chain_of_thought": 15,
+      "llm_reasoning": 20,
+      "tool_use": 10
+    },
+    "coding": {
+      "gpt_architecture": 10,
+      "tool_use": 15,
+      "llm": 5
+    },
+    "math": {
+      "chain_of_thought": 10,
+      "llm_reasoning": 15
+    },
+    "multimodal": {
+      "vision_transformer": 15,
+      "multimodal_llm": 20
+    },
+    "safety": {
+      "bias_audit": 10,
+      "rlhf": 15,
+      "interpretable_ai": 15,
+      "value_alignment": 20
+    },
+    "speed": {
+      "gpu_cluster": 5,
+      "custom_ai_chip": 10
+    }
+  },
+  "DEPLOYMENT_STRATEGIES": {
+    "api": {
+      "id": "api",
+      "name": "API 서비스",
+      "icon": "🔌",
+      "description": "개발자를 위한 API. B2B 중심의 안정적 수익.",
+      "revenueMult": 1,
+      "userGrowthRate": 0.05,
+      "reputationGain": 3,
+      "marketShareGain": 0.03,
+      "requirements": {},
+      "unemploymentImpact": {
+        "development": 0.02
+      },
+      "capWeights": {
+        "language": 0.3,
+        "reasoning": 0.2,
+        "coding": 0.3,
+        "speed": 0.2
+      }
+    },
+    "consumer_chat": {
+      "id": "consumer_chat",
+      "name": "소비자 챗 앱",
+      "icon": "💬",
+      "description": "소비자용 대화형 AI. 대규모 사용자 기반.",
+      "revenueMult": 1.5,
+      "userGrowthRate": 0.15,
+      "reputationGain": 5,
+      "marketShareGain": 0.08,
+      "requirements": {
+        "techCompleted": [
+          "llm"
+        ]
+      },
+      "unemploymentImpact": {
+        "office": 0.04
+      },
+      "capWeights": {
+        "language": 0.4,
+        "reasoning": 0.2,
+        "safety": 0.2,
+        "speed": 0.2
+      }
+    },
+    "enterprise": {
+      "id": "enterprise",
+      "name": "기업 솔루션",
+      "icon": "🏢",
+      "description": "기업 맞춤형 솔루션. 고객당 높은 수익.",
+      "revenueMult": 2,
+      "userGrowthRate": 0.02,
+      "reputationGain": 4,
+      "marketShareGain": 0.04,
+      "requirements": {
+        "minCapability": {
+          "reasoning": 30
+        }
+      },
+      "unemploymentImpact": {
+        "office": 0.06,
+        "development": 0.04
+      },
+      "capWeights": {
+        "reasoning": 0.3,
+        "coding": 0.2,
+        "safety": 0.3,
+        "language": 0.2
+      }
+    },
+    "open_source": {
+      "id": "open_source",
+      "name": "오픈소스",
+      "icon": "📖",
+      "description": "무료 공개. 직접 수익 적지만 평판 대폭 상승.",
+      "revenueMult": 0.1,
+      "userGrowthRate": 0.3,
+      "reputationGain": 15,
+      "marketShareGain": 0.12,
+      "requirements": {},
+      "unemploymentImpact": {
+        "office": 0.02,
+        "development": 0.03
+      },
+      "capWeights": {
+        "language": 0.25,
+        "reasoning": 0.25,
+        "coding": 0.25,
+        "multimodal": 0.25
+      }
+    },
+    "government": {
+      "id": "government",
+      "name": "정부 계약",
+      "icon": "🏛️",
+      "description": "정부/군 계약. 매우 높은 수익, 논란 가능성.",
+      "revenueMult": 3,
+      "userGrowthRate": 0.01,
+      "reputationGain": -5,
+      "marketShareGain": 0.02,
+      "requirements": {
+        "minCapability": {
+          "reasoning": 40,
+          "safety": 40
+        }
+      },
+      "unemploymentImpact": {},
+      "publicImagePenalty": -8,
+      "capWeights": {
+        "reasoning": 0.3,
+        "safety": 0.3,
+        "language": 0.2,
+        "coding": 0.2
+      }
+    }
+  }
+}

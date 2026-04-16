@@ -1,0 +1,136 @@
+{
+  "COMPETITORS": [
+    {
+      "id": "openmind",
+      "name": "OpenMind",
+      "country": "us",
+      "description": "공격적 AI 개발을 추구하는 미국 스타트업",
+      "color": "#10a37f",
+      "stats": {
+        "researchPower": 8,
+        "funding": 9,
+        "aggression": 9,
+        "safetyFocus": 3,
+        "specialty": "algorithm"
+      },
+      "marketShare": 25,
+      "aiLevel": 10,
+      "reputation": 30,
+      "favorability": 0,
+      "currentModel": {
+        "name": "MindGPT-1",
+        "performance": 15
+      }
+    },
+    {
+      "id": "titanbrain",
+      "name": "TitanBrain",
+      "country": "us",
+      "description": "막대한 자원과 학술적 연구력을 겸비한 거대 기업",
+      "color": "#4285f4",
+      "stats": {
+        "researchPower": 9,
+        "funding": 10,
+        "aggression": 6,
+        "safetyFocus": 6,
+        "specialty": "data"
+      },
+      "marketShare": 30,
+      "aiLevel": 12,
+      "reputation": 40,
+      "favorability": 0,
+      "currentModel": {
+        "name": "TitanNet-1",
+        "performance": 18
+      }
+    },
+    {
+      "id": "cloudpillar",
+      "name": "CloudPillar",
+      "country": "us",
+      "description": "안전과 정렬을 최우선으로 하는 AI 연구기업",
+      "color": "#d97706",
+      "stats": {
+        "researchPower": 7,
+        "funding": 7,
+        "aggression": 3,
+        "safetyFocus": 9,
+        "specialty": "safety"
+      },
+      "marketShare": 10,
+      "aiLevel": 8,
+      "reputation": 35,
+      "favorability": 10,
+      "currentModel": {
+        "name": "Pillar-1",
+        "performance": 12
+      }
+    },
+    {
+      "id": "nexaai",
+      "name": "NexaAI",
+      "country": "us",
+      "description": "오픈소스 전략으로 AI 생태계를 주도하는 소셜 기업",
+      "color": "#1877f2",
+      "stats": {
+        "researchPower": 7,
+        "funding": 9,
+        "aggression": 7,
+        "safetyFocus": 4,
+        "specialty": "algorithm"
+      },
+      "marketShare": 15,
+      "aiLevel": 9,
+      "reputation": 15,
+      "favorability": 0,
+      "currentModel": {
+        "name": "NexaLM-1",
+        "performance": 10
+      }
+    },
+    {
+      "id": "skydragon",
+      "name": "SkyDragon",
+      "country": "cn",
+      "description": "중국 정부의 전폭적 지원을 받는 AI 기업",
+      "color": "#e74c3c",
+      "stats": {
+        "researchPower": 7,
+        "funding": 8,
+        "aggression": 8,
+        "safetyFocus": 2,
+        "specialty": "data"
+      },
+      "marketShare": 15,
+      "aiLevel": 8,
+      "reputation": 10,
+      "favorability": -10,
+      "currentModel": {
+        "name": "DragonAI-1",
+        "performance": 11
+      }
+    },
+    {
+      "id": "omnisoft",
+      "name": "OmniSoft",
+      "country": "us",
+      "description": "투자와 플랫폼으로 AI 시장을 지배하려는 거대 소프트웨어 기업",
+      "color": "#00a4ef",
+      "stats": {
+        "researchPower": 6,
+        "funding": 10,
+        "aggression": 5,
+        "safetyFocus": 5,
+        "specialty": "infra"
+      },
+      "marketShare": 5,
+      "aiLevel": 7,
+      "reputation": 25,
+      "favorability": 5,
+      "currentModel": {
+        "name": "OmniAI-1",
+        "performance": 8
+      }
+    }
+  ]
+}
